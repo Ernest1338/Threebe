@@ -1,19 +1,27 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 # ========== IMPORTS ==========
 
 import sys
-import hexdump
-import disassembly
+import x86.hexdump as x86hexdump
+import x86.disassembly as x86disassembly
 
 # ========== FUNCTIONS / CLASSES ==========
+
+def print_help():
+    sys.stderr.write("Usage: {0} <parameter(s)> <file(s)>\n".format(sys.argv[0]))
+    sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+
+def print_wrong_file_help():
+    sys.stderr.write("ERROR: No such file / Wrong file type.\n")
+    sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
 
 # ========== MAIN FUNCTION ==========
 
 def main():
     if len(sys.argv)==1:
-        sys.stderr.write("Usage: {0} <parameter(s)> <file(s)>\n".format(sys.argv[0]))
-        sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+        print_help()
     elif len(sys.argv)==3:
         if sys.argv[1]=="-h" or sys.argv[1]=="-H":
             try:
@@ -21,49 +29,44 @@ def main():
                 file_o = open(file_name,'rb')
                 hexd = file_o.read()
 
-                hexdump.hexdump_parser(hexd)
+                x86hexdump.hexdump_parser(hexd)
                 file_o.close()
             except:
-                sys.stderr.write("ERROR: No such file / Wrong file type.\n")
-                sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+                print_wrong_file_help()
         elif sys.argv[1]=="-hc" or sys.argv[1]=="-HC":
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb')
                 hexd = file_o.read()
 
-                hexdump.hexdump_clean(hexd)
+                x86hexdump.hexdump_clean(hexd)
                 file_o.close()
             except:
-                sys.stderr.write("ERROR: No such file / Wrong file type.\n")
-                sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+                print_wrong_file_help()
         elif sys.argv[1]=="-hl" or sys.argv[1]=="-HL":
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb')
                 hexd = file_o.read()
 
-                hexdump.hexdump_clean_for_disassembly(hexd)
+                x86hexdump.hexdump_clean_for_disassembly(hexd)
                 file_o.close()
             except:
-                sys.stderr.write("ERROR: No such file / Wrong file type.\n")
-                sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+                print_wrong_file_help()
         elif sys.argv[1]=="-hw" or sys.argv[1]=="-HW":
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb')
                 hexd = file_o.read()
 
-                hexdump.hexdump_clean_without_parsing(hexd)
+                x86hexdump.hexdump_clean_without_parsing(hexd)
                 file_o.close()
             except:
-                sys.stderr.write("ERROR: No such file / Wrong file type.\n")
-                sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+                print_wrong_file_help()
         elif sys.argv[1]=="-d" or sys.argv[1]=="-D":
             pass
         else:
-            sys.stderr.write("Usage: {0} <parameter(s)> <file(s)>\n".format(sys.argv[0]))
-            sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+            print_help()
     elif sys.argv[1]=="--help":
         print("{0} - Display a Hexdump / Disassembly of a x86 binary file.".format(sys.argv[0]))
         print("")
@@ -83,8 +86,7 @@ def main():
         print("")
         print("© Dawid Janikowski 2020-2020")
     else:
-        sys.stderr.write("Usage: {0} <parameter(s)> <file(s)>\n".format(sys.argv[0]))
-        sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+        print_help()
 
 # ========== MAIN FUNCTION EXECUTION ==========
 
