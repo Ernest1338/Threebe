@@ -1,3 +1,4 @@
+# This is an file containing different functions that parses given hexdump.
 
 class bcolors:
     HEADER = '\033[95m'
@@ -112,8 +113,7 @@ def hexdump_clean_for_disassembly(hexdump):
             parsed3 += str(i)+" "
         else:
             parsed3 += str(hex(ord(i))[2:])+" "
-    print(parsed3[:-1].upper().split(" "))
-    return True
+    return parsed3[:-1].upper().split(" ")
 
 def hexdump_clean(hexdump):
     hexdump = str(hexdump)

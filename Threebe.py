@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# Development running command: python3 -B Threebe.py -<OPTION> test_binaies/<FILE_NAME>
+
 # ========== IMPORTS ==========
 
 import sys
@@ -49,7 +51,7 @@ def main():
                 file_o = open(file_name,'rb')
                 hexd = file_o.read()
 
-                hexdump.hexdump_clean_for_disassembly(hexd)
+                print(hexdump.hexdump_clean_for_disassembly(hexd))
                 file_o.close()
             except:
                 print_wrong_file_help()
@@ -63,8 +65,17 @@ def main():
                 file_o.close()
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-d" or sys.argv[1]=="-D":
-            pass
+        elif sys.argv[1]=="-dx86" or sys.argv[1]=="-Dx86" or sys.argv[1]=="-dX86" or sys.argv[1]=="-DX86":
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb')
+                hexd = file_o.read()
+
+                hexdfd = hexdump.hexdump_clean_for_disassembly(hexd)
+                x86disassembly.disassemble(hexdfd)
+                file_o.close()
+            except:
+                print_wrong_file_help()
         else:
             print_help()
     elif sys.argv[1]=="--help":
@@ -76,6 +87,8 @@ def main():
         print("Possible parameters:")
         print("-h     - Display the hexdump of a given binary file.")
         print("-H     - Display the hexdump of a given binary file.")
+        print("-dx86  - Display the disassembly of a given x86 binary file.")
+        print("-Dx86  - Display the disassembly of a given x86 binary file.")
         print("-hc    - Display the clean version of the hexdump from a given binary file.")
         print("-HC    - Display the clean version of the hexdump from a given binary file.")
         print("-hl    - Display the clean version of the hexdump from a given binary file as a python list.")
