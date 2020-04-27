@@ -4,7 +4,7 @@
 # ========== IMPORTS ==========
 
 import sys
-import x86.hexdump as x86hexdump
+import hexdump.hexdump as hexdump
 import x86.disassembly as x86disassembly
 
 # ========== FUNCTIONS / CLASSES ==========
@@ -29,7 +29,7 @@ def main():
                 file_o = open(file_name,'rb')
                 hexd = file_o.read()
 
-                x86hexdump.hexdump_parser(hexd)
+                hexdump.hexdump_parser(hexd)
                 file_o.close()
             except:
                 print_wrong_file_help()
@@ -39,7 +39,7 @@ def main():
                 file_o = open(file_name,'rb')
                 hexd = file_o.read()
 
-                x86hexdump.hexdump_clean(hexd)
+                hexdump.hexdump_clean(hexd)
                 file_o.close()
             except:
                 print_wrong_file_help()
@@ -49,7 +49,7 @@ def main():
                 file_o = open(file_name,'rb')
                 hexd = file_o.read()
 
-                x86hexdump.hexdump_clean_for_disassembly(hexd)
+                hexdump.hexdump_clean_for_disassembly(hexd)
                 file_o.close()
             except:
                 print_wrong_file_help()
@@ -59,7 +59,7 @@ def main():
                 file_o = open(file_name,'rb')
                 hexd = file_o.read()
 
-                x86hexdump.hexdump_clean_without_parsing(hexd)
+                hexdump.hexdump_clean_without_parsing(hexd)
                 file_o.close()
             except:
                 print_wrong_file_help()
