@@ -11,6 +11,59 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
+def hexdump_clean_without_parsing(hexdump):
+    hexdump = str(hexdump)
+    parsed1 = hexdump[2:-1]
+    parsed2 = []
+    flag1 = False
+    flag2 = False
+    flag3 = False
+    for i in range(len(parsed1)):
+        if parsed1[i]=="\\":
+            flag1 = True
+            if parsed1[i+1]=="\\":
+                parsed2.append(parsed1[i])
+        elif flag1:
+            flag1 = False
+            flag2 = True
+            if parsed1[i]!="x":
+                if parsed1[i]=="t":
+                    parsed2.append("09")
+                    flag1 = False
+                    flag2 = False
+                    flag3 = False
+                elif parsed1[i]=="n":
+                    parsed2.append("0A")
+                    flag1 = False
+                    flag2 = False
+                    flag3 = False
+                elif parsed1[i]=="r":
+                    parsed2.append("0D")
+                    flag1 = False
+                    flag2 = False
+                    flag3 = False
+                else:
+                    parsed2.append(parsed1[i])
+                    flag1 = False
+                    flag2 = False
+                    flag3 = False
+        elif flag2:
+            flag2 = False
+            flag3 = True
+        elif flag3:
+            parsed2.append(parsed1[i-1]+parsed1[i])
+            flag3 = False
+        else:
+            parsed2.append(parsed1[i])
+    parsed3 = ""
+    for i in parsed2:
+        if len(i)==2:
+            parsed3 += str(i)+" "
+        else:
+            parsed3 += str(hex(ord(i))[2:])+" "
+    print(parsed3[:-1].upper())
+    return True
+
 def hexdump_clean_for_disassembly(hexdump):
     hexdump = str(hexdump)
     parsed1 = hexdump[2:-1]
@@ -239,7 +292,29 @@ def main():
                 file_o = open(file_name,'rb')
                 hexdump = file_o.read()
 
+                hexdump_clean(hexdump)
+                file_o.close()
+            except:
+                sys.stderr.write("ERROR: No such file / Wrong file type.\n")
+                sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+        elif sys.argv[1]=="-hl" or sys.argv[1]=="-HL":
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb')
+                hexdump = file_o.read()
+
                 hexdump_clean_for_disassembly(hexdump)
+                file_o.close()
+            except:
+                sys.stderr.write("ERROR: No such file / Wrong file type.\n")
+                sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+        elif sys.argv[1]=="-hw" or sys.argv[1]=="-HW":
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb')
+                hexdump = file_o.read()
+
+                hexdump_clean_without_parsing(hexdump)
                 file_o.close()
             except:
                 sys.stderr.write("ERROR: No such file / Wrong file type.\n")
@@ -258,11 +333,15 @@ def main():
         print("Possible parameters:")
         print("-h     - Display the hexdump of a given binary file.")
         print("-H     - Display the hexdump of a given binary file.")
-        print("-hc     - Display the clean version of the hexdump from a given binary file.")
-        print("-HC     - Display the clean version of the hexdump from a given binary file.")
-        print("--help - Display the help screen.")
+        print("-hc    - Display the clean version of the hexdump from a given binary file.")
+        print("-HC    - Display the clean version of the hexdump from a given binary file.")
+        print("-hl    - Display the clean version of the hexdump from a given binary file as a python list.")
+        print("-HL    - Display the clean version of the hexdump from a given binary file as a python list.")
+        print("-hw    - Display the clean version of the hexdump from a given binary file without parsing (without grouping / newline characters).")
+        print("-HW    - Display the clean version of the hexdump from a given binary file without parsing (without grouping / newline characters).")
+        print("--help - Display this help screen.")
         print("")
-        print("© Dawid Janikowski 2020")
+        print("© Dawid Janikowski 2020-2020")
     else:
         sys.stderr.write("Usage: {0} <parameter(s)> <file(s)>\n".format(sys.argv[0]))
         sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
