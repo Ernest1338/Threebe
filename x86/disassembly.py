@@ -29,9 +29,17 @@ def disassemble(bytes):
                     after_byte = ""
                     after_instruction = ""
                     cancle_function_iteration(1)
+                elif i == "90": # NOP
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
+                    if len(check1) < 53:
+                        for _ in range(53-len(check1)):
+                            after_byte += " "
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
+                    print(check1)
+                    after_byte = ""
             else:
-                #pass
-                print(f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+"                "+f"{bcolors.WARNING}"+"???"+f"{bcolors.ENDC}")
+                pass
+                #print(f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+"                "+f"{bcolors.WARNING}"+"???"+f"{bcolors.ENDC}")
         else:
             times -= 1
         offset1 += 16
