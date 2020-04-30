@@ -9,7 +9,7 @@ def cancle_function_iteration(howmany):
 
 def disassemble(bytes):
     global times
-    offset1 = 2152202240
+    offset1 = 134512640
     counter1 = 0
 
     for i in bytes:
@@ -22,7 +22,7 @@ def disassemble(bytes):
             if i in x86opT.x86opcodes:
                 intruction_len_for_check = 50+len(x86opT.x86opcodes[i]) # need to add to this after_instruction every time this variable (after_instruction) is usesd inside an if
                 should_print = True
-                
+
                 if i == "74": # JE
                     after_byte = " "+bytes[counter1+1]
                     after_instruction = " "+hex(offset1+(int(bytes[counter1+1],16)+2))
