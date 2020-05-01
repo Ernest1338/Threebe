@@ -4,10 +4,18 @@ x86opcodes = {
 
     "74" : "JE",         # DONE?
     "75" : "JNE",        # PENDING
+    "50" : "PUSH eax",   # DONE
+    "51" : "PUSH ecx",   # DONE
+    "52" : "PUSH edx",   # DONE
+    "53" : "PUSH ebx",   # DONE
+    "54" : "PUSH esp",   # DONE
     "55" : "PUSH ebp",   # DONE
-    "50" : "PUSH eax",   # PENDING
-    "57" : "PUSH edi",   # PENDING
-    "56" : "PUSH esi",   # PENDING
+    "56" : "PUSH esi",   # DONE
+    "57" : "PUSH edi",   # DONE
+    "0E" : "PUSH cs",    # DONE
+    "16" : "PUSH ss",    # DONE
+    "1E" : "PUSH ds",    # DONE
+    "06" : "PUSH es",    # DONE
     "B8" : "MOV eax",    # PENDING  # next byte represents MOV value / if 4 next bytes are not instructions, then those bytes represent an adress in format: B8 AB CD EF GH > MOV eax, 0xHGFCDAB
     "89" : "MOV ebp",    # PENDING  # if byte is equal to 89 then check if next byte is equal to E5 / if the next byte is equal to E5 then "MOV ebp, esp"
     "01" : "ADD",        # DONE?    # if next byte is equal to CA then: ADD EDX, ECX
@@ -24,6 +32,7 @@ x86opcodes = {
 
 x860Fopcodes = {
 
-    "84" : "JE",
-
+    "84" : "JE",         # PENDING
+    "A0" : "PUSH fs",    # PENDING
+    "A8" : "PUSH gs",    # PENDING
 }

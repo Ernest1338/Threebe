@@ -37,16 +37,7 @@ def disassemble(bytes):
                     after_instruction = ""
                     cancle_function_iteration(1)
 
-                elif i == "90": # NOP
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
-                    if len(check1) < intruction_len_for_check:
-                        for _ in range(intruction_len_for_check-len(check1)):
-                            after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
-                    print(check1)
-                    after_byte = ""
-
-                elif i == "55": # PUSH ebp
+                elif i == "90" or i == "55" or i == "50" or i == "56" or i == "57" or i == "51" or i == "53" or i == "52" or i == "54" or i == "0E" or i == "16" or i == "1E" or i == "06": # NOP, PUSH (1 byte)
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
