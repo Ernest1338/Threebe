@@ -28,52 +28,42 @@ def main():
         if sys.argv[1]=="-h" or sys.argv[1]=="-H":
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb')
-                hexd = file_o.read()
+                file_o = open(file_name,'rb').read()
 
-                hexdump.hexdump_parser(hexd)
-                file_o.close()
+                hexdump.hexdump_parser(file_o)
             except:
                 print_wrong_file_help()
         elif sys.argv[1]=="-hc" or sys.argv[1]=="-HC":
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb')
-                hexd = file_o.read()
+                file_o = open(file_name,'rb').read()
 
-                hexdump.hexdump_clean(hexd)
-                file_o.close()
+                hexdump.hexdump_clean(file_o)
             except:
                 print_wrong_file_help()
         elif sys.argv[1]=="-hl" or sys.argv[1]=="-HL":
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb')
-                hexd = file_o.read()
+                file_o = open(file_name,'rb').read()
 
-                print(hexdump.hexdump_clean_for_disassembly(hexd))
-                file_o.close()
+                print(hexdump.hexdump_clean_for_disassembly(file_o))
             except:
                 print_wrong_file_help()
         elif sys.argv[1]=="-hw" or sys.argv[1]=="-HW":
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb')
-                hexd = file_o.read()
+                file_o = open(file_name,'rb').read()
 
-                hexdump.hexdump_clean_without_parsing(hexd)
-                file_o.close()
+                hexdump.hexdump_clean_without_parsing(file_o)
             except:
                 print_wrong_file_help()
         elif sys.argv[1]=="-dx86" or sys.argv[1]=="-Dx86" or sys.argv[1]=="-dX86" or sys.argv[1]=="-DX86":
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb')
-                hexd = file_o.read()
+                file_o = open(file_name,'rb').read()
 
-                hexdfd = hexdump.hexdump_clean_for_disassembly(hexd)
+                hexdfd = hexdump.hexdump_clean_for_disassembly(file_o)
                 x86disassembly.disassemble(hexdfd)
-                file_o.close()
             except:
                 print_wrong_file_help()
         else:
