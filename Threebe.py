@@ -41,6 +41,14 @@ def main():
                 hexdump.hexdump_clean(file_o)
             except:
                 print_wrong_file_help()
+        elif sys.argv[1]=="-h32" or sys.argv[1]=="-H32":
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb').read()
+
+                hexdump.hexdump_parser_32(file_o)
+            except:
+                print_wrong_file_help()
         elif sys.argv[1]=="-hl" or sys.argv[1]=="-HL":
             try:
                 file_name = sys.argv[2]
@@ -77,6 +85,8 @@ def main():
         print("Possible parameters:")
         print("-h     - Display the hexdump of a given binary file.")
         print("-H     - Display the hexdump of a given binary file.")
+        print("-h32   - Display the hexdump of a given binary file (32 bytes per line).")
+        print("-H32   - Display the hexdump of a given binary file (32 bytes per line).")
         print("-dx86  - Display the disassembly of a given x86 binary file.")
         print("-Dx86  - Display the disassembly of a given x86 binary file.")
         print("-hc    - Display the clean version of the hexdump from a given binary file.")
