@@ -179,7 +179,6 @@ def hexdump_clean(hexdump):
 
 def hexdump_parser(hexdump):
     hexdump = str(hexdump)
-    print(hexdump)
     parsed1 = hexdump[2:-1]
     parsed2 = []
     flag1 = False
