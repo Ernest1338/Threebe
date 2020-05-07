@@ -25,7 +25,15 @@ def disassemble(bytes):
 
                 if i == "74": # JE
                     after_byte = " "+bytes[counter1+1]
-                    after_instruction = " "+hex(offset1+(int(bytes[counter1+1],16)+2))
+                    if int(bytes[counter1+1],16)>=128:
+                        if int(bytes[counter1+1],16)==255:
+                            after_instruction = " "+hex(offset1+1)
+                        elif int(bytes[counter1+1],16)==254:
+                            after_instruction = " "+hex(offset1)
+                        else:
+                            after_instruction = " "+hex(offset1-(256-(int(bytes[counter1+1],16)+2)))
+                    else:
+                        after_instruction = " "+hex(offset1+(int(bytes[counter1+1],16)+2))
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
                     intruction_len_for_check = 50+len(x86opT.x86opcodes[i])+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
@@ -111,7 +119,15 @@ def disassemble(bytes):
 
                 elif i == "75": # JNE
                     after_byte = " "+bytes[counter1+1]
-                    after_instruction = " "+hex(offset1+(int(bytes[counter1+1],16)+2))
+                    if int(bytes[counter1+1],16)>=128:
+                        if int(bytes[counter1+1],16)==255:
+                            after_instruction = " "+hex(offset1+1)
+                        elif int(bytes[counter1+1],16)==254:
+                            after_instruction = " "+hex(offset1)
+                        else:
+                            after_instruction = " "+hex(offset1-(256-(int(bytes[counter1+1],16)+2)))
+                    else:
+                        after_instruction = " "+hex(offset1+(int(bytes[counter1+1],16)+2))
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
                     intruction_len_for_check = 50+len(x86opT.x86opcodes[i])+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
