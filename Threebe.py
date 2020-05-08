@@ -8,6 +8,7 @@
 import sys
 import hexdump.hexdump as hexdump
 import x86.disassembly as x86disassembly
+import BinInfo as binfo
 
 # ========== FUNCTIONS / CLASSES ==========
 
@@ -65,6 +66,14 @@ def main():
                 hexdump.hexdump_clean_without_parsing(file_o)
             except:
                 print_wrong_file_help()
+        elif sys.argv[1]=="-i" or sys.argv[1]=="-I":
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb').read()
+
+                binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o))
+            except:
+                print_wrong_file_help()
         elif sys.argv[1]=="-dx86" or sys.argv[1]=="-Dx86" or sys.argv[1]=="-dX86" or sys.argv[1]=="-DX86":
             try:
                 file_name = sys.argv[2]
@@ -80,21 +89,16 @@ def main():
         print("{0} - Display a Hexdump / Disassembly of a x86 binary file.".format(sys.argv[0]))
         print("")
         print("Usage:")
-        print("{0} <parameter(s)> <file(s)>".format(sys.argv[0]))
+        print("./{0} <parameter(s)> <file(s)>".format(sys.argv[0]))
         print("")
         print("Possible parameters:")
         print("-h     - Display the hexdump of a given binary file.")
-        print("-H     - Display the hexdump of a given binary file.")
         print("-h32   - Display the hexdump of a given binary file (32 bytes per line).")
-        print("-H32   - Display the hexdump of a given binary file (32 bytes per line).")
-        print("-dx86  - Display the disassembly of a given x86 binary file.")
-        print("-Dx86  - Display the disassembly of a given x86 binary file.")
         print("-hc    - Display the clean version of the hexdump from a given binary file.")
-        print("-HC    - Display the clean version of the hexdump from a given binary file.")
         print("-hl    - Display the clean version of the hexdump from a given binary file as a python list.")
-        print("-HL    - Display the clean version of the hexdump from a given binary file as a python list.")
         print("-hw    - Display the clean version of the hexdump from a given binary file without parsing (without grouping / newline characters).")
-        print("-HW    - Display the clean version of the hexdump from a given binary file without parsing (without grouping / newline characters).")
+        print("-dx86  - Display the disassembly of a given x86 binary file.")
+        print("-i     - Display informations about a given x86 binary file.")
         print("--help - Display this help screen.")
         print("")
         print("© Dawid Janikowski 2020-2020")
