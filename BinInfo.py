@@ -25,32 +25,36 @@ def bin_get_info(bytes):
     print(f"{bcolors.OKBLUE}"+"OS:                  "+f"{bcolors.WARNING}"+os+f"{bcolors.ENDC}")
 
     # File architecture
-    if bytes[4]=="01":
-        architecture = "x86"
-    elif bytes[4]=="02":
-        architecture = "x86_64"
-    print(f"{bcolors.OKBLUE}"+"Architecture:        "+f"{bcolors.WARNING}"+architecture+f"{bcolors.ENDC}")
+    if filetype=="ELF":  # ELF - Linux
+        if bytes[4]=="01":
+            architecture = "x86"
+        elif bytes[4]=="02":
+            architecture = "x86_64"
+        print(f"{bcolors.OKBLUE}"+"Architecture:        "+f"{bcolors.WARNING}"+architecture+f"{bcolors.ENDC}")
 
     # File class
     if filetype=="ELF" and architecture=="x86":
         _class = "ELF32"
+        print(f"{bcolors.OKBLUE}"+"Class:               "+f"{bcolors.WARNING}"+_class+f"{bcolors.ENDC}")
     elif filetype=="ELF" and architecture=="x86_64":
         _class = "ELF64"
-    print(f"{bcolors.OKBLUE}"+"Class:               "+f"{bcolors.WARNING}"+_class+f"{bcolors.ENDC}")
+        print(f"{bcolors.OKBLUE}"+"Class:               "+f"{bcolors.WARNING}"+_class+f"{bcolors.ENDC}")
 
     # Endian type
-    if bytes[5]=="01":
-        endian = "Little"
-    elif bytes[5]=="02":
-        endian = "Big"
-    print(f"{bcolors.OKBLUE}"+"Endian:              "+f"{bcolors.WARNING}"+endian+f"{bcolors.ENDC}")
+    if filetype=="ELF":
+        if bytes[5]=="01":
+            endian = "Little"
+        elif bytes[5]=="02":
+            endian = "Big"
+        print(f"{bcolors.OKBLUE}"+"Endian:              "+f"{bcolors.WARNING}"+endian+f"{bcolors.ENDC}")
 
     # Entry point address
-    if endian=="Little":
-        entrypoint = "0x"+bytes[27][1]+bytes[26]+bytes[25]+bytes[24]
-    elif endian=="Big":
-        entrypoint = "0x"+bytes[24][1]+bytes[25]+bytes[26]+bytes[27]
-    print(f"{bcolors.OKBLUE}"+"Entry point address: "+f"{bcolors.WARNING}"+entrypoint+f"{bcolors.ENDC}")
+    if filetype=="ELF":
+        if endian=="Little":
+            entrypoint = "0x"+bytes[27][1]+bytes[26]+bytes[25]+bytes[24]
+        elif endian=="Big":
+            entrypoint = "0x"+bytes[24][1]+bytes[25]+bytes[26]+bytes[27]
+        print(f"{bcolors.OKBLUE}"+"Entry point address: "+f"{bcolors.WARNING}"+entrypoint+f"{bcolors.ENDC}")
 
     # ELF version
     if filetype=="ELF":
