@@ -223,7 +223,7 @@ def hexdump_parser_32(hexdump):
             parsed2.append(parsed1[i])
     parsed3 = ""
     offset1 = 134512640
-    print(f"{bcolors.FAIL}- offset -{bcolors.OKBLUE}   A  B  C  D   E  F  G  H   I  J  K  L   M  N  O  P  {bcolors.FAIL}- ASCII -{bcolors.ENDC}")
+    print(f"{bcolors.FAIL}- offset -{bcolors.OKBLUE}  A  B  C  D   E  F  G  H   I  J  K  L   M  N  O  P   Q  R  S  T   U  V  W  X   Y  Z  0  1   2  3  4  5  {bcolors.FAIL}- ASCII -{bcolors.ENDC}")
     for i in parsed2:
         if len(parsed3)<96:
             if len(i)==2:
@@ -355,7 +355,7 @@ def hexdump_parser(hexdump):
             parsed2.append(parsed1[i])
     parsed3 = ""
     offset1 = 134512640
-    print(f"{bcolors.FAIL}- offset -{bcolors.OKBLUE}   A  B  C  D   E  F  G  H   I  J  K  L   M  N  O  P  {bcolors.FAIL}- ASCII -{bcolors.ENDC}")
+    print(f"{bcolors.FAIL}- offset -{bcolors.OKBLUE}  A  B  C  D   E  F  G  H   I  J  K  L   M  N  O  P  {bcolors.FAIL}- ASCII -{bcolors.ENDC}")
     for i in parsed2:
         if len(parsed3)<48:
             if len(i)==2:
