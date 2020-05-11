@@ -30,7 +30,7 @@ x86opcodes = {
     "61" : "POPAL",         # DONE
     "B8" : "MOV eax",       # PENDING  # next byte represents MOV value / if 4 next bytes are not instructions, then those bytes represent an adress in format: B8 AB CD EF GH > MOV eax, 0xHGFCDAB
     "BA" : "MOV edx",       # DONE?    # next byte represents MOV value
-    "8B" : "MOV",           # PENDING  # if next byte is equal to 1C then: MOV ebx, dword [esp]
+    "8B" : "MOV",           # DONE?    # if next byte is equal to 1C then: MOV ebx, dword [esp]
                                        #             -||-      to 10 then: MOV edx, dword [eax]
                                        #             -||-      to 55 then: MOV edx, dword [var_4h]
                                        #             -||-      to 45 then: MOV eax, dword [arg_8h]
