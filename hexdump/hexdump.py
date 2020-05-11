@@ -264,7 +264,7 @@ def hexdump_parser_32(hexdump):
             print(f"{bcolors.OKBLUE}"+str(hex(offset1))+f"{bcolors.ENDC}  "+parsed7+f"{bcolors.OKBLUE}| {bcolors.ENDC}"+ascii1) #len - 51
             # print(parsed4[:-1].split(" ")) # to remove
             # print(parsed5)
-            offset1 += 16
+            offset1 += 32
             if len(i)==2:
                 parsed3 = str(i)+" "
             else:
