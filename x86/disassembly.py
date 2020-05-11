@@ -126,7 +126,10 @@ def disassemble(bytes):
                     elif bytes[counter1+1]=="6C":
                         after_instruction = " ebp, dword [arg_4h]"
                     elif bytes[counter1+1]=="43":
-                        after_instruction = " eax, dword [ebx + "+str(bytes[counter1+2])+"]"
+                        _8Bvar2 = str(bytes[counter1+2])
+                        if str(bytes[counter1+2][0])=="0":
+                            _8Bvar2 = str(bytes[counter1+2][1])
+                        after_instruction = " eax, dword [ebx + "+str(_8Bvar2)+"]"
                         _8Bvar = 2
                     else:
                         should_print = False
