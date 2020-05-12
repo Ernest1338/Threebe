@@ -44,8 +44,8 @@ x86opcodes = {
     "83" : "ADD",           # DONE?    # if nexy byte is equal to C2 then: ADD EDX, <value>  where VALUE is equal to byte after C2
                                        #             -||-      to C4 then: ADD ESP, <VALUE>             -||-
                                        #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
-                            # PENDING  #             -||-      to C0 then: ADD EAX, <VALUE>             -||-
-                            # PENDING  # if next 2 bytes: 45 FC <value> then: ADD DWORD [var_4h], <value>
+                            # DONE?    #             -||-      to C0 then: ADD EAX, <VALUE>             -||-
+                            # DONE?    # if next 2 bytes: 45 FC <value> then: ADD DWORD [var_4h], <value>
     "90" : "NOP",           # DONE
     "81" : "ADD",           # PENDING  # if next
 
