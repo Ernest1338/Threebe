@@ -9,6 +9,7 @@ import sys
 import hexdump.hexdump as hexdump
 import x86.disassembly as x86disassembly
 import BinInfo as binfo
+import Strings as strings
 
 # ========== FUNCTIONS / CLASSES ==========
 
@@ -74,6 +75,14 @@ def main():
                 binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o))
             except:
                 print_wrong_file_help()
+        elif sys.argv[1]=="-s" or sys.argv[1]=="-S":
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb').read()
+
+                strings.extract(hexdump.hexdump_ascii(file_o))
+            except:
+                print_wrong_file_help()
         elif sys.argv[1]=="-dx86" or sys.argv[1]=="-Dx86" or sys.argv[1]=="-dX86" or sys.argv[1]=="-DX86":
             try:
                 file_name = sys.argv[2]
@@ -99,6 +108,7 @@ def main():
         print("-hw    - Display the clean version of the hexdump from a given binary file without parsing (without grouping / newline characters).")
         print("-dx86  - Display the disassembly of a given x86 binary file.")
         print("-i     - Display informations about a given x86 binary file.")
+        print("-s     - Display extracted strings from a given x86 binary file.")
         print("--help - Display this help screen.")
         print("")
         print("© Dawid Janikowski 2020-2020")
