@@ -46,6 +46,7 @@ x86opcodes = {
                                        #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
                             # DONE?    #             -||-      to C0 then: ADD EAX, <VALUE>             -||-
                             # DONE?    # if next 2 bytes: 45 FC <value> then: ADD DWORD [var_4h], <value>
+                            # PENDING  # NEED TO ADD OTHERS INSTRUCTIONS WITH 83 OPCODE (SUB, CMP, ...?)
     "90" : "NOP",           # DONE
     "81" : "ADD",           # PENDING  # if next
 
