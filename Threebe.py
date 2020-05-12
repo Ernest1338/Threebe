@@ -127,7 +127,7 @@ def main():
         else:
             print_help()
     elif sys.argv[1]=="--help":
-        print("{0} - Display a Hexdump / Disassembly of a binary file.".format(sys.argv[0]))
+        print("{0} - Tool for displaying a Hexdump / Disassembly / Strings / Information from/of a (binary) file.".format(sys.argv[0]))
         print("")
         print("Usage:")
         print("./{0} <parameter(s)> <file(s)>".format(sys.argv[0]))
