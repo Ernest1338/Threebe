@@ -75,6 +75,38 @@ def main():
                 binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o))
             except:
                 print_wrong_file_help()
+        elif sys.argv[1]=="-sb" or sys.argv[1]=="-SB":
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb').read()
+
+                strings.extract_binary(hexdump.hexdump_ascii(file_o))
+            except:
+                print_wrong_file_help()
+        elif sys.argv[1]=="-sc" or sys.argv[1]=="-SC":
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb').read()
+
+                strings.extract_clean(hexdump.hexdump_ascii(file_o))
+            except:
+                print_wrong_file_help()
+        elif sys.argv[1]=="-sl" or sys.argv[1]=="-SL":
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb').read()
+
+                strings.extract_list(hexdump.hexdump_ascii(file_o))
+            except:
+                print_wrong_file_help()
+        elif sys.argv[1]=="-sw" or sys.argv[1]=="-SW":
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb').read()
+
+                strings.extract_without_parsing(hexdump.hexdump_ascii(file_o))
+            except:
+                print_wrong_file_help()
         elif sys.argv[1]=="-s" or sys.argv[1]=="-S":
             try:
                 file_name = sys.argv[2]
@@ -95,7 +127,7 @@ def main():
         else:
             print_help()
     elif sys.argv[1]=="--help":
-        print("{0} - Display a Hexdump / Disassembly of a x86 binary file.".format(sys.argv[0]))
+        print("{0} - Display a Hexdump / Disassembly of a binary file.".format(sys.argv[0]))
         print("")
         print("Usage:")
         print("./{0} <parameter(s)> <file(s)>".format(sys.argv[0]))
@@ -104,11 +136,15 @@ def main():
         print("-h     - Display the hexdump of a given binary file.")
         print("-h32   - Display the hexdump of a given binary file (32 bytes per line).")
         print("-hc    - Display the clean version of the hexdump from a given binary file.")
-        print("-hl    - Display the clean version of the hexdump from a given binary file as a python list.")
-        print("-hw    - Display the clean version of the hexdump from a given binary file without parsing (without grouping / newline characters).")
+        print("-hl    - Display the hexdump from a given binary file as a python list.")
+        print("-hw    - Display the hexdump from a given binary file without parsing (without grouping / newline characters).")
         print("-dx86  - Display the disassembly of a given x86 binary file.")
         print("-i     - Display informations about a given binary file.")
         print("-s     - Display extracted strings from a given file.")
+        print("-sb    - Display extracted strings from a given binary file.")
+        print("-sc    - Display clean version of extracted strings from a given file.")
+        print("-sl    - Display extracted strings from a given file as a python list.")
+        print("-sw    - Display extracted strings from a given file without parsing.")
         print("--help - Display this help screen.")
         print("")
         print("© Dawid Janikowski 2020-2020")
