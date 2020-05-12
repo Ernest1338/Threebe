@@ -382,11 +382,11 @@ def hexdump_ascii(hexdump):
                 except:
                     pass
             parsed6 = parsed3[:-1].split(" ")
-            for b in range(len(parsed6)):
-                if parsed5[b] == True:
-                    parsed6[b] = f"{bcolors.WARNING}"+str(parsed3.split(" ")[b].upper())+f"{bcolors.ENDC}"+" "
-                else:
-                    parsed6[b] = str(parsed3.split(" ")[b].upper())+" "
+            # for b in range(len(parsed6)):
+                # if parsed5[b] == True:
+                    # parsed6[b] = f"{bcolors.WARNING}"+str(parsed3.split(" ")[b].upper())+f"{bcolors.ENDC}"+" "
+                # else:
+                    # parsed6[b] = str(parsed3.split(" ")[b].upper())+" "
             parsed6.insert(4, " ")
             parsed6.insert(9, " ")
             parsed6.insert(14, " ")
