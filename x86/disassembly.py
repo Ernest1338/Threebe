@@ -148,14 +148,23 @@ def disassemble(bytes):
                 elif i == "83": # ADD
                     after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]
                     ADD83var = bytes[counter1+2]
+                    ADD83var2 = 2
+                    ADD83var3 = bytes[counter1+3]
                     if bytes[counter1+2][0]=="0":
                         ADD83var = bytes[counter1+2][1]
+                    if bytes[counter1+3][0]=="0":
+                        ADD83var3 = bytes[counter1+3][1]
                     if bytes[counter1+1]=="C2":
                         after_instruction = " edx, "+"0x"+str(ADD83var.lower())
                     elif bytes[counter1+1]=="C4":
                         after_instruction = " esp, "+"0x"+str(ADD83var.lower())
                     elif bytes[counter1+1]=="C7":
-                        after_instruction = " edi, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " edi, "+str(ADD83var.lower())
+                    elif bytes[counter1+1]=="C0":
+                        after_instruction = " eax, "+str(ADD83var.lower())
+                    elif bytes[counter1+1]=="45" and bytes[counter1+2]:
+                        after_instruction = " dword [var_4h], "+str(ADD83var3.lower())
+                        ADD83var2 = 3
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
@@ -168,7 +177,7 @@ def disassemble(bytes):
                         print(check1)
                     after_byte = ""
                     after_instruction = ""
-                    cancle_function_iteration(2)
+                    cancle_function_iteration(ADD83var2)
 
                 elif i == "75": # JNE
                     after_byte = " "+bytes[counter1+1]
