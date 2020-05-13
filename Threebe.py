@@ -24,18 +24,21 @@ def print_wrong_file_help():
 # ========== MAIN FUNCTION ==========
 
 def main():
+
     if len(sys.argv)==1:
         print_help()
     elif len(sys.argv)==3:
-        if sys.argv[1]=="-h" or sys.argv[1]=="-H":
+
+        if sys.argv[1]=="-h" or sys.argv[1]=="-H":   # HEXDUMP
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                hexdump.hexdump_parser(file_o)
+                hexdump.hexdump_parser(file_o, hexdump.hexdump_clean_for_disassembly(file_o))
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-hc" or sys.argv[1]=="-HC":
+
+        elif sys.argv[1]=="-hc" or sys.argv[1]=="-HC":   # HEXDUMP - CLEAN
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
@@ -43,15 +46,17 @@ def main():
                 hexdump.hexdump_clean(file_o)
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-h32" or sys.argv[1]=="-H32":
+
+        elif sys.argv[1]=="-h32" or sys.argv[1]=="-H32":   # HEXDUMP - WIDE
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                hexdump.hexdump_parser_32(file_o)
+                hexdump.hexdump_parser_32(file_o, hexdump.hexdump_clean_for_disassembly(file_o))
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-hl" or sys.argv[1]=="-HL":
+
+        elif sys.argv[1]=="-hl" or sys.argv[1]=="-HL":   # HEXDUMP - LIST
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
@@ -59,7 +64,8 @@ def main():
                 print(hexdump.hexdump_clean_for_disassembly(file_o))
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-hw" or sys.argv[1]=="-HW":
+
+        elif sys.argv[1]=="-hw" or sys.argv[1]=="-HW":   # HEXDUMP - WITHOUT PARSING
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
@@ -67,7 +73,8 @@ def main():
                 hexdump.hexdump_clean_without_parsing(file_o)
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-i" or sys.argv[1]=="-I":
+
+        elif sys.argv[1]=="-i" or sys.argv[1]=="-I":   # INFORMATIONS
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
@@ -75,15 +82,17 @@ def main():
                 binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o))
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-sb" or sys.argv[1]=="-SB":
+
+        elif sys.argv[1]=="-sb" or sys.argv[1]=="-SB":   # STRINGS - BINARY
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                strings.extract_binary(hexdump.hexdump_ascii(file_o))
+                strings.extract_binary(hexdump.hexdump_ascii(file_o), hexdump.hexdump_clean_for_disassembly(file_o))
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-sc" or sys.argv[1]=="-SC":
+
+        elif sys.argv[1]=="-sc" or sys.argv[1]=="-SC":   # STRINGS - CLEAN
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
@@ -91,7 +100,8 @@ def main():
                 strings.extract_clean(hexdump.hexdump_ascii(file_o))
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-sl" or sys.argv[1]=="-SL":
+
+        elif sys.argv[1]=="-sl" or sys.argv[1]=="-SL":   # STRINGS - LIST
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
@@ -99,7 +109,8 @@ def main():
                 strings.extract_list(hexdump.hexdump_ascii(file_o))
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-sw" or sys.argv[1]=="-SW":
+
+        elif sys.argv[1]=="-sw" or sys.argv[1]=="-SW":   # STRINGS - WITHOUT PARSING
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
@@ -107,7 +118,8 @@ def main():
                 strings.extract_without_parsing(hexdump.hexdump_ascii(file_o))
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-s" or sys.argv[1]=="-S":
+
+        elif sys.argv[1]=="-s" or sys.argv[1]=="-S":   # STRINGS
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
@@ -115,7 +127,8 @@ def main():
                 strings.extract(hexdump.hexdump_ascii(file_o))
             except:
                 print_wrong_file_help()
-        elif sys.argv[1]=="-dx86" or sys.argv[1]=="-Dx86" or sys.argv[1]=="-dX86" or sys.argv[1]=="-DX86":
+
+        elif sys.argv[1]=="-dx86" or sys.argv[1]=="-Dx86" or sys.argv[1]=="-dX86" or sys.argv[1]=="-DX86":   # DISASSEMBLY - x86
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
@@ -124,8 +137,10 @@ def main():
                 x86disassembly.disassemble(hexdfd)
             except:
                 print_wrong_file_help()
+
         else:
             print_help()
+            
     elif sys.argv[1]=="--help":
         print("{0} - Tool for displaying a Hexdump / Disassembly / Strings / Information from/of a (binary) file.".format(sys.argv[0]))
         print("")
