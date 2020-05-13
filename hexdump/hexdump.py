@@ -1,5 +1,7 @@
 # This is an file containing different functions that parses given hexdump.
 
+from BinArchitecture import bin_architecture
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -9,18 +11,6 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
-
-def bin_architecture(bytes):
-    if ''.join(bytes[1:4])=="454C46":
-        filetype = "ELF"
-    elif ''.join(bytes[0:2])=="4D5A":
-        filetype = "PE"
-
-    if filetype=="ELF":  # ELF - Linux
-        if bytes[4]=="01":
-            return "x86"
-        elif bytes[4]=="02":
-            return "x86_64"
 
 def hexdump_clean_without_parsing(hexdump):
     hexdump = str(hexdump)

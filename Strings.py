@@ -1,18 +1,7 @@
 # This file contains funtions that extracts strings from a given (binary) files.
 
 from hexdump.hexdump import bcolors
-
-def bin_architecture(bytes):
-    if ''.join(bytes[1:4])=="454C46":
-        filetype = "ELF"
-    elif ''.join(bytes[0:2])=="4D5A":
-        filetype = "PE"
-
-    if filetype=="ELF":  # ELF - Linux
-        if bytes[4]=="01":
-            return "x86"
-        elif bytes[4]=="02":
-            return "x86_64"
+from BinArchitecture import bin_architecture
 
 def extract_binary(ascii, bytes):
     streak = 0
