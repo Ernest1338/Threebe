@@ -45,7 +45,13 @@ x86opcodes = {
                                        #             -||-      to C4 then: ADD ESP, <VALUE>             -||-
                                        #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
                             # DONE?    #             -||-      to C0 then: ADD EAX, <VALUE>             -||-
+                                       #             -||-      to E4 then: AND ESP, <VALUE>             -||-                        need to add more info
+                                       #             -||-      to F8 then: CMP EAX, <VALUE>             -||-
+                                       #             -||-      to 3B then: CMP DWORD [EBX], <VALUE>     -||-
+                                       #             -||-      to EC then: SUB ESP, <VALUE>             -||-
+                                       #             -||-      to EA then: SUB EDX, <VALUE>             -||-
                             # DONE?    # if next 2 bytes: 45 FC <value> then: ADD DWORD [var_4h], <value>
+                                       # if next 2 bytes: 7D 08 <value> then: CMP DWORD [arg_8h], <value>
                             # PENDING  # NEED TO ADD OTHERS INSTRUCTIONS WITH 83 OPCODE (SUB, CMP, ...?)
     "90" : "NOP",           # DONE
     "81" : "ADD",           # PENDING  # if next
