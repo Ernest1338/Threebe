@@ -16,6 +16,7 @@ x86opcodes = {
     "16" : "PUSH ss",       # DONE
     "1E" : "PUSH ds",       # DONE
     "06" : "PUSH es",       # DONE
+    "68" : "PUSH",          # PENDING  # next 4 bytes represents *string* address, in format: AB CD EF GH -> GH EF CD AB
     "1F" : "POP ds",        # DONE
     "07" : "POP es",        # DONE
     "17" : "POP ss",        # DONE
@@ -28,7 +29,7 @@ x86opcodes = {
     "5E" : "POP esi",       # DONE
     "5F" : "POP edi",       # DONE
     "61" : "POPAL",         # DONE
-    "B8" : "MOV eax",       # PENDING  # next byte represents MOV value / if 4 next bytes are not instructions, then those bytes represent an adress in format: B8 AB CD EF GH > MOV eax, 0xHGFCDAB
+    "B8" : "MOV eax",       # PENDING  # next byte represents MOV value / if 4 next bytes are not instructions, then those bytes represent an adress in format: B8 AB CD EF GH > MOV eax, 0xGHEFCDAB
     "BA" : "MOV edx",       # DONE?    # next byte represents MOV value
     "8B" : "MOV",           # DONE?    # if next byte is equal to 1C then: MOV ebx, dword [esp]
                                        #             -||-      to 10 then: MOV edx, dword [eax]
