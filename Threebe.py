@@ -10,6 +10,8 @@ import hexdump.hexdump as hexdump
 import x86.disassembly as x86disassembly
 import BinInfo as binfo
 import Strings as strings
+import Patching as patching
+from BinArchitecture import bin_architecture
 
 # ========== FUNCTIONS / CLASSES ==========
 
@@ -140,7 +142,18 @@ def main():
 
         else:
             print_help()
-            
+
+    elif len(sys.argv)==5:
+
+        if sys.argv[1]=="-pb" or sys.argv[1]=="-PB":
+            try:
+                file_name = sys.argv[4]
+                file_o = open(file_name,'rb').read()
+                architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
+
+                patching.patch(file_o, sys.argv[2], sys.argv[3], architecture, file_name)
+            except:
+                print_wrong_file_help()
     elif sys.argv[1]=="--help":
         print("{0} - Tool for displaying a Hexdump / Disassembly / Strings / Information from/of a (binary) file.".format(sys.argv[0]))
         print("")
@@ -160,6 +173,7 @@ def main():
         print("-sc    - Display clean version of extracted strings from a given file.")
         print("-sl    - Display extracted strings from a given file as a python list.")
         print("-sw    - Display extracted strings from a given file without parsing.")
+        print("-pb    - Patch given binary. Format: ./Threebe.py -p address bytes path/to/binary (address in format: 0x0000000, bytes in format: 9090)")
         print("--help - Display this help screen.")
         print("")
         print("© Dawid Janikowski 2020-2020")
