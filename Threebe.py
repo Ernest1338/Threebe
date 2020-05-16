@@ -173,10 +173,10 @@ def main():
         print("-sc    - Display clean version of extracted strings from a given file.")
         print("-sl    - Display extracted strings from a given file as a python list.")
         print("-sw    - Display extracted strings from a given file without parsing.")
-        print("-pb    - Patch given binary. Format: ./Threebe.py -p address bytes path/to/binary (address in format: 0x0000000, bytes in format: 9090)")
+        print("-pb    - Patch given binary. Format: ./Threebe.py -pb address bytes path/to/binary (address format: 0x0000000, bytes format: 9090)")
         print("--help - Display this help screen.")
         print("")
-        print("© Dawid Janikowski 2020-2020")
+        print("Original author: Dawid Janikowski 2020-2020")
     else:
         print_help()
 
