@@ -20,7 +20,7 @@ def patch(hexdump, address, bytes_to_write, architecture, file_name):
         return 1
     if architecture=="x86":
         bytes_pointer = int(address,16) - offset1
-        if bytes_pointer<0:
+        if bytes_pointer<0 or bytes_pointer>len(hexdump):
             print_help_address()
             return 1
     elif architecture=="x86_64":
