@@ -2,10 +2,6 @@
 
 import sys
 
-def print_help_filetype():
-    sys.stderr.write("ERROR: Unrecognized Filetype.\n")
-    sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
-
 def bin_architecture(bytes):
     if ''.join(bytes[1:4])=="454C46":
         filetype = "ELF"
