@@ -7,7 +7,7 @@ def cancle_function_iteration(howmany):
     global times
     times += int(howmany)
 
-def disassemble(bytes):
+def disassemble_x86(bytes, ascii_dict):
     global times
     offset1 = 134512640
     counter1 = 0
@@ -200,6 +200,28 @@ def disassemble(bytes):
                     after_byte = ""
                     after_instruction = ""
                     cancle_function_iteration(1)
+
+                elif i == "68": # PUSH string 0x08048715
+                    after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]+" "+bytes[counter1+3]+" "+bytes[counter1+4]
+                    _68offset = " 0x"+bytes[counter1+4]+bytes[counter1+3]+bytes[counter1+2]+bytes[counter1+1]
+                    _68offset_to_dict_1 = hex(int(_68offset,16)+1)
+                    _68offset_to_dict = hex(int(_68offset,16))
+                    if _68offset_to_dict in ascii_dict:
+                        after_instruction = _68offset+" ; "+str(ascii_dict[_68offset_to_dict])
+                    elif _68offset_to_dict_1 in ascii_dict:
+                        after_instruction = _68offset+" ; "+str(ascii_dict[_68offset_to_dict_1])
+                    else:
+                        after_instruction = _68offset
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
+                    intruction_len_for_check = 50+len(x86opT.x86opcodes[i])+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
+                    print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    cancle_function_iteration(4)
                     
             else:
                 pass

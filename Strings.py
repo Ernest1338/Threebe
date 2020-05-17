@@ -13,6 +13,8 @@ def extract_binary(ascii, bytes):
         offset1 = 134512640
     elif bin_architecture(bytes)=="x86_64":
         offset1 = 0
+    else:
+        offset1 = 0
 
     for i in range(len(ascii)):
         if ascii[i] != False:
@@ -36,7 +38,7 @@ def extract_binary(ascii, bytes):
             string_toappend = ""
             string_toappend2 = ""
 
-    print(f"{bcolors.FAIL}- offset - {bcolors.OKGREEN} Length   {bcolors.FAIL}- STRINGS -{bcolors.ENDC}")
+    print(f"{bcolors.FAIL}- offset - {bcolors.OKGREEN} Length   {bcolors.FAIL}- string -{bcolors.ENDC}")
     
     prt = True
     for i in strings:
@@ -59,6 +61,58 @@ def extract_binary(ascii, bytes):
 
             print(f"{bcolors.OKBLUE}"+offset3+"  "+f"{bcolors.FAIL}"+after_offset+"     "+f"{bcolors.WARNING}"+i+f"{bcolors.ENDC}")
             prt = True
+
+def extract_disassembly(ascii, bytes):
+    streak = 0
+    string_toappend = ""
+    string_toappend2 = ""
+    strings = []
+
+    if bin_architecture(bytes)=="x86":
+        offset1 = 134512640
+    elif bin_architecture(bytes)=="x86_64":
+        offset1 = 0
+    else:
+        offset1 = 0
+
+    for i in range(len(ascii)):
+        if ascii[i] != False:
+            streak += 1
+            string_toappend += ascii[i]
+        else:
+            if streak>2:
+                for a in string_toappend:
+                    if ord(a)>=32 and ord(a)<=126:
+                        string_toappend2 += a
+                    else:
+                        pass
+
+                if len(string_toappend2)<=2:
+                    pass
+                else:
+                    strings.append(i-len(string_toappend2))
+                    strings.append(string_toappend2)
+                    
+            streak = 0
+            string_toappend = ""
+            string_toappend2 = ""
+
+    ascii_dict = {}
+    prt = True
+    for i in strings:
+        if prt:
+            offset2 = hex(offset1+int(i))
+            prt = False
+        else:
+
+            offset3 = str(offset2)
+            if len(str(offset2))<9:
+                for _ in range(9-len(str(offset2))):
+                    offset3 = offset3[0:2]+"0"+offset3[2:]
+
+            ascii_dict[offset3] = i
+            prt = True
+    return ascii_dict
 
 def extract(ascii):
     streak = 0

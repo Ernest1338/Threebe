@@ -171,7 +171,8 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 hexdfd = hexdump.hexdump_clean_for_disassembly(file_o)
-                x86disassembly.disassemble(hexdfd)
+                ascii_dict = strings.extract_disassembly(hexdump.hexdump_ascii(file_o), hexdump.hexdump_clean_for_disassembly(file_o))
+                x86disassembly.disassemble_x86(hexdfd, ascii_dict)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
