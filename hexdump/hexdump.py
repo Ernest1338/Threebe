@@ -241,6 +241,8 @@ def hexdump_parser_32(hexdump, bytes):
         offset1 = 134512640
     elif bin_architecture(bytes)=="x86_64":
         offset1 = 0
+    else:
+        offset1 = 0
 
     print(f"{bcolors.FAIL}- offset -{bcolors.OKBLUE}  A  B  C  D   E  F  G  H   I  J  K  L   M  N  O  P   Q  R  S  T   U  V  W  X   Y  Z  0  1   2  3  4  5  {bcolors.FAIL}- ASCII -{bcolors.ENDC}")
 
@@ -534,6 +536,8 @@ def hexdump_parser(hexdump, bytes):
     if bin_architecture(bytes)=="x86":
         offset1 = 134512640
     elif bin_architecture(bytes)=="x86_64":
+        offset1 = 0
+    else:
         offset1 = 0
 
     print(f"{bcolors.FAIL}- offset -{bcolors.OKBLUE}  A  B  C  D   E  F  G  H   I  J  K  L   M  N  O  P  {bcolors.FAIL}- ASCII -{bcolors.ENDC}")

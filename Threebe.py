@@ -6,6 +6,7 @@
 # ========== IMPORTS ==========
 
 import sys
+import errno
 import hexdump.hexdump as hexdump
 import x86.disassembly as x86disassembly
 import BinInfo as binfo
@@ -37,8 +38,12 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 hexdump.hexdump_parser(file_o, hexdump.hexdump_clean_for_disassembly(file_o))
-            except:
-                print_wrong_file_help()
+            
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-hc" or sys.argv[1]=="-HC":   # HEXDUMP - CLEAN
             try:
@@ -46,8 +51,11 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 hexdump.hexdump_clean(file_o)
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-h32" or sys.argv[1]=="-H32":   # HEXDUMP - WIDE
             try:
@@ -55,8 +63,11 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 hexdump.hexdump_parser_32(file_o, hexdump.hexdump_clean_for_disassembly(file_o))
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-hl" or sys.argv[1]=="-HL":   # HEXDUMP - LIST
             try:
@@ -64,8 +75,11 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 print(hexdump.hexdump_clean_for_disassembly(file_o))
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-hw" or sys.argv[1]=="-HW":   # HEXDUMP - WITHOUT PARSING
             try:
@@ -73,8 +87,11 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 hexdump.hexdump_clean_without_parsing(file_o)
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-i" or sys.argv[1]=="-I":   # INFORMATIONS
             try:
@@ -82,8 +99,11 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o))
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-sb" or sys.argv[1]=="-SB":   # STRINGS - BINARY
             try:
@@ -91,8 +111,11 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 strings.extract_binary(hexdump.hexdump_ascii(file_o), hexdump.hexdump_clean_for_disassembly(file_o))
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-sc" or sys.argv[1]=="-SC":   # STRINGS - CLEAN
             try:
@@ -100,8 +123,11 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 strings.extract_clean(hexdump.hexdump_ascii(file_o))
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-sl" or sys.argv[1]=="-SL":   # STRINGS - LIST
             try:
@@ -109,8 +135,11 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 strings.extract_list(hexdump.hexdump_ascii(file_o))
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-sw" or sys.argv[1]=="-SW":   # STRINGS - WITHOUT PARSING
             try:
@@ -118,8 +147,11 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 strings.extract_without_parsing(hexdump.hexdump_ascii(file_o))
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-s" or sys.argv[1]=="-S":   # STRINGS
             try:
@@ -127,8 +159,11 @@ def main():
                 file_o = open(file_name,'rb').read()
 
                 strings.extract(hexdump.hexdump_ascii(file_o))
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-dx86" or sys.argv[1]=="-Dx86" or sys.argv[1]=="-dX86" or sys.argv[1]=="-DX86":   # DISASSEMBLY - x86
             try:
@@ -137,8 +172,11 @@ def main():
 
                 hexdfd = hexdump.hexdump_clean_for_disassembly(file_o)
                 x86disassembly.disassemble(hexdfd)
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         else:
             print_help()
@@ -151,9 +189,26 @@ def main():
                 file_o = open(file_name,'rb').read()
                 architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
 
+                patching.patch_bin(file_o, sys.argv[2], sys.argv[3], architecture, file_name)
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
+
+        if sys.argv[1]=="-p" or sys.argv[1]=="-P":
+            try:
+                file_name = sys.argv[4]
+                file_o = open(file_name,'rb').read()
+                architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
+
                 patching.patch(file_o, sys.argv[2], sys.argv[3], architecture, file_name)
-            except:
-                print_wrong_file_help()
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
+
     elif sys.argv[1]=="--help":
         print("{0} - Tool for displaying a Hexdump / Disassembly / Strings / Information from/of a (binary) file.".format(sys.argv[0]))
         print("")
@@ -173,7 +228,8 @@ def main():
         print("-sc    - Display clean version of extracted strings from a given file.")
         print("-sl    - Display extracted strings from a given file as a python list.")
         print("-sw    - Display extracted strings from a given file without parsing.")
-        print("-pb    - Patch given binary. Format: ./Threebe.py -pb address bytes path/to/binary (address format: 0x0000000, bytes format: 9090)")
+        print("-p     - Patch given binary. Use this option if the binary type you want to patch is not supported. (format the same).")
+        print("-pb    - Patch given binary. Format: ./Threebe.py -pb address bytes path/to/binary (address format: 0x0000000, bytes format: 9090).")
         print("--help - Display this help screen.")
         print("")
         print("Original author: Dawid Janikowski 2020-2020")
