@@ -16,7 +16,7 @@ x86opcodes = {
     "16" : "PUSH ss",       # DONE
     "1E" : "PUSH ds",       # DONE
     "06" : "PUSH es",       # DONE
-    "68" : "PUSH",          # PENDING  # next 4 bytes represents *string* address, in format: AB CD EF GH -> GH EF CD AB
+    "68" : "PUSH",          # DONE?    # next 4 bytes represents *string* address, in format: AB CD EF GH -> GH EF CD AB
     "1F" : "POP ds",        # DONE
     "07" : "POP es",        # DONE
     "17" : "POP ss",        # DONE
