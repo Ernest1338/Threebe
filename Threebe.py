@@ -184,7 +184,7 @@ def main():
 
     elif len(sys.argv)==5:
 
-        if sys.argv[1]=="-pb" or sys.argv[1]=="-PB":
+        if sys.argv[1]=="-pb" or sys.argv[1]=="-PB": # PATCHING BINARY
             try:
                 file_name = sys.argv[4]
                 file_o = open(file_name,'rb').read()
@@ -197,7 +197,7 @@ def main():
                 else:
                     print_wrong_file_help()
 
-        if sys.argv[1]=="-p" or sys.argv[1]=="-P":
+        if sys.argv[1]=="-p" or sys.argv[1]=="-P": # PATCHING
             try:
                 file_name = sys.argv[4]
                 file_o = open(file_name,'rb').read()
