@@ -214,7 +214,7 @@ def main():
         print("Threebe - Tool for displaying a Hexdump / Disassembly / Strings / Information from/of a (binary) file.")
         print("")
         print("Usage:")
-        print("./Threebe.py <parameter(s)> <file(s)>")
+        print("./Threebe.py <parameter(s)> <file>")
         print("")
         print("Possible parameters:")
         print("-h     - Display the hexdump of a given binary file.")

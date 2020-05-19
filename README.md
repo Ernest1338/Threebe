@@ -26,7 +26,7 @@ Make sure you are in the Threebe directory before you begin. (You can also add t
 
 **General usage:**
 
-python3 Threebe.py <parameter(s)> <file>   or   ./Threebe.py <parameter(s)> <file>
+python3 Threebe.py [parameter(s)] [file]   or   ./Threebe.py [parameter(s)] [file]
 
 
 **You can get a list of all possible parameters by running command:**
