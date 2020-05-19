@@ -24,9 +24,11 @@ python3 Threebe.py --help
 
 Make sure you are in the Threebe directory before you begin. (You can also add this directory to your PATH, then you will be able to run Threebe from any place you want.)
 
-**General usage:**
+***General usage:***
 
-python3 Threebe.py [parameter(s)] [file]   or   ./Threebe.py [parameter(s)] [file]
+**python3 Threebe.py [parameter(s)] [file]**   or   **./Threebe.py [parameter(s)] [file]**
+
+Where file is a: file_name or path/to/file
 
 
 **You can get a list of all possible parameters by running command:**
