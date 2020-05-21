@@ -62,8 +62,9 @@ def main():
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
 
-                hexdump.hexdump_parser_32(file_o, hexdump.hexdump_clean_for_disassembly(file_o), "@")
+                hexdump.hexdump_parser_32(file_o, bytes_for_hexdump, "@")
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
