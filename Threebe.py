@@ -36,8 +36,9 @@ def main():
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
 
-                hexdump.hexdump_parser(file_o, hexdump.hexdump_clean_for_disassembly(file_o))
+                hexdump.hexdump_parser(file_o, bytes_for_hexdump, "@")
             
             except IOError as e:
                 if e.errno == errno.EPIPE:
@@ -62,7 +63,7 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                hexdump.hexdump_parser_32(file_o, hexdump.hexdump_clean_for_disassembly(file_o))
+                hexdump.hexdump_parser_32(file_o, hexdump.hexdump_clean_for_disassembly(file_o), "@")
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -197,7 +198,7 @@ def main():
                 else:
                     print_wrong_file_help()
 
-        if sys.argv[1]=="-p" or sys.argv[1]=="-P": # PATCHING
+        elif sys.argv[1]=="-p" or sys.argv[1]=="-P": # PATCHING
             try:
                 file_name = sys.argv[4]
                 file_o = open(file_name,'rb').read()
@@ -210,6 +211,66 @@ def main():
                 else:
                     print_wrong_file_help()
 
+        elif sys.argv[1]=="-ha" or sys.argv[1]=="-HA": # HEXDUMP at a given address
+            try:
+                file_name = sys.argv[4]
+                file_o = open(file_name,'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
+                address_to_hexdump = int(sys.argv[2],16)
+                bin_arch = bin_architecture(bytes_for_hexdump)
+                
+                if bin_arch=="x86":
+                    if address_to_hexdump>=134512640:
+                        offset1 = address_to_hexdump-134512640
+                    else:
+                        offset1 = address_to_hexdump
+                else:
+                    offset1 = address_to_hexdump
+                file_o2 = []
+                for a in range(int(sys.argv[3])):
+                    file_o2.append(file_o[a+offset1])
+
+                file_o = bytes(file_o2)
+                hexdump.hexdump_parser(file_o, bytes_for_hexdump, address_to_hexdump)
+            
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
+            except IndexError as e:
+                print_help()
+
+        elif sys.argv[1]=="-h32a" or sys.argv[1]=="-H32A": # HEXDUMP at a given address
+            try:
+                file_name = sys.argv[4]
+                file_o = open(file_name,'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
+                address_to_hexdump = int(sys.argv[2],16)
+                bin_arch = bin_architecture(bytes_for_hexdump)
+                
+                if bin_arch=="x86":
+                    if address_to_hexdump>=134512640:
+                        offset1 = address_to_hexdump-134512640
+                    else:
+                        offset1 = address_to_hexdump
+                else:
+                    offset1 = address_to_hexdump
+                file_o2 = []
+                for a in range(int(sys.argv[3])):
+                    file_o2.append(file_o[a+offset1])
+
+                file_o = bytes(file_o2)
+                hexdump.hexdump_parser_32(file_o, bytes_for_hexdump, address_to_hexdump)
+            
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
+            except IndexError as e:
+                print_help()
+
     elif sys.argv[1]=="--help":
         print("Threebe - Tool for displaying a Hexdump / Disassembly / Strings / Information from/of a (binary) file.")
         print("")
@@ -219,6 +280,8 @@ def main():
         print("Possible parameters:")
         print("-h     - Display the hexdump of a given binary file.")
         print("-h32   - Display the hexdump of a given binary file (32 bytes per line).")
+        print("-ha    - Display the hexdump of a given binary file at given address. Format: ./Threebe.py -ha 0xADDRESS HOW_MUCH path/to/binary")
+        print("-h32a  - Display the hexdump of a given binary file (32 bytes per line) at given address. Format: ./Threebe.py -ha 0xADDRESS HOW_MUCH path/to/binary")
         print("-hc    - Display the clean version of the hexdump from a given binary file.")
         print("-hl    - Display the hexdump from a given binary file as a python list.")
         print("-hw    - Display the hexdump from a given binary file without parsing (without grouping / newline characters).")

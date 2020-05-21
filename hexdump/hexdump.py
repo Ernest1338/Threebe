@@ -189,7 +189,7 @@ def hexdump_clean(hexdump):
     print(parsed3.upper())
     return True
 
-def hexdump_parser_32(hexdump, bytes):
+def hexdump_parser_32(hexdump, bytes, address1):
     hexdump = str(hexdump)
     parsed1 = hexdump[2:-1]
     parsed2 = []
@@ -237,12 +237,15 @@ def hexdump_parser_32(hexdump, bytes):
             parsed2.append(parsed1[i])
 
     parsed3 = ""
-    if bin_architecture(bytes)=="x86":
-        offset1 = 134512640
-    elif bin_architecture(bytes)=="x86_64":
-        offset1 = 0
+    if address1 == "@":
+        if bin_architecture(bytes)=="x86":
+            offset1 = 134512640
+        elif bin_architecture(bytes)=="x86_64":
+            offset1 = 0
+        else:
+            offset1 = 0
     else:
-        offset1 = 0
+        offset1 = address1
 
     print(f"{bcolors.FAIL}- offset -{bcolors.OKBLUE}  A  B  C  D   E  F  G  H   I  J  K  L   M  N  O  P   Q  R  S  T   U  V  W  X   Y  Z  0  1   2  3  4  5  {bcolors.FAIL}- ASCII -{bcolors.ENDC}")
 
@@ -490,7 +493,7 @@ def hexdump_ascii(hexdump):
     # print(parsed5)
     return _ascii
 
-def hexdump_parser(hexdump, bytes):
+def hexdump_parser(hexdump, bytes, address1):
     hexdump = str(hexdump)
     parsed1 = hexdump[2:-1]
     parsed2 = []
@@ -538,12 +541,15 @@ def hexdump_parser(hexdump, bytes):
             parsed2.append(parsed1[i])
 
     parsed3 = ""
-    if bin_architecture(bytes)=="x86":
-        offset1 = 134512640
-    elif bin_architecture(bytes)=="x86_64":
-        offset1 = 0
+    if address1 == "@":
+        if bin_architecture(bytes)=="x86":
+            offset1 = 134512640
+        elif bin_architecture(bytes)=="x86_64":
+            offset1 = 0
+        else:
+            offset1 = 0
     else:
-        offset1 = 0
+        offset1 = address1
 
     print(f"{bcolors.FAIL}- offset -{bcolors.OKBLUE}  A  B  C  D   E  F  G  H   I  J  K  L   M  N  O  P  {bcolors.FAIL}- ASCII -{bcolors.ENDC}")
 
