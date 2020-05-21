@@ -54,7 +54,7 @@ Threebe is cross-platform and can be run on any operating system which allows to
 * Hexdump
 * Information about binary
 * Extracting strings
-* x86 disassembly
+* x86 disassembly (partially)
 * Binary patching
 * "more in the future"
 
