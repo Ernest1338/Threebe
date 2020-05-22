@@ -51,7 +51,7 @@ Threebe is cross-platform and can be run on any operating system which allows to
 # **Features**
 
 **This is a list of current features:**
-* Hexdump
+* Hexdump / Hexdump at a given address
 * Information about binary
 * Extracting strings
 * x86 disassembly (partially)
