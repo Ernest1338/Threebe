@@ -43,17 +43,18 @@ x86opcodes = {
     "01" : "ADD",           # DONE?    # if next byte is equal to CA then: ADD EDX, ECX
                                        #             -||-      to D0 then: ADD EAX, EDX
     "83" : "ADD",           # DONE?    # if nexy byte is equal to C2 then: ADD EDX, <value>  where VALUE is equal to byte after C2
-                                       #             -||-      to C4 then: ADD ESP, <VALUE>             -||-
-                                       #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
+                            # DONE?    #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
+                            # DONE?    #             -||-      to C4 then: ADD ESP, <VALUE>             -||-
                             # DONE?    #             -||-      to C0 then: ADD EAX, <VALUE>             -||-
-                                       #             -||-      to E4 then: AND ESP, <VALUE>             -||-                        need to add more info
-                                       #             -||-      to F8 then: CMP EAX, <VALUE>             -||-
-                                       #             -||-      to 3B then: CMP DWORD [EBX], <VALUE>     -||-
-                                       #             -||-      to EC then: SUB ESP, <VALUE>             -||-
-                                       #             -||-      to EA then: SUB EDX, <VALUE>             -||-
+                            # PENDING  #             -||-      to E4 then: AND ESP, <VALUE>             -||-                        need to add more info
+                            # PENDING  #             -||-      to F8 then: CMP EAX, <VALUE>             -||-
+                            # PENDING  #             -||-      to 3B then: CMP DWORD [EBX], <VALUE>     -||-
+                            # PENDING  #             -||-      to 7D 08 then: CMP DWORD [ARG_8H], <VALUE>     -||-                  need to add more info
+                            # PENDING  #             -||-      to EC then: SUB ESP, <VALUE>             -||-
+                            # PENDING  #             -||-      to EA then: SUB EDX, <VALUE>             -||-
+                            # PENDING  #             -||-      to 08 then: OR DWORD [EAX], <VALUE>      -||-                        need to add more info
                             # DONE?    # if next 2 bytes: 45 FC <value> then: ADD DWORD [var_4h], <value>
-                                       # if next 2 bytes: 7D 08 <value> then: CMP DWORD [arg_8h], <value>
-                            # PENDING  # NEED TO ADD OTHERS INSTRUCTIONS WITH 83 OPCODE (SUB, CMP, ...?)
+                            # PENDING  # if next 2 bytes: 7D 08 <value> then: CMP DWORD [arg_8h], <value>
     "90" : "NOP",           # DONE
     "81" : "ADD",           # PENDING  # if next
 
