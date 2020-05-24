@@ -47,8 +47,8 @@ x86opcodes = {
                             # DONE?    #             -||-      to C4 then: ADD ESP, <VALUE>             -||-
                             # DONE?    #             -||-      to C0 then: ADD EAX, <VALUE>             -||-
                             # PENDING  #             -||-      to E4 then: AND ESP, <VALUE>             -||-                        need to add more info
-                            # PENDING  #             -||-      to F8 then: CMP EAX, <VALUE>             -||-
-                            # PENDING  #             -||-      to 3B then: CMP DWORD [EBX], <VALUE>     -||-
+                            # DONE?    #             -||-      to F8 then: CMP EAX, <VALUE>             -||-
+                            # DONE?    #             -||-      to 3B then: CMP DWORD [EBX], <VALUE>     -||-
                             # PENDING  #             -||-      to 7D 08 then: CMP DWORD [ARG_8H], <VALUE>     -||-                  need to add more info
                             # PENDING  #             -||-      to EC then: SUB ESP, <VALUE>             -||-
                             # PENDING  #             -||-      to EA then: SUB EDX, <VALUE>             -||-
