@@ -146,6 +146,7 @@ def disassemble_x86(bytes, ascii_dict):
                     cancle_function_iteration(_8Bvar)
 
                 elif i == "83": # ADD
+                    instruction = x86opT.x86opcodes[i]
                     after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]
                     ADD83var = bytes[counter1+2]
                     ADD83var2 = 2
@@ -159,20 +160,26 @@ def disassemble_x86(bytes, ascii_dict):
                     elif bytes[counter1+1]=="C4":
                         after_instruction = " esp, "+"0x"+str(ADD83var.lower())
                     elif bytes[counter1+1]=="C7":
-                        after_instruction = " edi, "+str(ADD83var.lower())
+                        after_instruction = " edi, "+"0x"+str(ADD83var.lower())
                     elif bytes[counter1+1]=="C0":
-                        after_instruction = " eax, "+str(ADD83var.lower())
+                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())
+                    elif bytes[counter1+1]=="F8":
+                        instruction = "CMP"
+                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())
+                    elif bytes[counter1+1]=="3B":
+                        instruction = "CMP"
+                        after_instruction = " dword [ebx], "+"0x"+str(ADD83var.lower())
                     elif bytes[counter1+1]=="45" and bytes[counter1+2]:
                         after_instruction = " dword [var_4h], "+str(ADD83var3.lower())
                         ADD83var2 = 3
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
                     intruction_len_for_check = 50+len(x86opT.x86opcodes[i])+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
                     if should_print:
                         print(check1)
                     after_byte = ""
