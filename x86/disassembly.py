@@ -169,6 +169,12 @@ def disassemble_x86(bytes, ascii_dict):
                     elif bytes[counter1+1]=="3B":
                         instruction = "CMP"
                         after_instruction = " dword [ebx], "+"0x"+str(ADD83var.lower())
+                    elif bytes[counter1+1]=="EC":
+                        instruction = "SUB"
+                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())
+                    elif bytes[counter1+1]=="EA":
+                        instruction = "SUB"
+                        after_instruction = " edx, "+"0x"+str(ADD83var.lower())
                     elif bytes[counter1+1]=="45" and bytes[counter1+2]:
                         after_instruction = " dword [var_4h], "+str(ADD83var3.lower())
                         ADD83var2 = 3
