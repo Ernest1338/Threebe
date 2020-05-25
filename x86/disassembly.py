@@ -80,7 +80,7 @@ def disassemble_x86(bytes, ascii_dict):
                     BAvar = bytes[counter1+1]
                     if bytes[counter1+1][0]=="0":
                         BAvar = bytes[counter1+1][1]
-                    after_instruction = ", "+"0x"+str(BAvar)
+                    after_instruction = ", "+"0x"+str(BAvar.lower())+"   ; "+str(int(BAvar,16))
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
                     intruction_len_for_check = 50+len(x86opT.x86opcodes[i])+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
@@ -145,7 +145,7 @@ def disassemble_x86(bytes, ascii_dict):
                     after_instruction = ""
                     cancle_function_iteration(_8Bvar)
 
-                elif i == "83": # ADD
+                elif i == "83": # ADD, CMP, SUB
                     instruction = x86opT.x86opcodes[i]
                     after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]
                     ADD83var = bytes[counter1+2]
@@ -156,25 +156,25 @@ def disassemble_x86(bytes, ascii_dict):
                     if bytes[counter1+3][0]=="0":
                         ADD83var3 = bytes[counter1+3][1]
                     if bytes[counter1+1]=="C2":
-                        after_instruction = " edx, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " edx, "+"0x"+str(ADD83var.lower())+"   ; "+str(int(ADD83var,16))
                     elif bytes[counter1+1]=="C4":
-                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())+"   ; "+str(int(ADD83var,16))
                     elif bytes[counter1+1]=="C7":
-                        after_instruction = " edi, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " edi, "+"0x"+str(ADD83var.lower())+"   ; "+str(int(ADD83var,16))
                     elif bytes[counter1+1]=="C0":
-                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())+"   ; "+str(int(ADD83var,16))
                     elif bytes[counter1+1]=="F8":
                         instruction = "CMP"
-                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())+"   ; "+str(int(ADD83var,16))
                     elif bytes[counter1+1]=="3B":
                         instruction = "CMP"
-                        after_instruction = " dword [ebx], "+"0x"+str(ADD83var.lower())
+                        after_instruction = " dword [ebx], "+"0x"+str(ADD83var.lower())+"   ; "+str(int(ADD83var,16))
                     elif bytes[counter1+1]=="EC":
                         instruction = "SUB"
-                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())+"   ; "+str(int(ADD83var,16))
                     elif bytes[counter1+1]=="EA":
                         instruction = "SUB"
-                        after_instruction = " edx, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " edx, "+"0x"+str(ADD83var.lower())+"   ; "+str(int(ADD83var,16))
                     elif bytes[counter1+1]=="45" and bytes[counter1+2]:
                         after_instruction = " dword [var_4h], "+str(ADD83var3.lower())
                         ADD83var2 = 3
@@ -220,9 +220,9 @@ def disassemble_x86(bytes, ascii_dict):
                     _68offset_to_dict_1 = hex(int(_68offset,16)+1)
                     _68offset_to_dict = hex(int(_68offset,16))
                     if _68offset_to_dict in ascii_dict:
-                        after_instruction = _68offset+" ; "+str(ascii_dict[_68offset_to_dict])
+                        after_instruction = _68offset+"   ; "+str(ascii_dict[_68offset_to_dict])
                     elif _68offset_to_dict_1 in ascii_dict:
-                        after_instruction = _68offset+" ; "+str(ascii_dict[_68offset_to_dict_1])
+                        after_instruction = _68offset+"   ; "+str(ascii_dict[_68offset_to_dict_1])
                     else:
                         after_instruction = _68offset
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+x86opT.x86opcodes[i]+after_instruction+f"{bcolors.ENDC}"
