@@ -146,7 +146,7 @@ def disassemble_x86(bytes, ascii_dict):
                     after_instruction = ""
                     cancle_function_iteration(_8Bvar)
 
-                elif i == "83": # ADD, CMP, SUB
+                elif i == "83": # ADD, CMP, SUB, OR
                     after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]
                     ADD83var = bytes[counter1+2]
                     ADD83var2 = 2
