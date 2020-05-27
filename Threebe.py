@@ -58,6 +58,20 @@ def main():
                 else:
                     print_wrong_file_help()
 
+        elif sys.argv[1]=="-hs" or sys.argv[1]=="-HS":   # HEXDUMP - SQUASHED
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
+
+                hexdump.hexdump_parser_compressed(file_o, bytes_for_hexdump, "@")
+            
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
+
         elif sys.argv[1]=="-h32" or sys.argv[1]=="-H32":   # HEXDUMP - WIDE
             try:
                 file_name = sys.argv[2]
@@ -286,6 +300,7 @@ def main():
         print("-hc    - Display the clean version of the hexdump from a given binary file.")
         print("-hl    - Display the hexdump from a given binary file as a python list.")
         print("-hw    - Display the hexdump from a given binary file without parsing (without grouping / newline characters).")
+        print('-hs    - Display the hexdump from a given binary file. ("Squashed"/Compressed) version.')
         print("-dx86  - Display the disassembly of a given x86 binary file.")
         print("-i     - Display informations about a given binary file.")
         print("-s     - Display extracted strings from a given file.")
