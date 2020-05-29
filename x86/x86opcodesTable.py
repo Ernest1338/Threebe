@@ -5,7 +5,7 @@ x86opcodes = {
     "74" : "JE",            # DONE?    # next byte represents how much instructions to jump (+2). Example: 74 05 -> JE <ADDRESS OF THIS INSTRUCTION>+7 (05+2=7)
     "75" : "JNE",           # DONE?    # next byte represents how much instructions to jump (+2). Example: 75 05 -> JNE <ADDRESS OF THIS INSTRUCTION>+7 (05+2=7)
     "4C" : "DEC esp",       # DONE
-    "49" : "DEC ecx",       # PENDING
+    "49" : "DEC ecx",       # DONE
     "4E" : "DEC esi",       # PENDING
     "4F" : "DEC edi",       # PENDING
     "48" : "DEC eax",       # PENDING
