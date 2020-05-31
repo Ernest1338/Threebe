@@ -7,7 +7,7 @@ x86opcodes = {
     "4C" : "DEC esp",       # DONE
     "49" : "DEC ecx",       # DONE
     "4E" : "DEC esi",       # DONE
-    "4F" : "DEC edi",       # PENDING
+    "4F" : "DEC edi",       # DONE
     "48" : "DEC eax",       # PENDING
     "46" : "INC esi",       # PENDING
     "44" : "INC esp",       # PENDING
