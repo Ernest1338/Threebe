@@ -11,7 +11,7 @@ x86opcodes = {
     "48" : "DEC eax",       # DONE
     "46" : "INC esi",       # DONE
     "44" : "INC esp",       # DONE
-    "47" : "INC edi",       # PENDING
+    "47" : "INC edi",       # DONE
     "42" : "INC edx",       # PENDING
     "43" : "INC ebx",       # PENDING
     "40" : "INC eax",       # PENDING
