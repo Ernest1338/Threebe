@@ -54,7 +54,7 @@ x86opcodes = {
                                        #             -||-      to 43 then: MOV eax, dword [ebx + <VALUE>] where <VALUE> is equal to byte after 43
     "89" : "MOV ebp",       # DONE?    # if byte is equal to 89 then check if next byte is equal to E5 / if the next byte is equal to E5 then "MOV ebp, esp"
     "01" : "ADD",           # DONE?    # if next byte is equal to CA then: ADD EDX, ECX
-                                       #             -||-      to D0 then: ADD EAX, EDXshapsh
+                                       #             -||-      to D0 then: ADD EAX, EDX
     "83" : "ADD",           # DONE?    # if nexy byte is equal to C2 then: ADD EDX, <value>  where VALUE is equal to byte after C2
                             # DONE?    #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
                             # DONE?    #             -||-      to C4 then: ADD ESP, <VALUE>             -||-
