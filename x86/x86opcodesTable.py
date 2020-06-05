@@ -4,6 +4,7 @@ x86opcodes = {
 
     "74" : "JE",            # DONE?    # next byte represents how much instructions to jump (+2). Example: 74 05 -> JE <ADDRESS OF THIS INSTRUCTION>+7 (05+2=7)
     "75" : "JNE",           # DONE?    # next byte represents how much instructions to jump (+2). Example: 75 05 -> JNE <ADDRESS OF THIS INSTRUCTION>+7 (05+2=7)
+    "7E" : "JLE",           # PENDING   need to add more info
     "4C" : "DEC esp",       # DONE
     "49" : "DEC ecx",       # DONE
     "4E" : "DEC esi",       # DONE
@@ -12,7 +13,7 @@ x86opcodes = {
     "46" : "INC esi",       # DONE
     "44" : "INC esp",       # DONE
     "47" : "INC edi",       # DONE
-    "42" : "INC edx",       # PENDING
+    "42" : "INC edx",       # DONE
     "43" : "INC ebx",       # PENDING
     "40" : "INC eax",       # PENDING
     "41" : "INC ecx",       # PENDING
@@ -53,7 +54,7 @@ x86opcodes = {
                                        #             -||-      to 43 then: MOV eax, dword [ebx + <VALUE>] where <VALUE> is equal to byte after 43
     "89" : "MOV ebp",       # DONE?    # if byte is equal to 89 then check if next byte is equal to E5 / if the next byte is equal to E5 then "MOV ebp, esp"
     "01" : "ADD",           # DONE?    # if next byte is equal to CA then: ADD EDX, ECX
-                                       #             -||-      to D0 then: ADD EAX, EDX
+                                       #             -||-      to D0 then: ADD EAX, EDXshapsh
     "83" : "ADD",           # DONE?    # if nexy byte is equal to C2 then: ADD EDX, <value>  where VALUE is equal to byte after C2
                             # DONE?    #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
                             # DONE?    #             -||-      to C4 then: ADD ESP, <VALUE>             -||-
@@ -68,14 +69,14 @@ x86opcodes = {
                             # DONE?    # if next 2 bytes: 45 FC <value> then: ADD DWORD [var_4h], <value>
                             # PENDING  # if next 2 bytes: 7D 08 <value> then: CMP DWORD [arg_8h], <value>
     "90" : "NOP",           # DONE
-    "81" : "ADD",           # PENDING  # if next
+    "81" : "ADD",           # PENDING  # if next                       need to add more info
 
     "0F" : "INSTRUCTION",   # PENDING
 }
 
 x860Fopcodes = {
 
-    "84" : "JE",            # PENDING
+    "84" : "JE",            # PENDING                                  need to add more info
     "A0" : "PUSH fs",       # PENDING
     "A8" : "PUSH gs",       # PENDING
     "A1" : "POP fs",        # PENDING
