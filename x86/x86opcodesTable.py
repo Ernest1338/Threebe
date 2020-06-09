@@ -62,12 +62,11 @@ x86opcodes = {
                             # PENDING  #             -||-      to E4 then: AND ESP, <VALUE>             -||-                        need to add more info
                             # DONE?    #             -||-      to F8 then: CMP EAX, <VALUE>             -||-
                             # DONE?    #             -||-      to 3B then: CMP DWORD [EBX], <VALUE>     -||-
-                            # PENDING  #             -||-      to 7D 08 then: CMP DWORD [ARG_8H], <VALUE>     -||-                  need to add more info
                             # DONE?    #             -||-      to EC then: SUB ESP, <VALUE>             -||-
                             # DONE?    #             -||-      to EA then: SUB EDX, <VALUE>             -||-
                             # DONE?    #             -||-      to 08 then: OR DWORD [EAX], <VALUE>      -||-                        need to add more info
                             # DONE?    # if next 2 bytes: 45 FC <value> then: ADD DWORD [var_4h], <value>
-                            # PENDING  # if next 2 bytes: 7D 08 <value> then: CMP DWORD [arg_8h], <value>
+                            # DONE?    # if next 2 bytes: 7D 08 <value> then: CMP DWORD [arg_8h], <value>
     "90" : "NOP",           # DONE
     "81" : "ADD",           # PENDING  # if next                       need to add more info
 
