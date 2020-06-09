@@ -182,9 +182,17 @@ def disassemble_x86(bytes, ascii_dict):
                         if ADD83var=="FF":
                             ADD83var4 = "-1"
                         after_instruction = " dword [eax], "+"0x"+str(ADD83var.lower())+"   ; "+ADD83var4
-                    elif bytes[counter1+1]=="45" and bytes[counter1+2]:
-                        after_instruction = " dword [var_4h], "+str(ADD83var3.lower())
-                        ADD83var2 = 3
+                    elif bytes[counter1+1]=="45" and bytes[counter1+2]=="FC":
+                        ADD83var4 = str(int(bytes[counter1+3],16))
+                        after_instruction = " dword [var_4h], "+"0x"+str(ADD83var3.lower())+"   ; "+ADD83var4
+                        after_byte += " "+bytes[counter1+3]
+                        ADD83var2 = 4
+                    elif bytes[counter1+1]=="7D" and bytes[counter1+2]=="08":
+                        ADD83var4 = str(int(bytes[counter1+3],16))
+                        instruction = "CMP"
+                        after_instruction = " dword [arg_8h], "+"0x"+str(ADD83var3.lower())+"   ; "+ADD83var4
+                        after_byte += " "+bytes[counter1+3]
+                        ADD83var2 = 4
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
