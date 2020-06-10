@@ -59,7 +59,7 @@ x86opcodes = {
                             # DONE?    #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
                             # DONE?    #             -||-      to C4 then: ADD ESP, <VALUE>             -||-
                             # DONE?    #             -||-      to C0 then: ADD EAX, <VALUE>             -||-
-                            # PENDING  #             -||-      to E4 then: AND ESP, <VALUE>             -||-                        need to add more info
+                            # DONE?    #             -||-      to E4 then: AND ESP, <VALUE>             -||-                        need to add more info
                             # DONE?    #             -||-      to F8 then: CMP EAX, <VALUE>             -||-
                             # DONE?    #             -||-      to 3B then: CMP DWORD [EBX], <VALUE>     -||-
                             # DONE?    #             -||-      to EC then: SUB ESP, <VALUE>             -||-

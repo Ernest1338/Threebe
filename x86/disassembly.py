@@ -182,6 +182,13 @@ def disassemble_x86(bytes, ascii_dict):
                         if ADD83var=="FF":
                             ADD83var4 = "-1"
                         after_instruction = " dword [eax], "+"0x"+str(ADD83var.lower())+"   ; "+ADD83var4
+                    elif bytes[counter1+1]=="E4":
+                        instruction = "AND"
+                        if ADD83var=="FF":
+                            ADD83var4 = "-1"
+                        elif ADD83var[0]=="F":
+                            ADD83var = "FFFFFF"+ADD83var
+                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())
                     elif bytes[counter1+1]=="45" and bytes[counter1+2]=="FC":
                         ADD83var4 = str(int(bytes[counter1+3],16))
                         after_instruction = " dword [var_4h], "+"0x"+str(ADD83var3.lower())+"   ; "+ADD83var4
