@@ -26,7 +26,7 @@ Make sure you are in the Threebe directory before you begin. (You can also add t
 
 ***General usage:***
 ```
-**python3 Threebe.py [parameter(s)] [file]**   or   **./Threebe.py [parameter(s)] [file]**
+python3 Threebe.py [parameter(s)] [file_name/or/path/to/file]   or   ./Threebe.py [parameter(s)] [file_name/or/path/to/file]
 ```
 
 Where file is a: file_name or path/to/file
@@ -44,8 +44,8 @@ Threebe is cross-platform and can be run on any operating system which allows to
 # **Supported architectures**
 
 **Disassembly:**
-- x86
-(Will add more in the future)
+- x86 (not fully completed)
+- (There will be more in the future)
 
 **Hexdump, strings, pathing:**
 - All architectures will "probably" work. (If you have problems with an architecture please open an issue for that.)
@@ -58,7 +58,7 @@ Threebe is cross-platform and can be run on any operating system which allows to
 * Extracting strings
 * x86 disassembly (partially)
 * Binary patching
-* "more in the future"
+* (more in the future)
 
 # **Contribution**
 
