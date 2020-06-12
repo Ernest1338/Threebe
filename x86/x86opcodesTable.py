@@ -5,6 +5,8 @@ x86opcodes = {
     "74" : "JE",            # DONE?    # next byte represents how much instructions to jump (+2). Example: 74 05 -> JE <ADDRESS OF THIS INSTRUCTION>+7 (05+2=7)
     "75" : "JNE",           # DONE?    # next byte represents how much instructions to jump (+2). Example: 75 05 -> JNE <ADDRESS OF THIS INSTRUCTION>+7 (05+2=7)
     "7E" : "JLE",           # PENDING   need to add more info
+    "7F" : "JG",            # PENDING   need to add more info
+    "70" : "JO",            # PENDING   need to add more info
     "4C" : "DEC esp",       # DONE
     "49" : "DEC ecx",       # DONE
     "4E" : "DEC esi",       # DONE
@@ -42,6 +44,9 @@ x86opcodes = {
     "5E" : "POP esi",       # DONE
     "5F" : "POP edi",       # DONE
     "61" : "POPAL",         # DONE
+    "01" : "ADD",           # PENDING  # if next byte is equal to 01 then: ADD dword [ecx], eax
+                                       #             -||-      to 00 then: ADD dword [eax], eax
+    "00" ; "ADD",           # PENDING  # if next byte is equal to 00 then: ADD byte [eax], al
     "B8" : "MOV eax",       # PENDING  # next byte represents MOV value / if 4 next bytes are not instructions, then those bytes represent an adress in format: B8 AB CD EF GH > MOV eax, 0xGHEFCDAB
     "BA" : "MOV edx",       # DONE?    # next byte represents MOV value
     "8B" : "MOV",           # DONE?    # if next byte is equal to 1C then: MOV ebx, dword [esp]
@@ -59,12 +64,12 @@ x86opcodes = {
                             # DONE?    #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
                             # DONE?    #             -||-      to C4 then: ADD ESP, <VALUE>             -||-
                             # DONE?    #             -||-      to C0 then: ADD EAX, <VALUE>             -||-
-                            # DONE?    #             -||-      to E4 then: AND ESP, <VALUE>             -||-                        need to add more info
+                            # DONE?    #             -||-      to E4 then: AND ESP, <VALUE>             -||-
                             # DONE?    #             -||-      to F8 then: CMP EAX, <VALUE>             -||-
                             # DONE?    #             -||-      to 3B then: CMP DWORD [EBX], <VALUE>     -||-
                             # DONE?    #             -||-      to EC then: SUB ESP, <VALUE>             -||-
                             # DONE?    #             -||-      to EA then: SUB EDX, <VALUE>             -||-
-                            # DONE?    #             -||-      to 08 then: OR DWORD [EAX], <VALUE>      -||-                        need to add more info
+                            # DONE?    #             -||-      to 08 then: OR DWORD [EAX], <VALUE>      -||-
                             # DONE?    # if next 2 bytes: 45 FC <value> then: ADD DWORD [var_4h], <value>
                             # DONE?    # if next 2 bytes: 7D 08 <value> then: CMP DWORD [arg_8h], <value>
     "90" : "NOP",           # DONE
