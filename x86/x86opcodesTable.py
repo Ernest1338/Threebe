@@ -43,9 +43,7 @@ x86opcodes = {
     "5D" : "POP ebp",       # DONE
     "5E" : "POP esi",       # DONE
     "5F" : "POP edi",       # DONE
-    "61" : "POPAL",         # DONE
-    "01" : "ADD",           # PENDING  # if next byte is equal to 01 then: ADD dword [ecx], eax
-                            # PENDING  #             -||-      to 00 then: ADD dword [eax], eax
+    "61" : "POPAL",         # DONE        
     "00" : "ADD",           # PENDING  # if next byte is equal to 00 then: ADD byte [eax], al       # this instruction will be added at the end 
     "B8" : "MOV eax",       # PENDING  # next byte represents MOV value / if 4 next bytes are not instructions, then those bytes represent an adress in format: B8 AB CD EF GH > MOV eax, 0xGHEFCDAB
     "BA" : "MOV edx",       # DONE?    # next byte represents MOV value
@@ -59,7 +57,9 @@ x86opcodes = {
                                        #             -||-      to 43 then: MOV eax, dword [ebx + <VALUE>] where <VALUE> is equal to byte after 43
     "89" : "MOV ebp",       # DONE?    # if byte is equal to 89 then check if next byte is equal to E5 / if the next byte is equal to E5 then "MOV ebp, esp"
     "01" : "ADD",           # DONE?    # if next byte is equal to CA then: ADD EDX, ECX
-                                       #             -||-      to D0 then: ADD EAX, EDX
+                            # DONE?    #             -||-      to D0 then: ADD EAX, EDX
+                            # PENDING  #             -||-      to 01 then: ADD dword [ecx], eax
+                            # PENDING  #             -||-      to 00 then: ADD dword [eax], eax
     "83" : "ADD",           # DONE?    # if nexy byte is equal to C2 then: ADD EDX, <value>  where VALUE is equal to byte after C2
                             # DONE?    #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
                             # DONE?    #             -||-      to C4 then: ADD ESP, <VALUE>             -||-
