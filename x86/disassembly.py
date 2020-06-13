@@ -26,7 +26,7 @@ def disassemble_x86(bytes, ascii_dict):
 
                 if i == "74": # JE
                     after_byte = " "+bytes[counter1+1]
-                    if int(bytes[counter1+1],16)>=128:
+                    if int(bytes[counter1+1],16)>128:
                         if int(bytes[counter1+1],16)==255:
                             after_instruction = " "+hex(offset1+1)
                         elif int(bytes[counter1+1],16)==254:
@@ -216,7 +216,7 @@ def disassemble_x86(bytes, ascii_dict):
 
                 elif i == "75": # JNE
                     after_byte = " "+bytes[counter1+1]
-                    if int(bytes[counter1+1],16)>=128:
+                    if int(bytes[counter1+1],16)>128:
                         if int(bytes[counter1+1],16)==255:
                             after_instruction = " "+hex(offset1+1)
                         elif int(bytes[counter1+1],16)==254:
@@ -236,7 +236,7 @@ def disassemble_x86(bytes, ascii_dict):
                     after_instruction = ""
                     cancle_function_iteration(1)
 
-                elif i == "68": # PUSH string 0x08048715
+                elif i == "68": # PUSH string
                     after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]+" "+bytes[counter1+3]+" "+bytes[counter1+4]
                     _68offset = " 0x"+bytes[counter1+4]+bytes[counter1+3]+bytes[counter1+2]+bytes[counter1+1]
                     _68offset_to_dict_1 = hex(int(_68offset,16)+1)

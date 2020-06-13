@@ -2,11 +2,11 @@
 
 x86opcodes = {
 
-    "74" : "JE",            # DONE?    # next byte represents how much instructions to jump (+2). Example: 74 05 -> JE <ADDRESS OF THIS INSTRUCTION>+7 (05+2=7)
-    "75" : "JNE",           # DONE?    # next byte represents how much instructions to jump (+2). Example: 75 05 -> JNE <ADDRESS OF THIS INSTRUCTION>+7 (05+2=7)
-    "7E" : "JLE",           # PENDING   need to add more info
-    "7F" : "JG",            # PENDING   need to add more info
-    "70" : "JO",            # PENDING   need to add more info
+    "74" : "JE",            # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 74 05 -> JE <ADDRESS OF THIS INSTRUCTION>+7 (int(05,16)+2=7)    # + logic behind reverse jumps: if 2nd byte>128
+    "75" : "JNE",           # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 75 05 -> JNE <ADDRESS OF THIS INSTRUCTION>+7 (int(05,16)+2=7)   # + logic behind reverse jumps: if 2nd byte>128
+    "7E" : "JLE",           # PENDING  # next byte represents how much instructions to jump (+2(dec)). Example: 7E 2C -> JNE <ADDRESS OF THIS INSTRUCTION>+46 (int(2C,16)+2=46) # + logic behind reverse jumps: if 2nd byte>128
+    "7F" : "JG",            # PENDING  # next byte represents how much instructions to jump (+2(dec)). Example: 7F 1D -> JNE <ADDRESS OF THIS INSTRUCTION>+31 (int(1D,16)+2=31) # + logic behind reverse jumps: if 2nd byte>128
+    "70" : "JO",            # PENDING  # next byte represents how much instructions to jump (+2(dec)). Example: 70 0E -> JNE <ADDRESS OF THIS INSTRUCTION>+16 (int(0E,16)+2=16) # + logic behind reverse jumps: if 2nd byte>128
     "4C" : "DEC esp",       # DONE
     "49" : "DEC ecx",       # DONE
     "4E" : "DEC esi",       # DONE
@@ -45,8 +45,8 @@ x86opcodes = {
     "5F" : "POP edi",       # DONE
     "61" : "POPAL",         # DONE
     "01" : "ADD",           # PENDING  # if next byte is equal to 01 then: ADD dword [ecx], eax
-                                       #             -||-      to 00 then: ADD dword [eax], eax
-    "00" : "ADD",           # PENDING  # if next byte is equal to 00 then: ADD byte [eax], al
+                            # PENDING  #             -||-      to 00 then: ADD dword [eax], eax
+    "00" : "ADD",           # PENDING  # if next byte is equal to 00 then: ADD byte [eax], al       # this instruction will be added at the end 
     "B8" : "MOV eax",       # PENDING  # next byte represents MOV value / if 4 next bytes are not instructions, then those bytes represent an adress in format: B8 AB CD EF GH > MOV eax, 0xGHEFCDAB
     "BA" : "MOV edx",       # DONE?    # next byte represents MOV value
     "8B" : "MOV",           # DONE?    # if next byte is equal to 1C then: MOV ebx, dword [esp]
