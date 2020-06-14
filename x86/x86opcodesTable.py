@@ -74,6 +74,15 @@ x86opcodes = {
                             # DONE?    # if next 2 bytes: 7D 08 <value> then: CMP DWORD [arg_8h], <value>
     "90" : "NOP",           # DONE
     "81" : "ADD",           # PENDING  # if next                       need to add more info
+    "04" : "ADD",           # PENDING  # next byte represents add value: ADD al, <VALUE>
+    "FF" : "CALL",          # PENDING  # if next byte is equal to d0 then: CALL eax
+                            # PENDING  #             -||-      to d1 then: CALL ecx
+                            # PENDING  #             -||-      to d2 then: CALL edx
+                            # PENDING  #             -||-      to d3 then: CALL ebx
+                            # PENDING  #             -||-      to d4 then: CALL esp
+                            # PENDING  #             -||-      to d5 then: CALL ebp
+                            # PENDING  #             -||-      to d6 then: CALL esi
+                            # PENDING  #             -||-      to d7 then: CALL edi
 
     "0F" : "INSTRUCTION",   # PENDING
 }
