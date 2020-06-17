@@ -59,7 +59,7 @@ x86opcodes = {
     "01" : "ADD",           # DONE?    # if next byte is equal to CA then: ADD EDX, ECX
                             # DONE?    #             -||-      to D0 then: ADD EAX, EDX
                             # DONE?    #             -||-      to 01 then: ADD dword [ecx], eax
-                            # PENDING  #             -||-      to 00 then: ADD dword [eax], eax
+                            # DONE?    #             -||-      to 00 then: ADD dword [eax], eax
     "83" : "ADD",           # DONE?    # if nexy byte is equal to C2 then: ADD EDX, <value>  where VALUE is equal to byte after C2
                             # DONE?    #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
                             # DONE?    #             -||-      to C4 then: ADD ESP, <VALUE>             -||-

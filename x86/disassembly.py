@@ -65,6 +65,8 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = " eax, edx"
                     elif bytes[counter1+1]=="01":
                         after_instruction = " dword [ecx], eax"
+                    elif bytes[counter1+1]=="00":
+                        after_instruction = " dword [eax], eax"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
