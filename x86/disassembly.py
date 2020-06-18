@@ -24,7 +24,7 @@ def disassemble_x86(bytes, ascii_dict):
                 intruction_len_for_check = 50+len(instruction) # need to add to this after_instruction every time this variable (after_instruction) is usesd inside an if
                 should_print = True
 
-                if i == "74": # JE
+                if i == "74" or i == "75" or i == "7E": # JE, JNE, JLE
                     after_byte = " "+bytes[counter1+1]
                     if int(bytes[counter1+1],16)>=128:
                         if int(bytes[counter1+1],16)==255:
@@ -217,28 +217,6 @@ def disassemble_x86(bytes, ascii_dict):
                     after_byte = ""
                     after_instruction = ""
                     cancle_function_iteration(ADD83var2)
-
-                elif i == "75": # JNE
-                    after_byte = " "+bytes[counter1+1]
-                    if int(bytes[counter1+1],16)>=128:
-                        if int(bytes[counter1+1],16)==255:
-                            after_instruction = " "+hex(offset1+1)
-                        elif int(bytes[counter1+1],16)==254:
-                            after_instruction = " "+hex(offset1)
-                        else:
-                            after_instruction = " "+hex(offset1-(256-(int(bytes[counter1+1],16)+2)))
-                    else:
-                        after_instruction = " "+hex(offset1+(int(bytes[counter1+1],16)+2))
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
-                    intruction_len_for_check = 50+len(instruction)+len(after_instruction)
-                    if len(check1) < intruction_len_for_check:
-                        for _ in range(intruction_len_for_check-len(check1)):
-                            after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
-                    print(check1)
-                    after_byte = ""
-                    after_instruction = ""
-                    cancle_function_iteration(1)
 
                 elif i == "68": # PUSH string
                     after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]+" "+bytes[counter1+3]+" "+bytes[counter1+4]
