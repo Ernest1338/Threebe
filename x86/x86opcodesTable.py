@@ -2,11 +2,14 @@
 
 x86opcodes = {
 
-    "74" : "JE",            # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 74 05 -> JE <ADDRESS OF THIS INSTRUCTION>+7 (int(05,16)+2=7)    # + logic behind reverse jumps: if 2nd byte>128
-    "75" : "JNE",           # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 75 05 -> JNE <ADDRESS OF THIS INSTRUCTION>+7 (int(05,16)+2=7)   # + logic behind reverse jumps: if 2nd byte>128
-    "7E" : "JLE",           # PENDING  # next byte represents how much instructions to jump (+2(dec)). Example: 7E 2C -> JNE <ADDRESS OF THIS INSTRUCTION>+46 (int(2C,16)+2=46) # + logic behind reverse jumps: if 2nd byte>128
-    "7F" : "JG",            # PENDING  # next byte represents how much instructions to jump (+2(dec)). Example: 7F 1D -> JNE <ADDRESS OF THIS INSTRUCTION>+31 (int(1D,16)+2=31) # + logic behind reverse jumps: if 2nd byte>128
-    "70" : "JO",            # PENDING  # next byte represents how much instructions to jump (+2(dec)). Example: 70 0E -> JNE <ADDRESS OF THIS INSTRUCTION>+16 (int(0E,16)+2=16) # + logic behind reverse jumps: if 2nd byte>128
+    "74" : "JE",            # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 74 05 -> JE <ADDRESS OF THIS INSTRUCTION>+7 (int('05',16)+2=7)    # + logic behind reverse jumps: if 2nd byte>128
+    "75" : "JNE",           # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 75 05 -> JNE <ADDRESS OF THIS INSTRUCTION>+7 (int('05',16)+2=7)   # + logic behind reverse jumps: if 2nd byte>128
+    "7E" : "JLE",           # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 7E 2C -> JLE <ADDRESS OF THIS INSTRUCTION>+46 (int('2C',16)+2=46) # + logic behind reverse jumps: if 2nd byte>128
+    "7F" : "JG",            # PENDING  # next byte represents how much instructions to jump (+2(dec)). Example: 7F 1D -> JG <ADDRESS OF THIS INSTRUCTION>+31 (int('1D',16)+2=31) # + logic behind reverse jumps: if 2nd byte>128
+    "70" : "JO",            # PENDING  # next byte represents how much instructions to jump (+2(dec)). Example: 70 0E -> JO <ADDRESS OF THIS INSTRUCTION>+16 (int('0E',16)+2=16) # + logic behind reverse jumps: if 2nd byte>128
+    "71" : "JNO",           # PENDING  # next byte represents how much instructions to jump (+2(dec)). Example: 71 1A -> JNO <ADDRESS OF THIS INSTRUCTION>+28 (int('1A',16)+2=28) # + logic behind reverse jumps: if 2nd byte>128
+    "72" : "JB",            # PENDING  # next byte represents how much instructions to jump (+2(dec)). Example: 71 1A -> JB <ADDRESS OF THIS INSTRUCTION>+28 (int('1A',16)+2=28) # + logic behind reverse jumps: if 2nd byte>128
+    "73" : "JAE",           # PENDING  # next byte represents how much instructions to jump (+2(dec)). Example: 71 1A -> JAE <ADDRESS OF THIS INSTRUCTION>+28 (int('1A',16)+2=28) # + logic behind reverse jumps: if 2nd byte>128
     "4C" : "DEC esp",       # DONE
     "49" : "DEC ecx",       # DONE
     "4E" : "DEC esi",       # DONE
