@@ -1,6 +1,6 @@
 # This is an file containing different functions that extracts information from a executable file.
 
-from hexdump.hexdump import bcolors
+from Hexdump import bcolors
 
 def bin_get_info(bytes):
     # Type of executable file

@@ -1,5 +1,5 @@
 import x86.x86opcodesTable as x86opT
-from hexdump.hexdump import bcolors
+from Hexdump import bcolors
 
 times = 0
 

@@ -1,6 +1,6 @@
 # This file contains funtions that extracts strings from a given (binary) files.
 
-from hexdump.hexdump import bcolors
+from Hexdump import bcolors
 from BinArchitecture import bin_architecture
 
 def extract_binary(ascii, bytes):
