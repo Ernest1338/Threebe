@@ -24,7 +24,7 @@ def disassemble_x86(bytes, ascii_dict):
                 intruction_len_for_check = 50+len(instruction) # need to add to this after_instruction every time this variable (after_instruction) is usesd inside an if
                 should_print = True
 
-                if i == "74" or i == "75" or i == "7E" or i == "7F" or i == "70": # JE, JNE, JLE, JG
+                if i == "74" or i == "75" or i == "7E" or i == "7F" or i == "70": # JE, JNE, JLE, JG, JO
                     after_byte = " "+bytes[counter1+1]
                     if int(bytes[counter1+1],16)>=128:
                         if int(bytes[counter1+1],16)==255:
