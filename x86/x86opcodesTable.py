@@ -11,6 +11,7 @@ x86opcodes = {
     "72" : "JB",            # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 71 1A -> JB <ADDRESS OF THIS INSTRUCTION>+28 (int('1A',16)+2=28) # + logic behind reverse jumps: if 2nd byte>128
     "73" : "JAE",           # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 71 1A -> JAE <ADDRESS OF THIS INSTRUCTION>+28 (int('1A',16)+2=28) # + logic behind reverse jumps: if 2nd byte>128
     "31" : "XOR",           # PENDING  # if next byte is equal to ED then: XOR ebp, ebp
+    "0C" : "OR",            # PENDING  # next byte represents or value: OR al, <VALUE>
     "4C" : "DEC esp",       # DONE
     "49" : "DEC ecx",       # DONE
     "4E" : "DEC esi",       # DONE
@@ -78,7 +79,7 @@ x86opcodes = {
                             # DONE?    # if next 2 bytes: 7D 08 <value> then: CMP DWORD [arg_8h], <value>
     "90" : "NOP",           # DONE
     "81" : "ADD",           # PENDING  # if next                       need to add more info
-    "04" : "ADD",           # PENDING  # next byte represents add value: ADD al, <VALUE>
+    "04" : "ADD",           # DONE?    # next byte represents add value: ADD al, <VALUE>
     "FF" : "CALL",          # PENDING  # if next byte is equal to d0 then: CALL eax
                             # PENDING  #             -||-      to d1 then: CALL ecx
                             # PENDING  #             -||-      to d2 then: CALL edx
