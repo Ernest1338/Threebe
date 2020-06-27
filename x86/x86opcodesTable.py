@@ -10,7 +10,8 @@ x86opcodes = {
     "71" : "JNO",           # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 71 1A -> JNO <ADDRESS OF THIS INSTRUCTION>+28 (int('1A',16)+2=28) # + logic behind reverse jumps: if 2nd byte>128
     "72" : "JB",            # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 71 1A -> JB <ADDRESS OF THIS INSTRUCTION>+28 (int('1A',16)+2=28) # + logic behind reverse jumps: if 2nd byte>128
     "73" : "JAE",           # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 71 1A -> JAE <ADDRESS OF THIS INSTRUCTION>+28 (int('1A',16)+2=28) # + logic behind reverse jumps: if 2nd byte>128
-    "31" : "XOR",           # PENDING  # if next byte is equal to ED then: XOR ebp, ebp
+    "31" : "XOR",           # DONE?    # if next byte is equal to ED then: XOR ebp, ebp
+                            # PENDING  #           -||-        to FF then: XOR edi, edi
     "0C" : "OR",            # DONE?    # next byte represents or value: OR al, <VALUE>
     "4C" : "DEC esp",       # DONE
     "49" : "DEC ecx",       # DONE
