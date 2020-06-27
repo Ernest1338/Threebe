@@ -53,13 +53,13 @@ x86opcodes = {
     "B8" : "MOV eax",       # PENDING  # next byte represents MOV value / if 4 next bytes are not instructions, then those bytes represent an adress in format: B8 AB CD EF GH > MOV eax, 0xGHEFCDAB
     "BA" : "MOV edx",       # DONE?    # next byte represents MOV value
     "8B" : "MOV",           # DONE?    # if next byte is equal to 1C then: MOV ebx, dword [esp]
-                                       #             -||-      to 10 then: MOV edx, dword [eax]
-                                       #             -||-      to 55 then: MOV edx, dword [var_4h]
-                                       #             -||-      to 45 then: MOV eax, dword [arg_8h]
-                                       #             -||-      to 4D then: MOV ecx, dword [var_4h]
-                                       #             -||-      to 00 then: MOV eax, dword [eax]
-                                       #             -||-      to 6C then: MOV ebp, dword [arg_4h]
-                                       #             -||-      to 43 then: MOV eax, dword [ebx + <VALUE>] where <VALUE> is equal to byte after 43
+                            # DONE?    #             -||-      to 10 then: MOV edx, dword [eax]
+                            # DONE?    #             -||-      to 55 then: MOV edx, dword [var_4h]
+                            # DONE?    #             -||-      to 45 then: MOV eax, dword [arg_8h]
+                            # DONE?    #             -||-      to 4D then: MOV ecx, dword [var_4h]
+                            # DONE?    #             -||-      to 00 then: MOV eax, dword [eax]
+                            # DONE?    #             -||-      to 6C then: MOV ebp, dword [arg_4h]
+                            # DONE?    #             -||-      to 43 then: MOV eax, dword [ebx + <VALUE>] where <VALUE> is equal to byte after 43
     "89" : "MOV ebp",       # DONE?    # if byte is equal to 89 then check if next byte is equal to E5 / if the next byte is equal to E5 then "MOV ebp, esp"
     "01" : "ADD",           # DONE?    # if next byte is equal to CA then: ADD EDX, ECX
                             # DONE?    #             -||-      to D0 then: ADD EAX, EDX
