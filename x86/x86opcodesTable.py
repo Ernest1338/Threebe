@@ -81,7 +81,7 @@ x86opcodes = {
     "90" : "NOP",           # DONE
     "81" : "ADD",           # PENDING  # if next                       need to add more info
     "04" : "ADD",           # DONE?    # next byte represents add value: ADD al, <VALUE>
-    "FF" : "CALL",          # PENDING  # if next byte is equal to d0 then: CALL eax    # FF is also associated with JMP, need to add more info
+    "FF" : "CALL",          # DONE?    # if next byte is equal to d0 then: CALL eax    # FF is also associated with JMP, need to add more info
                             # PENDING  #             -||-      to d1 then: CALL ecx
                             # PENDING  #             -||-      to d2 then: CALL edx
                             # PENDING  #             -||-      to d3 then: CALL ebx
