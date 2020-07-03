@@ -85,7 +85,7 @@ x86opcodes = {
                             # DONE?    #             -||-      to d1 then: CALL ecx
                             # DONE?    #             -||-      to d2 then: CALL edx
                             # DONE?    #             -||-      to d3 then: CALL ebx
-                            # PENDING  #             -||-      to d4 then: CALL esp
+                            # DONE?    #             -||-      to d4 then: CALL esp
                             # PENDING  #             -||-      to d5 then: CALL ebp
                             # PENDING  #             -||-      to d6 then: CALL esi
                             # PENDING  #             -||-      to d7 then: CALL edi
