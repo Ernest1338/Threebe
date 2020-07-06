@@ -81,21 +81,21 @@ x86opcodes = {
     "90" : "NOP",           # DONE
     "81" : "ADD",           # PENDING  # if next                       need to add more info
     "04" : "ADD",           # DONE?    # next byte represents add value: ADD al, <VALUE>
-    "FF" : "CALL",          # DONE?    # if next byte is equal to d0 then: CALL eax    # FF is also associated with JMP, need to add more info
+    "FF" : "CALL",          # DONE?    # if next byte is equal to d0 then: CALL eax    # FF is also associated with JMP, INC, need to add more info
                             # DONE?    #             -||-      to d1 then: CALL ecx
                             # DONE?    #             -||-      to d2 then: CALL edx
                             # DONE?    #             -||-      to d3 then: CALL ebx
                             # DONE?    #             -||-      to d4 then: CALL esp
                             # DONE?    #             -||-      to d5 then: CALL ebp
                             # DONE?    #             -||-      to d6 then: CALL esi
-                            # PENDING  #             -||-      to d7 then: CALL edi
-
+                            # DONE?    #             -||-      to d7 then: CALL edi
+    "E8" : "CALL",          # PENDING  # need to add more info
     "0F" : "INSTRUCTION",   # PENDING
 }
 
 x860Fopcodes = {
 
-    "84" : "JE",            # PENDING                                  need to add more info
+    "84" : "JE",            # PENDING  # need to add more info
     "A0" : "PUSH fs",       # PENDING
     "A8" : "PUSH gs",       # PENDING
     "A1" : "POP fs",        # PENDING
