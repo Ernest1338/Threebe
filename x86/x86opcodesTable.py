@@ -97,7 +97,7 @@ x860Fopcodes = {
 
     "84" : "JE",            # PENDING  # need to add more info
     "A0" : "PUSH fs",       # DONE?
-    "A8" : "PUSH gs",       # PENDING
+    "A8" : "PUSH gs",       # DONE?
     "A1" : "POP fs",        # PENDING
     "A9" : "POP gs",        # PENDING
 }
