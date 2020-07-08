@@ -326,12 +326,15 @@ def disassemble_x86(bytes, ascii_dict):
                     after_instruction = ""
                     cancle_function_iteration(1)
 
-                elif i == "0F": # PUSH fs, ...
+                elif i == "0F": # PUSH fs, PUSH gs, ...
                     ofvar1 = 1
                     after_byte = " "+bytes[counter1+1]
                     if bytes[counter1+1]=="A0":
                         instruction = "PUSH"
                         after_instruction = " fs"
+                    elif bytes[counter1+1]=="A8":
+                        instruction = "PUSH"
+                        after_instruction = " gs"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
