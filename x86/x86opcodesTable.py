@@ -49,7 +49,10 @@ x86opcodes = {
     "5D" : "POP ebp",       # DONE
     "5E" : "POP esi",       # DONE
     "5F" : "POP edi",       # DONE
-    "61" : "POPAL",         # DONE        
+    "61" : "POPAL",         # DONE     
+    "C9" : "LEAVE",         # PENDING
+    "C3" : "RET",           # PENDING
+    "F3" : "RET",           # PENDING  # if next byte is equal to C3 then: RET
     "00" : "ADD",           # PENDING  # if next byte is equal to 00 then: ADD byte [eax], al       # this instruction will be added at the end 
     "B8" : "MOV eax",       # PENDING  # next byte represents MOV value / if 4 next bytes are not instructions, then those bytes represent an adress in format: B8 AB CD EF GH > MOV eax, 0xGHEFCDAB
     "BA" : "MOV edx",       # DONE?    # next byte represents MOV value
