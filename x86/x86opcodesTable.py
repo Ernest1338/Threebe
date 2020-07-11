@@ -102,5 +102,5 @@ x860Fopcodes = {
     "A0" : "PUSH fs",       # DONE?
     "A8" : "PUSH gs",       # DONE?
     "A1" : "POP fs",        # DONE?
-    "A9" : "POP gs",        # PENDING
+    "A9" : "POP gs",        # DONE?
 }

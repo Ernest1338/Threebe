@@ -338,6 +338,9 @@ def disassemble_x86(bytes, ascii_dict):
                     elif bytes[counter1+1]=="A1":
                         instruction = "POP"
                         after_instruction = " fs"
+                    elif bytes[counter1+1]=="A9":
+                        instruction = "POP"
+                        after_instruction = " gs"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
