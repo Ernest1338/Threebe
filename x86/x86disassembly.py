@@ -326,7 +326,7 @@ def disassemble_x86(bytes, ascii_dict):
                     after_instruction = ""
                     cancle_function_iteration(1)
 
-                elif i == "0F": # PUSH fs, PUSH gs, ...
+                elif i == "0F": # PUSH fs, PUSH gs, POP fs, POP gs, ...
                     ofvar1 = 1
                     after_byte = " "+bytes[counter1+1]
                     if bytes[counter1+1]=="A0":
