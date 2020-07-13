@@ -102,14 +102,17 @@ def disassemble_x86(bytes, ascii_dict):
                     after_byte = " "+bytes[counter1+1]
                     _89var = bytes[counter1+1]
                     if _89var=="E5":
-                        after_instruction = ", esp"
+                        after_instruction = " ebp, esp"
+                    else:
+                        should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
-                    print(check1)
+                    if should_print:
+                        print(check1)
                     after_byte = ""
                     after_instruction = ""
                     cancle_function_iteration(1)
