@@ -103,6 +103,8 @@ def disassemble_x86(bytes, ascii_dict):
                     _89var = bytes[counter1+1]
                     if _89var=="E5":
                         after_instruction = " ebp, esp"
+                    if _89var=="CB":
+                        after_instruction = " ebx, ecx"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
