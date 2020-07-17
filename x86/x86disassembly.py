@@ -98,7 +98,7 @@ def disassemble_x86(bytes, ascii_dict):
                     after_instruction = ""
                     cancle_function_iteration(1)
 
-                elif i == "89": # MOV ebp, esp
+                elif i == "89": # MOV ebp, esp; MOV ebx, ecx
                     after_byte = " "+bytes[counter1+1]
                     _89var = bytes[counter1+1]
                     if _89var=="E5":
