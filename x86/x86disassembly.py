@@ -304,6 +304,25 @@ def disassemble_x86(bytes, ascii_dict):
                     if should_print:
                         cancle_function_iteration(1)
 
+                elif i == "F3": # RET
+                    after_byte = " "+bytes[counter1+1]
+                    if bytes[counter1+1]=="C3":
+                        pass
+                    else:
+                        should_print = False
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    intruction_len_for_check = 50+len(instruction)+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    if should_print:
+                        print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    if should_print:
+                        cancle_function_iteration(1)
+
                 elif i == "FF": # CALL
                     after_byte = " "+bytes[counter1+1]
                     if bytes[counter1+1]=="D0":
