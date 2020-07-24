@@ -33,13 +33,13 @@ def extract_binary(ascii, bytes):
                 else:
                     strings.append(i-len(string_toappend2))
                     strings.append(string_toappend2)
-                    
+                 
             streak = 0
             string_toappend = ""
             string_toappend2 = ""
 
-    print(f"{bcolors.FAIL}- offset - {bcolors.OKGREEN} Length   {bcolors.FAIL}- string -{bcolors.ENDC}")
-    
+    print(f"{bcolors.FAIL}- offset - {bcolors.OKGREEN} length   {bcolors.FAIL}- string -{bcolors.ENDC}")
+  
     prt = True
     for i in strings:
         if prt:
@@ -142,7 +142,7 @@ def extract(ascii):
             string_toappend = ""
             string_toappend2 = ""
 
-    print(f"{bcolors.FAIL}Length   - STRINGS -{bcolors.ENDC}")
+    print(f"{bcolors.OKGREEN}length   {bcolors.FAIL}- string -{bcolors.ENDC}")
     prt = True
 
     for i in strings:
@@ -187,7 +187,7 @@ def extract_clean(ascii):
             string_toappend = ""
             string_toappend2 = ""
 
-    print(f"{bcolors.FAIL}- STRINGS -{bcolors.ENDC}")
+    print(f"{bcolors.FAIL}- string -{bcolors.ENDC}")
     prt = True
 
     for i in strings:
