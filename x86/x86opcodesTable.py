@@ -13,6 +13,8 @@ x86opcodes = {
     "31" : "XOR",           # DONE?    # if next byte is equal to ED then: XOR ebp, ebp
                             # DONE?    #           -||-        to FF then: XOR edi, edi
     "0C" : "OR",            # DONE?    # next byte represents or value: OR al, <VALUE>
+    "27" : "DAA",           # PENDING
+    "2F" : "DAS",           # PENDING
     "4C" : "DEC esp",       # DONE
     "49" : "DEC ecx",       # DONE
     "4E" : "DEC esi",       # DONE
