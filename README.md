@@ -29,8 +29,6 @@ Make sure you are in the Threebe directory before you begin. (You can also add t
 python3 Threebe.py [parameter(s)] [file_name/or/path/to/file]   or   ./Threebe.py [parameter(s)] [file_name/or/path/to/file]
 ```
 
-Where file is a: file_name or path/to/file
-
 
 **You can get a list of all possible parameters by running command:**
 ```
