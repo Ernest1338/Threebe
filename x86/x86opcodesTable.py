@@ -15,6 +15,8 @@ x86opcodes = {
     "0C" : "OR",            # DONE?    # next byte represents or value: OR al, <VALUE>
     "27" : "DAA",           # PENDING
     "2F" : "DAS",           # PENDING
+    "85" : "TEST",          # PENDING  # if next byte is equal to E8 then: TEST eax, ebp
+                            # PENDING  #   need to add more info
     "4C" : "DEC esp",       # DONE
     "49" : "DEC ecx",       # DONE
     "4E" : "DEC esi",       # DONE
