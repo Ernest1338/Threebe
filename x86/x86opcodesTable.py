@@ -13,7 +13,7 @@ x86opcodes = {
     "31" : "XOR",           # DONE?    # if next byte is equal to ED then: XOR ebp, ebp
                             # DONE?    #           -||-        to FF then: XOR edi, edi
     "0C" : "OR",            # DONE?    # next byte represents or value: OR al, <VALUE>
-    "27" : "DAA",           # PENDING
+    "27" : "DAA",           # DONE
     "2F" : "DAS",           # PENDING
     "85" : "TEST",          # PENDING  # if next byte is equal to E8 then: TEST eax, ebp
                             # PENDING  #   need to add more info
@@ -99,7 +99,7 @@ x86opcodes = {
                             # DONE?    #             -||-      to d6 then: CALL esi
                             # DONE?    #             -||-      to d7 then: CALL edi
     "E8" : "CALL",          # PENDING  # need to add more info
-    "0F" : "INSTRUCTION",   # PENDING
+    "0F" : "INSTRUCTION",   # INPROGRESS
 }
 
 x860Fopcodes = {
