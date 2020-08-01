@@ -15,8 +15,73 @@ x86opcodes = {
     "0C" : "OR",            # DONE?    # next byte represents or value: OR al, <VALUE>
     "27" : "DAA",           # DONE
     "2F" : "DAS",           # DONE
-    "85" : "TEST",          # PENDING  # if next byte is equal to E8 then: TEST eax, ebp
-                            # PENDING  #   need to add more info
+    "84" : "TEST",          # PENDING  # if next byte is equal to C0 then: TEST al, al
+                            # PENDING  #    need to add more info
+    "85" : "TEST",          # PENDING  # if next byte is equal to FF then: TEST edi, edi
+                            # PENDING  #           -||-        to FE then: TEST esi, edi
+                            # PENDING  #           -||-        to FD then: TEST ebp, edi
+                            # PENDING  #           -||-        to FC then: TEST esp, edi
+                            # PENDING  #           -||-        to FB then: TEST ebx, edi
+                            # PENDING  #           -||-        to FA then: TEST edx, edi
+                            # PENDING  #           -||-        to F9 then: TEST ecx, edi
+                            # PENDING  #           -||-        to F8 then: TEST eax, edi
+                            # PENDING  #           -||-        to F7 then: TEST edi, esi
+                            # PENDING  #           -||-        to F6 then: TEST esi, esi
+                            # PENDING  #           -||-        to F5 then: TEST ebp, esi
+                            # PENDING  #           -||-        to F4 then: TEST esp, esi
+                            # PENDING  #           -||-        to F3 then: TEST ebx, esi
+                            # PENDING  #           -||-        to F2 then: TEST edx, esi
+                            # PENDING  #           -||-        to F1 then: TEST ecx, esi
+                            # PENDING  #           -||-        to F0 then: TEST eax, esi
+                            # PENDING  #           -||-        to EF then: TEST edi, ebp
+                            # PENDING  #           -||-        to EE then: TEST esi, ebp
+                            # PENDING  #           -||-        to ED then: TEST ebp, ebp
+                            # PENDING  #           -||-        to EC then: TEST esp, ebp
+                            # PENDING  #           -||-        to EB then: TEST ebx, ebp
+                            # PENDING  #           -||-        to EA then: TEST edx, ebp
+                            # PENDING  #           -||-        to E9 then: TEST ecx, ebp
+                            # PENDING  #           -||-        to E8 then: TEST eax, ebp
+                            # PENDING  #           -||-        to E7 then: TEST edi, esp
+                            # PENDING  #           -||-        to E6 then: TEST esi, esp
+                            # PENDING  #           -||-        to E5 then: TEST ebp, esp
+                            # PENDING  #           -||-        to E4 then: TEST esp, esp
+                            # PENDING  #           -||-        to E3 then: TEST ebx, esp
+                            # PENDING  #           -||-        to E2 then: TEST edx, esp
+                            # PENDING  #           -||-        to E1 then: TEST ecx, esp
+                            # PENDING  #           -||-        to E0 then: TEST eax, esp
+                            # PENDING  #           -||-        to DF then: TEST edi, ebx
+                            # PENDING  #           -||-        to DE then: TEST esi, ebx
+                            # PENDING  #           -||-        to DD then: TEST ebp, ebx
+                            # PENDING  #           -||-        to DC then: TEST esp, ebx
+                            # PENDING  #           -||-        to DB then: TEST ebx, ebx
+                            # PENDING  #           -||-        to DA then: TEST edx, ebx
+                            # PENDING  #           -||-        to D9 then: TEST ecx, ebx
+                            # PENDING  #           -||-        to D8 then: TEST eax, ebx
+                            # PENDING  #           -||-        to D7 then: TEST edi, edx
+                            # PENDING  #           -||-        to D6 then: TEST esi, edx
+                            # PENDING  #           -||-        to D5 then: TEST ebp, edx
+                            # PENDING  #           -||-        to D4 then: TEST esp, edx
+                            # PENDING  #           -||-        to D3 then: TEST ebx, edx
+                            # PENDING  #           -||-        to D2 then: TEST edx, edx
+                            # PENDING  #           -||-        to D1 then: TEST ecx, edx
+                            # PENDING  #           -||-        to D0 then: TEST eax, edx
+                            # PENDING  #           -||-        to CF then: TEST edi, ecx
+                            # PENDING  #           -||-        to CE then: TEST esi, ecx
+                            # PENDING  #           -||-        to CD then: TEST ebp, ecx
+                            # PENDING  #           -||-        to CC then: TEST esp, ecx
+                            # PENDING  #           -||-        to CB then: TEST ebx, ecx
+                            # PENDING  #           -||-        to CA then: TEST edx, ecx
+                            # PENDING  #           -||-        to C9 then: TEST ecx, ecx
+                            # PENDING  #           -||-        to C8 then: TEST eax, ecx
+                            # PENDING  #           -||-        to C7 then: TEST edi, eax
+                            # PENDING  #           -||-        to C6 then: TEST esi, eax
+                            # PENDING  #           -||-        to C5 then: TEST ebp, eax
+                            # PENDING  #           -||-        to C4 then: TEST esp, eax
+                            # PENDING  #           -||-        to C3 then: TEST ebx, eax
+                            # PENDING  #           -||-        to C3 then: TEST ebx, eax
+                            # PENDING  #           -||-        to C2 then: TEST edx, eax
+                            # PENDING  #           -||-        to C1 then: TEST ecx, eax
+                            # PENDING  #           -||-        to c0 then: TEST eax, eax
     "4C" : "DEC esp",       # DONE
     "49" : "DEC ecx",       # DONE
     "4E" : "DEC esi",       # DONE
