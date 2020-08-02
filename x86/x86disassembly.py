@@ -304,6 +304,34 @@ def disassemble_x86(bytes, ascii_dict):
                     if should_print:
                         cancle_function_iteration(1)
 
+                elif i == "81": # ADD, ...
+                    after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]+" "+bytes[counter1+3]+" "+bytes[counter1+4]+" "+bytes[counter1+5]
+                    _81var = ""
+                    if bytes[counter1+1]=="C3":
+                        if bytes[counter1+5]!="00":
+                            _81var += str(bytes[counter1+5])
+                        if bytes[counter1+4]!="00":
+                            _81var += str(bytes[counter1+4])
+                        if bytes[counter1+3]!="00":
+                            _81var += str(bytes[counter1+3])
+                        if bytes[counter1+2]!="00":
+                            _81var += str(bytes[counter1+2])
+                        after_instruction = " ebx, 0x"+_81var+"   ; "+str(int(_81var,16))
+                    else:
+                        should_print = False
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    intruction_len_for_check = 50+len(instruction)+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    if should_print:
+                        print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    if should_print:
+                        cancle_function_iteration(5)
+
                 elif i == "F3": # RET
                     after_byte = " "+bytes[counter1+1]
                     if bytes[counter1+1]=="C3":
