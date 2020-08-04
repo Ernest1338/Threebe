@@ -317,6 +317,17 @@ def disassemble_x86(bytes, ascii_dict):
                         if bytes[counter1+2]!="00":
                             _81var += str(bytes[counter1+2])
                         after_instruction = " ebx, 0x"+_81var+"   ; "+str(int(_81var,16))
+                    elif bytes[counter1+1]=="EC":
+                        instruction = "SUB"
+                        if bytes[counter1+5]!="00":
+                            _81var += str(bytes[counter1+5])
+                        if bytes[counter1+4]!="00":
+                            _81var += str(bytes[counter1+4])
+                        if bytes[counter1+3]!="00":
+                            _81var += str(bytes[counter1+3])
+                        if bytes[counter1+2]!="00":
+                            _81var += str(bytes[counter1+2])
+                        after_instruction = " esp, 0x"+_81var+"   ; "+str(int(_81var,16))
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
