@@ -154,7 +154,7 @@ x86opcodes = {
                             # DONE?    # if next 2 bytes: 7D 08 <value> then: CMP DWORD [arg_8h], <value>
     "90" : "NOP",           # DONE
     "81" : "ADD",           # DONE?    # if next byte is equal to C3 then: ADD ebx, <value> where VALUE is (hexadecimal, and) equal to next for bytes in this format: GH EF CD AB
-                            # PENDING  #             -||-      to EC then: SUB esp, <value>                                  -||-
+                            # DONE?    #             -||-      to EC then: SUB esp, <value>                                  -||-
     "04" : "ADD",           # DONE?    # next byte represents add value: ADD al, <VALUE>
     "FF" : "CALL",          # DONE?    # if next byte is equal to d0 then: CALL eax    # FF is also associated with JMP, INC, need to add more info
                             # DONE?    #             -||-      to d1 then: CALL ecx
