@@ -81,7 +81,7 @@ x86opcodes = {
                             # PENDING  #           -||-        to C3 then: TEST ebx, eax
                             # PENDING  #           -||-        to C2 then: TEST edx, eax
                             # PENDING  #           -||-        to C1 then: TEST ecx, eax
-                            # PENDING  #           -||-        to c0 then: TEST eax, eax
+                            # DONE?    #           -||-        to C0 then: TEST eax, eax
     "4C" : "DEC esp",       # DONE
     "49" : "DEC ecx",       # DONE
     "4E" : "DEC esi",       # DONE
