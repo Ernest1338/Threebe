@@ -308,6 +308,8 @@ def disassemble_x86(bytes, ascii_dict):
                     after_byte = " "+bytes[counter1+1]
                     if bytes[counter1+1]=="C0":
                         after_instruction = " eax, eax"
+                    elif bytes[counter1+1]=="C1":
+                        after_instruction = " ecx, eax"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
