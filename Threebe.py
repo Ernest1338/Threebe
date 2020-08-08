@@ -312,7 +312,7 @@ def main():
         print("-pb    - Patch given binary. Format: ./Threebe.py -pb address bytes path/to/binary (address format: 0x0000000, bytes format: 9090).")
         print("--help - Display this help screen.")
         print("")
-        print("Original author: Dawid Janikowski 2020-2020")
+        print("Original author: Dawid J. (Ernest Gupik) 2020-2020")
     else:
         print_help()
 
