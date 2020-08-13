@@ -75,7 +75,7 @@ x86opcodes = {
                             # PENDING  #           -||-        to C8 then: TEST eax, ecx
                             # PENDING  #           -||-        to C7 then: TEST edi, eax
                             # PENDING  #           -||-        to C6 then: TEST esi, eax
-                            # PENDING  #           -||-        to C5 then: TEST ebp, eax
+                            # DONE?    #           -||-        to C5 then: TEST ebp, eax
                             # DONE?    #           -||-        to C4 then: TEST esp, eax
                             # DONE?    #           -||-        to C3 then: TEST ebx, eax
                             # DONE?    #           -||-        to C2 then: TEST edx, eax
