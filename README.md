@@ -15,7 +15,7 @@ Link to python website: https://www.python.org/
 
 **Installation:**
 ```
-git clone https://gitlab.com/Ernest1337/threebe.git
+git clone https://gitlab.com/Ernest1337/Threebe.git
 cd Threebe
 python3 Threebe.py --help
 ```
@@ -34,6 +34,11 @@ python3 Threebe.py [parameter(s)] [file_name/or/path/to/file]   or   ./Threebe.p
 ```
 ./Threebe --help
 ```
+
+# **Links**
+
+- Github mirror: https://github.com/Ernest1338/Threebe
+- Issues/Bug tracker/Feature request: https://gitlab.com/Ernest1337/threebe/-/issues
 
 # **Operating systems**
 
