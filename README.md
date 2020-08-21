@@ -8,8 +8,8 @@
 
 # **Installation**
 
-Threebe is a python3 program so to run it, you need to have python3 installed on your system.
-On Windows you need to add python3 to your system PATH.
+Threebe is written in Python3, so to run it, you need to have Python3 installed on your system. 
+(On Windows you may need to add Python3 to your system PATH.)
 
 Link to python website: https://www.python.org/
 
