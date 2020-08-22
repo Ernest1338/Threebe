@@ -68,7 +68,7 @@ x86opcodes = {
                             # PENDING  #           -||-        to CF then: TEST edi, ecx
                             # PENDING  #           -||-        to CE then: TEST esi, ecx
                             # PENDING  #           -||-        to CD then: TEST ebp, ecx
-                            # PENDING  #           -||-        to CC then: TEST esp, ecx
+                            # DONE?    #           -||-        to CC then: TEST esp, ecx
                             # DONE?    #           -||-        to CB then: TEST ebx, ecx
                             # DONE?    #           -||-        to CA then: TEST edx, ecx
                             # DONE?    #           -||-        to C9 then: TEST ecx, ecx
