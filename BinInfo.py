@@ -4,7 +4,6 @@ from Hexdump import bcolors
 import sys
 
 def return_filename():
-    print("test")
     file_name = sys.argv[2]
     if file_name.find("/")==-1:
         return file_name.split("\\")[-1]
@@ -12,6 +11,9 @@ def return_filename():
         return file_name.split("/")[-1]
 
 def bin_get_info(bytes):
+    # File name
+    print(f"{bcolors.OKBLUE}"+"File name:           "+f"{bcolors.WARNING}"+str(return_filename())+f"{bcolors.ENDC}")
+
     # Type of executable file
     if ''.join(bytes[1:4])=="454C46":
         filetype = "ELF"
