@@ -1,6 +1,15 @@
 # This is an file containing different functions that extracts information from a executable file.
 
 from Hexdump import bcolors
+import sys
+
+def return_filename():
+    print("test")
+    file_name = sys.argv[2]
+    if file_name.find("/")==-1:
+        return file_name.split("\\")[-1]
+    else:
+        return file_name.split("/")[-1]
 
 def bin_get_info(bytes):
     # Type of executable file
