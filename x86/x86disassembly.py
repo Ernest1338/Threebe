@@ -87,7 +87,7 @@ def disassemble_x86(bytes, ascii_dict):
                     BAvar = bytes[counter1+1]
                     if bytes[counter1+1][0]=="0":
                         BAvar = bytes[counter1+1][1]
-                    after_instruction = ", "+"0x"+str(BAvar.lower())+"   ; "+str(int(BAvar,16))
+                    after_instruction = ", "+"0x"+str(BAvar.lower())+f"{bcolors.OKGREEN}   ; "+str(int(BAvar,16))
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
@@ -170,30 +170,30 @@ def disassemble_x86(bytes, ascii_dict):
                     if bytes[counter1+3][0]=="0":
                         ADD83var3 = bytes[counter1+3][1]
                     if bytes[counter1+1]=="C2":
-                        after_instruction = " edx, "+"0x"+str(ADD83var.lower())+"   ; "+ADD83var4
+                        after_instruction = " edx, "+"0x"+str(ADD83var.lower())+f"{bcolors.OKGREEN}   ; "+ADD83var4
                     elif bytes[counter1+1]=="C4":
-                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())+"   ; "+ADD83var4
+                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())+f"{bcolors.OKGREEN}   ; "+ADD83var4
                     elif bytes[counter1+1]=="C7":
-                        after_instruction = " edi, "+"0x"+str(ADD83var.lower())+"   ; "+ADD83var4
+                        after_instruction = " edi, "+"0x"+str(ADD83var.lower())+f"{bcolors.OKGREEN}   ; "+ADD83var4
                     elif bytes[counter1+1]=="C0":
-                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())+"   ; "+ADD83var4
+                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())+f"{bcolors.OKGREEN}   ; "+ADD83var4
                     elif bytes[counter1+1]=="F8":
                         instruction = "CMP"
-                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())+"   ; "+ADD83var4
+                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())+f"{bcolors.OKGREEN}   ; "+ADD83var4
                     elif bytes[counter1+1]=="3B":
                         instruction = "CMP"
-                        after_instruction = " dword [ebx], "+"0x"+str(ADD83var.lower())+"   ; "+ADD83var4
+                        after_instruction = " dword [ebx], "+"0x"+str(ADD83var.lower())+f"{bcolors.OKGREEN}   ; "+ADD83var4
                     elif bytes[counter1+1]=="EC":
                         instruction = "SUB"
-                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())+"   ; "+ADD83var4
+                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())+f"{bcolors.OKGREEN}   ; "+ADD83var4
                     elif bytes[counter1+1]=="EA":
                         instruction = "SUB"
-                        after_instruction = " edx, "+"0x"+str(ADD83var.lower())+"   ; "+ADD83var4
+                        after_instruction = " edx, "+"0x"+str(ADD83var.lower())+f"{bcolors.OKGREEN}   ; "+ADD83var4
                     elif bytes[counter1+1]=="08":
                         instruction = "OR"
                         if ADD83var=="FF":
                             ADD83var4 = "-1"
-                        after_instruction = " dword [eax], "+"0x"+str(ADD83var.lower())+"   ; "+ADD83var4
+                        after_instruction = " dword [eax], "+"0x"+str(ADD83var.lower())+f"{bcolors.OKGREEN}   ; "+ADD83var4
                     elif bytes[counter1+1]=="E4":
                         instruction = "AND"
                         if ADD83var=="FF":
@@ -203,13 +203,13 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = " esp, "+"0x"+str(ADD83var.lower())
                     elif bytes[counter1+1]=="45" and bytes[counter1+2]=="FC":
                         ADD83var4 = str(int(bytes[counter1+3],16))
-                        after_instruction = " dword [var_4h], "+"0x"+str(ADD83var3.lower())+"   ; "+ADD83var4
+                        after_instruction = " dword [var_4h], "+"0x"+str(ADD83var3.lower())+f"{bcolors.OKGREEN}   ; "+ADD83var4
                         after_byte += " "+bytes[counter1+3]
                         ADD83var2 = 4
                     elif bytes[counter1+1]=="7D" and bytes[counter1+2]=="08":
                         ADD83var4 = str(int(bytes[counter1+3],16))
                         instruction = "CMP"
-                        after_instruction = " dword [arg_8h], "+"0x"+str(ADD83var3.lower())+"   ; "+ADD83var4
+                        after_instruction = " dword [arg_8h], "+"0x"+str(ADD83var3.lower())+f"{bcolors.OKGREEN}   ; "+ADD83var4
                         after_byte += " "+bytes[counter1+3]
                         ADD83var2 = 4
                     else:
@@ -233,9 +233,9 @@ def disassemble_x86(bytes, ascii_dict):
                     _68offset_to_dict_1 = hex(int(_68offset,16)+1)
                     _68offset_to_dict = hex(int(_68offset,16))
                     if _68offset_to_dict in ascii_dict:
-                        after_instruction = _68offset+"   ; "+str(ascii_dict[_68offset_to_dict])
+                        after_instruction = _68offset+f"{bcolors.OKGREEN}   ; "+str(ascii_dict[_68offset_to_dict])
                     elif _68offset_to_dict_1 in ascii_dict:
-                        after_instruction = _68offset+"   ; "+str(ascii_dict[_68offset_to_dict_1])
+                        after_instruction = _68offset+f"{bcolors.OKGREEN}   ; "+str(ascii_dict[_68offset_to_dict_1])
                     else:
                         after_instruction = _68offset
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
@@ -254,7 +254,7 @@ def disassemble_x86(bytes, ascii_dict):
                     BAvar = bytes[counter1+1]
                     if bytes[counter1+1][0]=="0":
                         BAvar = bytes[counter1+1][1]
-                    after_instruction = " al, "+"0x"+str(BAvar.lower())+"   ; "+str(int(BAvar,16))
+                    after_instruction = " al, "+"0x"+str(BAvar.lower())+f"{bcolors.OKGREEN}   ; "+str(int(BAvar,16))
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
@@ -271,7 +271,7 @@ def disassemble_x86(bytes, ascii_dict):
                     BAvar = bytes[counter1+1]
                     if bytes[counter1+1][0]=="0":
                         BAvar = bytes[counter1+1][1]
-                    after_instruction = " al, "+"0x"+str(BAvar.lower())+"   ; "+str(int(BAvar,16))
+                    after_instruction = " al, "+"0x"+str(BAvar.lower())+f"{bcolors.OKGREEN}   ; "+str(int(BAvar,16))
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
@@ -375,7 +375,7 @@ def disassemble_x86(bytes, ascii_dict):
                             _81var += str(bytes[counter1+3])
                         if bytes[counter1+2]!="00":
                             _81var += str(bytes[counter1+2])
-                        after_instruction = " ebx, 0x"+_81var+"   ; "+str(int(_81var,16))
+                        after_instruction = " ebx, 0x"+_81var+f"{bcolors.OKGREEN}   ; "+str(int(_81var,16))
                     elif bytes[counter1+1]=="EC":
                         instruction = "SUB"
                         if bytes[counter1+5]!="00":
@@ -386,7 +386,7 @@ def disassemble_x86(bytes, ascii_dict):
                             _81var += str(bytes[counter1+3])
                         if bytes[counter1+2]!="00":
                             _81var += str(bytes[counter1+2])
-                        after_instruction = " esp, 0x"+_81var+"   ; "+str(int(_81var,16))
+                        after_instruction = " esp, 0x"+_81var+f"{bcolors.OKGREEN}   ; "+str(int(_81var,16))
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
