@@ -348,7 +348,7 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = " ebx, edx"
                     elif bytes[counter1+1]=="D4":
                         after_instruction = " esp, edx"
-                    elif bytes[counter1+1]=="D4":
+                    elif bytes[counter1+1]=="D5":
                         after_instruction = " ebp, edx"
                     else:
                         should_print = False
