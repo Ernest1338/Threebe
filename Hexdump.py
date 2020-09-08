@@ -288,15 +288,12 @@ def hexdump_parser_32(hexdump, bytes, address1):
             parsed6.insert(29, " ")
             parsed6.insert(34, " ")
             parsed7 = "".join(parsed6)
-            # parsed3 = parsed3[:12]+""+parsed3[11:24]+" "+parsed3[24:36]+" "+parsed3[36:]
 
             offset2 = str(hex(offset1))
             if len(str(hex(offset1)))<9:
                 for _ in range(9-len(str(hex(offset1)))):
                     offset2 = offset2[0:2]+"0"+offset2[2:]
             print(f"{bcolors.OKBLUE}"+offset2+f"{bcolors.ENDC}  "+parsed7+f"{bcolors.OKBLUE}| {bcolors.ENDC}"+ascii1) #len - 51
-            # print(parsed4[:-1].split(" ")) # to remove
-            # print(parsed5)
 
             offset1 += 32
             if len(i)==2:
@@ -338,7 +335,6 @@ def hexdump_parser_32(hexdump, bytes, address1):
         parsed6.insert(29, " ")
         parsed6.insert(34, " ")
         parsed7 = "".join(parsed6)
-        # parsed3 = parsed3[:12]+""+parsed3[11:24]+" "+parsed3[24:36]+" "+parsed3[36:]
     except:
         pass
 
@@ -352,8 +348,6 @@ def hexdump_parser_32(hexdump, bytes, address1):
 
     print(f"{bcolors.OKBLUE}"+offset2+f"{bcolors.ENDC}  "+parsed7+f"{bcolors.OKBLUE}| {bcolors.ENDC}"+ascii1)
 
-    # print(parsed4[:-1].split(" ")) # to remove
-    # print(parsed5)
     return True
 
 def hexdump_ascii(hexdump):
@@ -406,7 +400,6 @@ def hexdump_ascii(hexdump):
 
     parsed3 = ""
     offset1 = 134512640
-    # print(f"{bcolors.FAIL}- offset -{bcolors.OKBLUE}  A  B  C  D   E  F  G  H   I  J  K  L   M  N  O  P  {bcolors.FAIL}- ASCII -{bcolors.ENDC}")
 
     for i in parsed2:
         if len(parsed3)<48:
@@ -433,19 +426,10 @@ def hexdump_ascii(hexdump):
                 except:
                     pass
             parsed6 = parsed3[:-1].split(" ")
-            # for b in range(len(parsed6)):
-                # if parsed5[b] == True:
-                    # parsed6[b] = f"{bcolors.WARNING}"+str(parsed3.split(" ")[b].upper())+f"{bcolors.ENDC}"+" "
-                # else:
-                    # parsed6[b] = str(parsed3.split(" ")[b].upper())+" "
             parsed6.insert(4, " ")
             parsed6.insert(9, " ")
             parsed6.insert(14, " ")
             parsed7 = "".join(parsed6)
-            # parsed3 = parsed3[:12]+""+parsed3[11:24]+" "+parsed3[24:36]+" "+parsed3[36:]
-            # print(f"{bcolors.OKBLUE}"+str(hex(offset1))+f"{bcolors.ENDC}  "+parsed7+f"{bcolors.OKBLUE}| {bcolors.ENDC}"+ascii1) #len - 51
-            # print(parsed4[:-1].split(" ")) # to remove
-            # print(parsed5)
 
             offset1 += 16
             if len(i)==2:
@@ -481,16 +465,12 @@ def hexdump_ascii(hexdump):
         parsed6.insert(9, " ")
         parsed6.insert(14, " ")
         parsed7 = "".join(parsed6)
-        # parsed3 = parsed3[:12]+""+parsed3[11:24]+" "+parsed3[24:36]+" "+parsed3[36:]
     except:
         pass
 
     for i in range(51-(len(parsed3)+3)):
         parsed7 += " "
 
-    # print(f"{bcolors.OKBLUE}"+str(hex(offset1))+f"{bcolors.ENDC}  "+parsed7+f"{bcolors.OKBLUE}| {bcolors.ENDC}"+ascii1)
-    # print(parsed4[:-1].split(" ")) # to remove
-    # print(parsed5)
     return _ascii
 
 def hexdump_parser(hexdump, bytes, address1):
@@ -589,7 +569,6 @@ def hexdump_parser(hexdump, bytes, address1):
             parsed6.insert(9, " ")
             parsed6.insert(14, " ")
             parsed7 = "".join(parsed6)
-            # parsed3 = parsed3[:12]+""+parsed3[11:24]+" "+parsed3[24:36]+" "+parsed3[36:]
 
             offset2 = str(hex(offset1))
             if len(str(hex(offset1)))<9:
@@ -597,9 +576,6 @@ def hexdump_parser(hexdump, bytes, address1):
                     offset2 = offset2[0:2]+"0"+offset2[2:]
 
             print(f"{bcolors.OKBLUE}"+offset2+f"{bcolors.ENDC}  "+parsed7+f"{bcolors.OKBLUE}| {bcolors.ENDC}"+ascii1) #len - 51
-
-            # print(parsed4[:-1].split(" ")) # to remove
-            # print(parsed5)
 
             offset1 += 16
             if len(i)==2:
@@ -636,7 +612,6 @@ def hexdump_parser(hexdump, bytes, address1):
         parsed6.insert(9, " ")
         parsed6.insert(14, " ")
         parsed7 = "".join(parsed6)
-        # parsed3 = parsed3[:12]+""+parsed3[11:24]+" "+parsed3[24:36]+" "+parsed3[36:]
     except:
         pass
 
@@ -649,8 +624,7 @@ def hexdump_parser(hexdump, bytes, address1):
             offset2 = offset2[0:2]+"0"+offset2[2:]
             
     print(f"{bcolors.OKBLUE}"+offset2+f"{bcolors.ENDC}  "+parsed7+f"{bcolors.OKBLUE}| {bcolors.ENDC}"+ascii1)
-    # print(parsed4[:-1].split(" ")) # to remove
-    # print(parsed5)
+
     return True
 
 def hexdump_parser_compressed(hexdump, bytes, address1):
@@ -749,7 +723,6 @@ def hexdump_parser_compressed(hexdump, bytes, address1):
             parsed6.insert(9, " ")
             parsed6.insert(14, " ")
             parsed7 = "".join(parsed6)
-            # parsed3 = parsed3[:12]+""+parsed3[11:24]+" "+parsed3[24:36]+" "+parsed3[36:]
 
             offset2 = str(hex(offset1))
             if len(str(hex(offset1)))<9:
@@ -757,9 +730,6 @@ def hexdump_parser_compressed(hexdump, bytes, address1):
                     offset2 = offset2[0:2]+"0"+offset2[2:]
 
             print(f"{bcolors.OKBLUE}"+offset2+f"{bcolors.ENDC} "+parsed7+f"{bcolors.OKBLUE} |{bcolors.ENDC}"+ascii1) #len - 51
-
-            # print(parsed4[:-1].split(" ")) # to remove
-            # print(parsed5)
 
             offset1 += 16
             if len(i)==2:
@@ -796,7 +766,6 @@ def hexdump_parser_compressed(hexdump, bytes, address1):
         parsed6.insert(9, " ")
         parsed6.insert(14, " ")
         parsed7 = "".join(parsed6)
-        # parsed3 = parsed3[:12]+""+parsed3[11:24]+" "+parsed3[24:36]+" "+parsed3[36:]
     except:
         pass
 
@@ -809,6 +778,5 @@ def hexdump_parser_compressed(hexdump, bytes, address1):
             offset2 = offset2[0:2]+"0"+offset2[2:]
             
     print(f"{bcolors.OKBLUE}"+offset2+f"{bcolors.ENDC} "+parsed7+f"{bcolors.OKBLUE} |{bcolors.ENDC}"+ascii1)
-    # print(parsed4[:-1].split(" ")) # to remove
-    # print(parsed5)
+
     return True
