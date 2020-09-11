@@ -1,3 +1,5 @@
+# This file contains function(s) that translates raw bytes into assembly instructions using x86opcodesTable and some python logic.
+
 import x86.x86opcodesTable as x86opT
 from Hexdump import bcolors
 
