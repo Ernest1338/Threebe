@@ -51,7 +51,7 @@ x86opcodes = {
                             # PENDING  #           -||-        to E0 then: TEST eax, esp
                             # PENDING  #           -||-        to DF then: TEST edi, ebx
                             # PENDING  #           -||-        to DE then: TEST esi, ebx
-                            # PENDING  #           -||-        to DD then: TEST ebp, ebx
+                            # DONE?    #           -||-        to DD then: TEST ebp, ebx
                             # DONE?    #           -||-        to DC then: TEST esp, ebx
                             # DONE?    #           -||-        to DB then: TEST ebx, ebx
                             # DONE?    #           -||-        to DA then: TEST edx, ebx
