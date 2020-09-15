@@ -7,12 +7,12 @@
 
 import sys
 import errno
-import Hexdump as hexdump
-import x86.x86disassembly as x86disassembly
-import BinInfo as binfo
-import Strings as strings
-import Patching as patching
-from BinArchitecture import bin_architecture
+import Functions.Hexdump as hexdump
+import Architectures.x86.x86disassembly as x86disassembly
+import Functions.BinInfo as binfo
+import Functions.Strings as strings
+import Functions.Patching as patching
+from Functions.BinArchitecture import bin_architecture
 
 # ========== FUNCTIONS / CLASSES ==========
 

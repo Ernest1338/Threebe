@@ -1,6 +1,6 @@
 # This is an file containing different functions that parses binary data in a variety of ways.
 
-from BinArchitecture import bin_architecture
+from Functions.BinArchitecture import bin_architecture
 
 class bcolors:
     HEADER = '\033[95m'

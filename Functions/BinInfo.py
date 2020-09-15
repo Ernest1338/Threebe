@@ -1,6 +1,6 @@
 # This is an file containing different functions that extracts information from a executable file.
 
-from Hexdump import bcolors
+from Functions.Hexdump import bcolors
 import sys
 
 def return_filename():

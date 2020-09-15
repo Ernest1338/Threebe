@@ -1,7 +1,7 @@
 # This file contains functions that parses user input from pathing parameter and are patching given binary.
 
 import sys
-from BinArchitecture import bin_architecture
+from Functions.BinArchitecture import bin_architecture
 
 def print_help_address():
     sys.stderr.write("ERROR: Wrong address/offset.\n")
