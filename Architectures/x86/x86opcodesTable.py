@@ -23,7 +23,7 @@ x86opcodes = {
                             # PENDING  #           -||-        to FC then: TEST esp, edi
                             # PENDING  #           -||-        to FB then: TEST ebx, edi
                             # PENDING  #           -||-        to FA then: TEST edx, edi
-                            # PENDING  #           -||-        to F9 then: TEST ecx, edi
+                            # DONE?    #           -||-        to F9 then: TEST ecx, edi
                             # DONE?    #           -||-        to F8 then: TEST eax, edi
                             # DONE?    #           -||-        to F7 then: TEST edi, esi
                             # DONE?    #           -||-        to F6 then: TEST esi, esi
