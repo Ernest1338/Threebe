@@ -71,6 +71,7 @@ def print_usage(clean):
     print("===== OTHERS =====")
     print(f"{helpColors[1]}")
     print("--help - Display this help screen.")
+    print("--help-clean - Display this help screen without any coloring.")
     print(f"{helpColors[2]}")
     print("Original author: Dawid J. (Ernest Gupik) 2020-2020")
 
@@ -338,6 +339,8 @@ def main():
 
     elif sys.argv[1]=="--help":
         print_usage(False)
+    elif sys.argv[1]=="--help-clean":
+        print_usage(True)
     else:
         print_help()
 
