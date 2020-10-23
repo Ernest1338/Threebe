@@ -28,7 +28,7 @@ def print_usage(clean):
     if clean:
         helpColors = ['','','']
     else:
-        helpColors = ['\033[95m', '\033[92m', '\033[94m']
+        helpColors = ['\033[93m', '\033[92m', '\033[94m']
     print(f"{helpColors[0]}Threebe {helpColors[2]}- Tool for displaying a Hexdump / Disassembly / Strings / Information from/of a (binary) file.")
     print("")
     print("Usage:")
