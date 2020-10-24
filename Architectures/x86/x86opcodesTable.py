@@ -20,7 +20,7 @@ x86opcodes = {
     "85" : "TEST",          # PENDING  # if next byte is equal to FF then: TEST edi, edi
                             # PENDING  #           -||-        to FE then: TEST esi, edi
                             # PENDING  #           -||-        to FD then: TEST ebp, edi
-                            # PENDING  #           -||-        to FC then: TEST esp, edi
+                            # DONE?    #           -||-        to FC then: TEST esp, edi
                             # DONE?    #           -||-        to FB then: TEST ebx, edi
                             # DONE?    #           -||-        to FA then: TEST edx, edi
                             # DONE?    #           -||-        to F9 then: TEST ecx, edi
