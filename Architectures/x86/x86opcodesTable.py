@@ -17,7 +17,7 @@ x86opcodes = {
     "2F" : "DAS",           # DONE
     "84" : "TEST",          # PENDING  # if next byte is equal to C0 then: TEST al, al
                             # PENDING  #    need to add more info
-    "85" : "TEST",          # PENDING  # if next byte is equal to FF then: TEST edi, edi
+    "85" : "TEST",          # DONE?    # if next byte is equal to FF then: TEST edi, edi
                             # DONE?    #           -||-        to FE then: TEST esi, edi
                             # DONE?    #           -||-        to FD then: TEST ebp, edi
                             # DONE?    #           -||-        to FC then: TEST esp, edi
