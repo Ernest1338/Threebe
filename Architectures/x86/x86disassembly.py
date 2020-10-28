@@ -579,6 +579,7 @@ def disassemble_x86(bytes, ascii_dict):
 
         else:
             times -= 1
+        
         offset1 += 1
         counter1 += 1
 
