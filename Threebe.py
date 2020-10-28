@@ -165,7 +165,7 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o))
+                binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o), False)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
