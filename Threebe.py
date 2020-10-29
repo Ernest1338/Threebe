@@ -172,6 +172,18 @@ def main():
                 else:
                     print_wrong_file_help()
 
+        elif sys.argv[1]=="-ic" or sys.argv[1]=="-IC":   # INFORMATIONS - CLEAN
+            try:
+                file_name = sys.argv[2]
+                file_o = open(file_name,'rb').read()
+
+                binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o), True)
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
+
         elif sys.argv[1]=="-sb" or sys.argv[1]=="-SB":   # STRINGS - BINARY
             try:
                 file_name = sys.argv[2]
