@@ -15,8 +15,70 @@ x86opcodes = {
     "0C" : "OR",            # DONE?    # next byte represents or value: OR al, <VALUE>
     "27" : "DAA",           # DONE
     "2F" : "DAS",           # DONE
-    "84" : "TEST",          # PENDING  # if next byte is equal to C0 then: TEST al, al
-                            # PENDING  #    need to add more info
+    "84" : "TEST",          # PENDING  # if next byte is equal to FF then: TEST bh, bh
+                            # PENDING  #           -||-        to FE then: TEST dh, bh
+                            # PENDING  #           -||-        to FD then: TEST ch, bh
+                            # PENDING  #           -||-        to FC then: TEST ah, bh
+                            # PENDING  #           -||-        to FB then: TEST bl, bh
+                            # PENDING  #           -||-        to FA then: TEST dl, bh
+                            # PENDING  #           -||-        to F9 then: TEST cl, bh
+                            # PENDING  #           -||-        to F8 then: TEST al, bh
+                            # PENDING  #           -||-        to F7 then: TEST bh, dh
+                            # PENDING  #           -||-        to F6 then: TEST dh, dh
+                            # PENDING  #           -||-        to F5 then: TEST ch, dh
+                            # PENDING  #           -||-        to F4 then: TEST ah, dh
+                            # PENDING  #           -||-        to F3 then: TEST bl, dh
+                            # PENDING  #           -||-        to F2 then: TEST dl, dh
+                            # PENDING  #           -||-        to F1 then: TEST cl, dh
+                            # PENDING  #           -||-        to F0 then: TEST al, dh
+                            # PENDING  #           -||-        to EF then: TEST bh, ch
+                            # PENDING  #           -||-        to EE then: TEST dh, ch
+                            # PENDING  #           -||-        to ED then: TEST ch, ch
+                            # PENDING  #           -||-        to EC then: TEST ah, ch
+                            # PENDING  #           -||-        to EB then: TEST bl, ch
+                            # PENDING  #           -||-        to EA then: TEST dl, ch
+                            # PENDING  #           -||-        to E9 then: TEST cl, ch
+                            # PENDING  #           -||-        to E8 then: TEST al, ch
+                            # PENDING  #           -||-        to E7 then: TEST bh, ah
+                            # PENDING  #           -||-        to E6 then: TEST dh, ah
+                            # PENDING  #           -||-        to E5 then: TEST ch, ah
+                            # PENDING  #           -||-        to E4 then: TEST ah, ah
+                            # PENDING  #           -||-        to E3 then: TEST bl, ah
+                            # PENDING  #           -||-        to E2 then: TEST dl, ah
+                            # PENDING  #           -||-        to E1 then: TEST cl, ah
+                            # PENDING  #           -||-        to E0 then: TEST al, ah
+                            # PENDING  #           -||-        to DF then: TEST bh, bl
+                            # PENDING  #           -||-        to DE then: TEST dh, bl
+                            # PENDING  #           -||-        to DD then: TEST ch, bl
+                            # PENDING  #           -||-        to DC then: TEST ah, bl
+                            # PENDING  #           -||-        to DB then: TEST bl, bl
+                            # PENDING  #           -||-        to DA then: TEST dl, bl
+                            # PENDING  #           -||-        to D9 then: TEST cl, bl
+                            # PENDING  #           -||-        to D8 then: TEST al, bl
+                            # PENDING  #           -||-        to D7 then: TEST bh, dl
+                            # PENDING  #           -||-        to D6 then: TEST dh, dl
+                            # PENDING  #           -||-        to D5 then: TEST ch, dl
+                            # PENDING  #           -||-        to D4 then: TEST ah, dl
+                            # PENDING  #           -||-        to D3 then: TEST bl, dl
+                            # PENDING  #           -||-        to D2 then: TEST dl, dl
+                            # PENDING  #           -||-        to D1 then: TEST cl, dl
+                            # PENDING  #           -||-        to D0 then: TEST al, dl
+                            # PENDING  #           -||-        to CF then: TEST bh, cl
+                            # PENDING  #           -||-        to CE then: TEST dh, cl
+                            # PENDING  #           -||-        to CD then: TEST ch, cl
+                            # PENDING  #           -||-        to CC then: TEST ah, cl
+                            # PENDING  #           -||-        to CB then: TEST bl, cl
+                            # PENDING  #           -||-        to CA then: TEST dl, cl
+                            # PENDING  #           -||-        to C9 then: TEST cl, cl
+                            # PENDING  #           -||-        to C8 then: TEST al, cl
+                            # PENDING  #           -||-        to C7 then: TEST bh, al
+                            # PENDING  #           -||-        to C6 then: TEST dh, al
+                            # PENDING  #           -||-        to C5 then: TEST ch, al
+                            # PENDING  #           -||-        to C4 then: TEST ah, al
+                            # PENDING  #           -||-        to C3 then: TEST bl, al
+                            # PENDING  #           -||-        to C2 then: TEST dl, al
+                            # PENDING  #           -||-        to C1 then: TEST cl, al
+                            # PENDING  #           -||-        to C0 then: TEST al, al
     "85" : "TEST",          # DONE?    # if next byte is equal to FF then: TEST edi, edi
                             # DONE?    #           -||-        to FE then: TEST esi, edi
                             # DONE?    #           -||-        to FD then: TEST ebp, edi
