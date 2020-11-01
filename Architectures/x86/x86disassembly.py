@@ -583,5 +583,4 @@ def disassemble_x86(bytes, ascii_dict):
         offset1 += 1
         counter1 += 1
 
-    # print(x86opT.x86opcodes["55"])
     return True
