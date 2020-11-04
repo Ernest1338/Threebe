@@ -11,6 +11,7 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
 
 def hexdump_clean_without_parsing(hexdump):
     hexdump = str(hexdump)
