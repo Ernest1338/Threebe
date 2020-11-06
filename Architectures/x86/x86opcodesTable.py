@@ -76,7 +76,7 @@ x86opcodes = {
                             # PENDING  #           -||-        to C5 then: TEST ch, al
                             # PENDING  #           -||-        to C4 then: TEST ah, al
                             # PENDING  #           -||-        to C3 then: TEST bl, al
-                            # PENDING  #           -||-        to C2 then: TEST dl, al
+                            # DONE?    #           -||-        to C2 then: TEST dl, al
                             # DONE?    #           -||-        to C1 then: TEST cl, al
                             # DONE?    #           -||-        to C0 then: TEST al, al
     "85" : "TEST",          # DONE?    # if next byte is equal to FF then: TEST edi, edi
