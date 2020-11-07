@@ -269,8 +269,12 @@ def main():
                 file_name = sys.argv[4]
                 file_o = open(file_name,'rb').read()
                 architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
-
-                patching.patch_bin(file_o, sys.argv[2], sys.argv[3], architecture, file_name)
+                if architecture != 1:
+                    patching.patch_bin(file_o, sys.argv[2], sys.argv[3], architecture, file_name)
+                else:
+                    sys.stderr.write("ERROR: File header not recognized.\n")
+                    sys.stderr.write("This may be because this binary type is not yet supported or your binary's header got corrupted.\n")
+                    sys.stderr.write("Try using -p function. (Remember to change addresses in that case.)\n")
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
