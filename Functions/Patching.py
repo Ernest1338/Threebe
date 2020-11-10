@@ -25,6 +25,8 @@ def patch_bin(hexdump, address, bytes_to_write, architecture, file_name):
             return 1
     elif architecture=="x86_64":
         bytes_pointer = int(address,16)
+    else:
+        pass # This may be an edge case. Need to do something about that.
     bytes_list = []
     old_bytes = ""
     for i in hexdump:
