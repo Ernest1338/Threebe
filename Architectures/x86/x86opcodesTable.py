@@ -73,7 +73,7 @@ x86opcodes = {
                             # PENDING  #           -||-        to C8 then: TEST al, cl
                             # PENDING  #           -||-        to C7 then: TEST bh, al
                             # PENDING  #           -||-        to C6 then: TEST dh, al
-                            # PENDING  #           -||-        to C5 then: TEST ch, al
+                            # DONE?    #           -||-        to C5 then: TEST ch, al
                             # DONE?    #           -||-        to C4 then: TEST ah, al
                             # DONE?    #           -||-        to C3 then: TEST bl, al
                             # DONE?    #           -||-        to C2 then: TEST dl, al
