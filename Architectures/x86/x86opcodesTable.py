@@ -10,11 +10,129 @@ x86opcodes = {
     "71" : "JNO",           # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 71 1A -> JNO <ADDRESS OF THIS INSTRUCTION>+28 (int('1A',16)+2=28) # + logic behind reverse jumps: if 2nd byte>128
     "72" : "JB",            # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 71 1A -> JB <ADDRESS OF THIS INSTRUCTION>+28 (int('1A',16)+2=28) # + logic behind reverse jumps: if 2nd byte>128
     "73" : "JAE",           # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 71 1A -> JAE <ADDRESS OF THIS INSTRUCTION>+28 (int('1A',16)+2=28) # + logic behind reverse jumps: if 2nd byte>128
+    "30" : "XOR",           # PENDING  # if next byte is equal to 00 then: XOR byte [eax], al
+                            # PENDING  #           -||-        to 4D then: XOR byte [ebp + <value>], cl     where VALUE is the byte after 4D
     "31" : "XOR",           # DONE?    # if next byte is equal to ED then: XOR ebp, ebp
+                            # PENDING  #           -||-        to FF then: XOR edi, edi
+    "32" : "XOR",           # PENDING  # if next byte is equal to 00 then: XOR al, byte [eax]
+                            # PENDING  #           -||-        to 2E then: XOR ch, byte [esi]
+    "34" : "XOR al",        # PENDING  # next byte represents XOR value: XOR al, <VALUE>
                             # DONE?    #           -||-        to FF then: XOR edi, edi
-    "0C" : "OR",            # DONE?    # next byte represents or value: OR al, <VALUE>
+    "0A" : "OR",            # PENDING  # if next byte is equal to 36 then: OR dh, byte [esi]
+                            # PENDING  #           -||-        to 00 then: OR al, byte [eax]
+    "0B" : "OR",            # PENDING  # if next byte is equal to 00 then: OR eax, dword [eax]
+    "0C" : "OR",            # DONE?    # next byte represents OR value: OR al, <VALUE>
+    "08" : "OR",            # PENDING  # if next byte is equal to 00 then: OR byte [eax], al
+                            # PENDING  #           -||-        to 01 then: OR byte [ecx], al
+                            # PENDING  #           -||-        to 02 then: OR byte [edx], al
+                            # PENDING  #           -||-        to 03 then: OR byte [ebx], al
+                            # PENDING  #           -||-        to 06 then: OR byte [esi], al
+                            # PENDING  #           -||-        to 07 then: OR byte [edi], al
+                            # PENDING  #           -||-        to 08 then: OR byte [eax], cl
+                            # PENDING  #           -||-        to 09 then: OR byte [ecx], cl
+                            # PENDING  #           -||-        to 0A then: OR byte [edx], cl
+                            # PENDING  #           -||-        to 0B then: OR byte [ebx], cl
+                            # PENDING  #           -||-        to 0E then: OR byte [esx], cl
+                            # PENDING  #           -||-        to 0F then: OR byte [edi], cl
+    "F6" : "NOT",           # PENDING  # if next byte is equal to FF then: IDIV bh
+                            # PENDING  #           -||-        to FE then: IDIV dh
+                            # PENDING  #           -||-        to FD then: IDIV ch
+                            # PENDING  #           -||-        to FC then: IDIV ah
+                            # PENDING  #           -||-        to FB then: IDIV bl
+                            # PENDING  #           -||-        to FA then: IDIV dl
+                            # PENDING  #           -||-        to F9 then: IDIV cl
+                            # PENDING  #           -||-        to F8 then: IDIV al
+                            # PENDING  #           -||-        to F7 then: DIV bh
+                            # PENDING  #           -||-        to F6 then: DIV dh
+                            # PENDING  #           -||-        to F5 then: DIV ch
+                            # PENDING  #           -||-        to F4 then: DIV ah
+                            # PENDING  #           -||-        to F3 then: DIV bl
+                            # PENDING  #           -||-        to F2 then: DIV dl
+                            # PENDING  #           -||-        to F1 then: DIV cl
+                            # PENDING  #           -||-        to F0 then: DIV al
+                            # PENDING  #           -||-        to EF then: IMUL bh
+                            # PENDING  #           -||-        to EE then: IMUL dh
+                            # PENDING  #           -||-        to ED then: IMUL ch
+                            # PENDING  #           -||-        to EC then: IMUL ah
+                            # PENDING  #           -||-        to EB then: IMUL bl
+                            # PENDING  #           -||-        to EA then: IMUL dl
+                            # PENDING  #           -||-        to E9 then: IMUL cl
+                            # PENDING  #           -||-        to E8 then: IMUL al
+                            # PENDING  #           -||-        to E7 then: MUL bh
+                            # PENDING  #           -||-        to E6 then: MUL dh
+                            # PENDING  #           -||-        to E5 then: MUL ch
+                            # PENDING  #           -||-        to E4 then: MUL ah
+                            # PENDING  #           -||-        to E3 then: MUL bl
+                            # PENDING  #           -||-        to E2 then: MUL dl
+                            # PENDING  #           -||-        to E1 then: MUL cl
+                            # PENDING  #           -||-        to E0 then: MUL al
+                            # PENDING  #           -||-        to DF then: NEG bh
+                            # PENDING  #           -||-        to DE then: NEG dh
+                            # PENDING  #           -||-        to DD then: NEG ch
+                            # PENDING  #           -||-        to DC then: NEG ah
+                            # PENDING  #           -||-        to DB then: NEG bl
+                            # PENDING  #           -||-        to DA then: NEG dl
+                            # PENDING  #           -||-        to D9 then: NEG cl
+                            # PENDING  #           -||-        to D8 then: NEG al
+                            # PENDING  #           -||-        to D7 then: NOT bh
+                            # PENDING  #           -||-        to D6 then: NOT dh
+                            # PENDING  #           -||-        to D5 then: NOT ch
+                            # PENDING  #           -||-        to D4 then: NOT ah
+                            # PENDING  #           -||-        to D3 then: NOT bl
+                            # PENDING  #           -||-        to D2 then: NOT dl
+                            # PENDING  #           -||-        to D1 then: NOT cl
+                            # PENDING  #           -||-        to D0 then: NOT al
+    "F7" : "NOT",           # PENDING  # if next byte is equal to FF then: IDIV edi
+                            # PENDING  #           -||-        to FE then: IDIV esi
+                            # PENDING  #           -||-        to FD then: IDIV ebp
+                            # PENDING  #           -||-        to FC then: IDIV esp
+                            # PENDING  #           -||-        to FB then: IDIV ebx
+                            # PENDING  #           -||-        to FA then: IDIV edx
+                            # PENDING  #           -||-        to F9 then: IDIV ecx
+                            # PENDING  #           -||-        to F8 then: IDIV eax
+                            # PENDING  #           -||-        to F7 then: DIV edi
+                            # PENDING  #           -||-        to F6 then: DIV esi
+                            # PENDING  #           -||-        to F5 then: DIV ebp
+                            # PENDING  #           -||-        to F4 then: DIV esp
+                            # PENDING  #           -||-        to F3 then: DIV ebx
+                            # PENDING  #           -||-        to F2 then: DIV edx
+                            # PENDING  #           -||-        to F1 then: DIV ecx
+                            # PENDING  #           -||-        to F0 then: DIV eax
+                            # PENDING  #           -||-        to EF then: IMUL edi
+                            # PENDING  #           -||-        to EE then: IMUL esi
+                            # PENDING  #           -||-        to ED then: IMUL ebp
+                            # PENDING  #           -||-        to EC then: IMUL esp
+                            # PENDING  #           -||-        to EB then: IMUL ebx
+                            # PENDING  #           -||-        to EA then: IMUL edx
+                            # PENDING  #           -||-        to E9 then: IMUL ecx
+                            # PENDING  #           -||-        to E8 then: IMUL eax
+                            # PENDING  #           -||-        to E7 then: MUL edi
+                            # PENDING  #           -||-        to E6 then: MUL esi
+                            # PENDING  #           -||-        to E5 then: MUL ebp
+                            # PENDING  #           -||-        to E4 then: MUL esp
+                            # PENDING  #           -||-        to E3 then: MUL ebx
+                            # PENDING  #           -||-        to E2 then: MUL edx
+                            # PENDING  #           -||-        to E1 then: MUL ecx
+                            # PENDING  #           -||-        to E0 then: MUL eax
+                            # PENDING  #           -||-        to DF then: NEG edi
+                            # PENDING  #           -||-        to DE then: NEG esi
+                            # PENDING  #           -||-        to DD then: NEG ebp
+                            # PENDING  #           -||-        to DC then: NEG esp
+                            # PENDING  #           -||-        to DB then: NEG ebx
+                            # PENDING  #           -||-        to DA then: NEG edx
+                            # PENDING  #           -||-        to D9 then: NEG ecx
+                            # PENDING  #           -||-        to D8 then: NEG eax
+                            # PENDING  #           -||-        to D7 then: NOT edi
+                            # PENDING  #           -||-        to D6 then: NOT esi
+                            # PENDING  #           -||-        to D5 then: NOT ebp
+                            # PENDING  #           -||-        to D4 then: NOT esp
+                            # PENDING  #           -||-        to D3 then: NOT ebx
+                            # PENDING  #           -||-        to D2 then: NOT edx
+                            # PENDING  #           -||-        to D1 then: NOT ecx
+                            # PENDING  #           -||-        to D0 then: NOT eax
     "27" : "DAA",           # DONE
     "2F" : "DAS",           # DONE
+    "CF" : "IRETD",         # PENDING
     "84" : "TEST",          # PENDING  # if next byte is equal to FF then: TEST bh, bh
                             # PENDING  #           -||-        to FE then: TEST dh, bh
                             # PENDING  #           -||-        to FD then: TEST ch, bh
@@ -143,18 +261,31 @@ x86opcodes = {
                             # DONE?    #           -||-        to C2 then: TEST edx, eax
                             # DONE?    #           -||-        to C1 then: TEST ecx, eax
                             # DONE?    #           -||-        to C0 then: TEST eax, eax
-    "4C" : "DEC esp",       # DONE
+    "29" : "SUB",           # PENDING  # if nexy byte is equal to C6 then: SUB esi, eax
+    "2C" : "SUB al",        # PENDING  # next byte represents sub value (in hex), eg. 2C 87 > SUB al, 0x87  ; 135
+    "83" : "SUB",           # PENDING  # if nexy byte is equal to EC then: SUB esp, <value>  where VALUE is the byte after EC
+                            # PENDING  #           -||-        to EA then: SUB edx, <value>                 -||-
+    "20" : "AND",           # PENDING  # if next byte is equal to 00 then: AND byte [eax], al
+                            # PENDING  #           -||-        to 01 then: AND byte [ecx], al
+                            # PENDING  #           -||-        to 02 then: AND byte [edx], al
+                            # PENDING  #           -||-        to 03 then: AND byte [ebx], al
+    "22" : "AND al",        # PENDING  # next byte represents and value (in hex), eg. 24 22 > AND al, 0x24  ; 34
+    "48" : "DEC eax",       # DONE
     "49" : "DEC ecx",       # DONE
+    "4A" : "DEC edx",       # PENDING
+    "4B" : "DEC ebx",       # PENDING
+    "4C" : "DEC esp",       # DONE
+    "4D" : "DEC ebp",       # PENDING 
     "4E" : "DEC esi",       # DONE
     "4F" : "DEC edi",       # DONE
-    "48" : "DEC eax",       # DONE
-    "46" : "INC esi",       # DONE
-    "44" : "INC esp",       # DONE
-    "47" : "INC edi",       # DONE
-    "42" : "INC edx",       # DONE
-    "43" : "INC ebx",       # DONE
     "40" : "INC eax",       # DONE
     "41" : "INC ecx",       # DONE
+    "42" : "INC edx",       # DONE
+    "43" : "INC ebx",       # DONE
+    "44" : "INC esp",       # DONE
+    "45" : "INC ebp",       # PENDING
+    "46" : "INC esi",       # DONE
+    "47" : "INC edi",       # DONE
     "50" : "PUSH eax",      # DONE
     "51" : "PUSH ecx",      # DONE
     "52" : "PUSH edx",      # DONE
