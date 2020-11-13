@@ -132,7 +132,7 @@ x86opcodes = {
                             # PENDING  #           -||-        to D0 then: NOT eax
     "27" : "DAA",           # DONE
     "2F" : "DAS",           # DONE
-    "CF" : "IRETD",         # PENDING
+    "CF" : "IRETD",         # DONE
     "84" : "TEST",          # PENDING  # if next byte is equal to FF then: TEST bh, bh
                             # PENDING  #           -||-        to FE then: TEST dh, bh
                             # PENDING  #           -||-        to FD then: TEST ch, bh
