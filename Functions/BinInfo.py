@@ -18,13 +18,13 @@ def bin_get_info(bytes, clean):
     # File name
     print(f"{colors[0]}"+"File name:           "+f"{colors[1]}"+str(return_filename())+f"{colors[2]}")
 
-    # Type of executable file
+    # Format of executable file
     if ''.join(bytes[1:4])=="454C46":
-        filetype = "ELF"
-        print(f"{colors[0]}"+"File type:           "+f"{colors[1]}"+filetype+f"{colors[2]}")
+        fileformat = "ELF"
+        print(f"{colors[0]}"+"File format:         "+f"{colors[1]}"+fileformat+f"{colors[2]}")
     elif ''.join(bytes[0:2])=="4D5A":
-        filetype = "PE"
-        print(f"{colors[0]}"+"File Type:           "+f"{colors[1]}"+filetype+" (Windows Executable)"+f"{colors[2]}")
+        fileformat = "PE"
+        print(f"{colors[0]}"+"File format:           "+f"{colors[1]}"+fileformat+" (Windows Executable)"+f"{colors[2]}")
 
     # Magic bytes
     magic = ""
@@ -33,14 +33,14 @@ def bin_get_info(bytes, clean):
     print(f"{colors[0]}"+"Magic bytes:         "+f"{colors[1]}"+magic+f"{colors[2]}")
 
     # Operating System
-    if filetype=="ELF":
+    if fileformat=="ELF":
         os = "Linux"
-    elif filetype=="PE":
+    elif fileformat=="PE":
         os = "Windows"
     print(f"{colors[0]}"+"OS:                  "+f"{colors[1]}"+os+f"{colors[2]}")
 
     # File architecture
-    if filetype=="ELF":  # ELF - Linux
+    if fileformat=="ELF":  # ELF - Linux
         if bytes[4]=="01":
             architecture = "x86"
         elif bytes[4]=="02":
@@ -48,15 +48,15 @@ def bin_get_info(bytes, clean):
         print(f"{colors[0]}"+"Architecture:        "+f"{colors[1]}"+architecture+f"{colors[2]}")
 
     # File class
-    if filetype=="ELF" and architecture=="x86":
+    if fileformat=="ELF" and architecture=="x86":
         _class = "ELF32"
         print(f"{colors[0]}"+"Class:               "+f"{colors[1]}"+_class+f"{colors[2]}")
-    elif filetype=="ELF" and architecture=="x86_64":
+    elif fileformat=="ELF" and architecture=="x86_64":
         _class = "ELF64"
         print(f"{colors[0]}"+"Class:               "+f"{colors[1]}"+_class+f"{colors[2]}")
 
     # Endian type
-    if filetype=="ELF":
+    if fileformat=="ELF":
         if bytes[5]=="01":
             endian = "Little"
         elif bytes[5]=="02":
@@ -64,7 +64,7 @@ def bin_get_info(bytes, clean):
         print(f"{colors[0]}"+"Endian:              "+f"{colors[1]}"+endian+f"{colors[2]}")
 
     # Entry point address
-    if filetype=="ELF":
+    if fileformat=="ELF":
         if endian=="Little":
             entrypoint = "0x"+bytes[27][1]+bytes[26]+bytes[25]+bytes[24]
         elif endian=="Big":
@@ -72,6 +72,6 @@ def bin_get_info(bytes, clean):
         print(f"{colors[0]}"+"Entry point address: "+f"{colors[1]}"+entrypoint+f"{colors[2]}")
 
     # ELF version
-    if filetype=="ELF":
+    if fileformat=="ELF":
         elfv = bytes[6][1]
         print(f"{colors[0]}"+"ELF version:         "+f"{colors[1]}"+elfv+f"{colors[2]}")
