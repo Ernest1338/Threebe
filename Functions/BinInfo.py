@@ -24,7 +24,18 @@ def bin_get_info(bytes, clean):
         print(f"{colors[0]}"+"File format:         "+f"{colors[1]}"+fileformat+f"{colors[2]}")
     elif ''.join(bytes[0:2])=="4D5A":
         fileformat = "PE"
-        print(f"{colors[0]}"+"File format:           "+f"{colors[1]}"+fileformat+" (Windows Executable)"+f"{colors[2]}")
+        print(f"{colors[0]}"+"File format:         "+f"{colors[1]}"+fileformat+" (Windows Executable)"+f"{colors[2]}")
+    else:
+        fileformat = "Unknown"
+        print(f"{colors[0]}"+"File format:         "+f"{colors[1]}"+fileformat+f"{colors[2]}")
+
+    # File type
+    if fileformat == "ELF" or fileformat == "PE":
+        filetype = "EXEC (Executable file)"
+        print(f"{colors[0]}"+"File type:           "+f"{colors[1]}"+filetype+f"{colors[2]}")
+    else:
+        filetype = "File"
+        print(f"{colors[0]}"+"File type:           "+f"{colors[1]}"+filetype+f"{colors[2]}")
 
     # Magic bytes
     magic = ""
