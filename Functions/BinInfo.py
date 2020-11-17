@@ -48,6 +48,8 @@ def bin_get_info(bytes, clean):
         os = "Linux"
     elif fileformat=="PE":
         os = "Windows"
+    else:
+        os = "Unknown"
     print(f"{colors[0]}"+"OS:                  "+f"{colors[1]}"+os+f"{colors[2]}")
 
     # File architecture
