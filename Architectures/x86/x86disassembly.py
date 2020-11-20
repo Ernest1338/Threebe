@@ -479,6 +479,10 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = " dl, cl"
                     elif bytes[counter1+1]=="CB":
                         after_instruction = " bl, cl"
+                    elif bytes[counter1+1]=="CC":
+                        after_instruction = " ah, cl"
+                    elif bytes[counter1+1]=="CD":
+                        after_instruction = " ch, cl"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
