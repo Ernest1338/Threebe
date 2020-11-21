@@ -181,8 +181,8 @@ x86opcodes = {
                             # PENDING  #           -||-        to D2 then: TEST dl, dl
                             # PENDING  #           -||-        to D1 then: TEST cl, dl
                             # PENDING  #           -||-        to D0 then: TEST al, dl
-                            # PENDING  #           -||-        to CF then: TEST bh, cl
-                            # PENDING  #           -||-        to CE then: TEST dh, cl
+                            # DONE?    #           -||-        to CF then: TEST bh, cl
+                            # DONE?    #           -||-        to CE then: TEST dh, cl
                             # DONE?    #           -||-        to CD then: TEST ch, cl
                             # DONE?    #           -||-        to CC then: TEST ah, cl
                             # DONE?    #           -||-        to CB then: TEST bl, cl
