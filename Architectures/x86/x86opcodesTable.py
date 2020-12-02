@@ -161,8 +161,8 @@ x86opcodes = {
                             # PENDING  #           -||-        to E6 then: TEST dh, ah
                             # PENDING  #           -||-        to E5 then: TEST ch, ah
                             # PENDING  #           -||-        to E4 then: TEST ah, ah
-                            # PENDING  #           -||-        to E3 then: TEST bl, ah
-                            # PENDING  #           -||-        to E2 then: TEST dl, ah
+                            # DONE?    #           -||-        to E3 then: TEST bl, ah
+                            # DONE?    #           -||-        to E2 then: TEST dl, ah
                             # DONE?    #           -||-        to E1 then: TEST cl, ah
                             # DONE?    #           -||-        to E0 then: TEST al, ah
                             # DONE?    #           -||-        to DF then: TEST bh, bl
