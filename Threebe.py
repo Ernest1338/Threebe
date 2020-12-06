@@ -13,6 +13,7 @@ import Functions.BinInfo as binfo
 import Functions.Strings as strings
 import Functions.Patching as patching
 from Functions.BinArchitecture import bin_architecture
+from Functions.Colors import bcolors
 
 # ========== FUNCTIONS / CLASSES ==========
 
@@ -26,9 +27,9 @@ def print_wrong_file_help():
 
 def print_usage(clean):
     if clean:
-        helpColors = ['','','']
+        helpColors = ['','','','']
     else:
-        helpColors = ['\033[93m', '\033[92m', '\033[94m', '\033[0m']
+        helpColors = [bcolors.WARNING, bcolors.OKGREEN, bcolors.OKBLUE, bcolors.RESET]
     print(f"{helpColors[0]}Threebe {helpColors[2]}- Tool for displaying a Hexdump / Disassembly / Strings / Information from/of a (binary) file.")
     print("")
     print("Usage:")

@@ -1,7 +1,7 @@
 # This file contains function(s) that translates raw bytes into assembly instructions using x86opcodesTable and some python logic.
 
 import Architectures.x86.x86opcodesTable as x86opT
-from Functions.Hexdump import bcolors
+from Functions.Colors import bcolors
 
 times = 0
 
@@ -37,12 +37,12 @@ def disassemble_x86(bytes, ascii_dict):
                             after_instruction = " "+hex(offset1-(256-(int(bytes[counter1+1],16)+2)))
                     else:
                         after_instruction = " "+hex(offset1+(int(bytes[counter1+1],16)+2))
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     print(check1)
                     after_byte = ""
                     after_instruction = ""
@@ -53,11 +53,11 @@ def disassemble_x86(bytes, ascii_dict):
                     or i == "1F" or i == "07" or i == "17" or i == "58" or i == "59" or i == "5A" or i == "5B" or i == "5C" or i == "5D" or i == "5E" or i == "5F" or i == "61" or i == "4C" or i == "49"
                     or i == "4E" or i == "4F" or i == "48" or i == "46" or i == "44" or i == "47" or i == "42" or i == "43" or i == "40" or i == "41" or i == "C9" or i == "C3" or i == "27" or i == "2F"
                     or i == "CF"):
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     print(check1)
                     after_byte = ""
 
@@ -73,12 +73,12 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = " dword [eax], eax"
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if should_print:
                         print(check1)
                     after_byte = ""
@@ -94,12 +94,12 @@ def disassemble_x86(bytes, ascii_dict):
                     after_instruction = ", "+"0x"+str(BAvar.lower())
                     lenWholeOpcode = len(instruction)+len(after_instruction)
                     after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(BAvar,16))
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     print(check1)
                     after_byte = ""
                     after_instruction = ""
@@ -114,12 +114,12 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = " ebx, ecx"
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if should_print:
                         print(check1)
                     after_byte = ""
@@ -152,12 +152,12 @@ def disassemble_x86(bytes, ascii_dict):
                         _8Bvar = 2
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if should_print:
                         print(check1)
                     after_byte = ""
@@ -242,12 +242,12 @@ def disassemble_x86(bytes, ascii_dict):
                         ADD83var2 = 4
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if should_print:
                         print(check1)
                     after_byte = ""
@@ -270,12 +270,12 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(ascii_dict[_68offset_to_dict_1])
                     else:
                         after_instruction = _68offset
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     print(check1)
                     after_byte = ""
                     after_instruction = ""
@@ -289,12 +289,12 @@ def disassemble_x86(bytes, ascii_dict):
                     after_instruction = " al, "+"0x"+str(BAvar.lower())
                     lenWholeOpcode = len(instruction)+len(after_instruction)
                     after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(BAvar,16))
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     print(check1)
                     after_byte = ""
                     after_instruction = ""
@@ -308,12 +308,12 @@ def disassemble_x86(bytes, ascii_dict):
                     after_instruction = " al, "+"0x"+str(BAvar.lower())
                     lenWholeOpcode = len(instruction)+len(after_instruction)
                     after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(BAvar,16))
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     print(check1)
                     after_byte = ""
                     after_instruction = ""
@@ -327,12 +327,12 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = " edi, edi"
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if should_print:
                         print(check1)
                     after_byte = ""
@@ -472,12 +472,12 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = " edi, edi"
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if should_print:
                         print(check1)
                     after_byte = ""
@@ -569,12 +569,12 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = " bh, ah"
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if should_print:
                         print(check1)
                     after_byte = ""
@@ -612,12 +612,12 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(_81var,16))
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if should_print:
                         print(check1)
                     after_byte = ""
@@ -631,12 +631,12 @@ def disassemble_x86(bytes, ascii_dict):
                         pass
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if should_print:
                         print(check1)
                     after_byte = ""
@@ -664,12 +664,12 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = " edi"
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if should_print:
                         print(check1)
                     after_byte = ""
@@ -694,12 +694,12 @@ def disassemble_x86(bytes, ascii_dict):
                         after_instruction = " gs"
                     else:
                         should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 50+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
                             after_byte += " "
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.ENDC}"
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if should_print:
                         print(check1)
                     after_byte = ""
@@ -709,7 +709,7 @@ def disassemble_x86(bytes, ascii_dict):
                     
             else:
                 pass
-                #print(f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+"                 "+f"{bcolors.WARNING}"+"???"+f"{bcolors.ENDC}")
+                #print(f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+"                 "+f"{bcolors.WARNING}"+"???"+f"{bcolors.RESET}")
 
         else:
             times -= 1

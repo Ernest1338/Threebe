@@ -1,6 +1,6 @@
 # This file contains funtions that extracts strings from a given (binary) files.
 
-from Functions.Hexdump import bcolors
+from Functions.Colors import bcolors
 from Functions.BinArchitecture import bin_architecture
 
 def extract_binary(ascii, bytes):
@@ -38,7 +38,7 @@ def extract_binary(ascii, bytes):
             string_toappend = ""
             string_toappend2 = ""
 
-    print(f"{bcolors.FAIL}- offset - {bcolors.OKGREEN} length   {bcolors.FAIL}- string -{bcolors.ENDC}")
+    print(f"{bcolors.FAIL}- offset - {bcolors.OKGREEN} length   {bcolors.FAIL}- string -{bcolors.RESET}")
   
     prt = True
     for i in strings:
@@ -59,7 +59,7 @@ def extract_binary(ascii, bytes):
                 for _ in range(9-len(str(offset2))):
                     offset3 = offset3[0:2]+"0"+offset3[2:]
 
-            print(f"{bcolors.OKBLUE}"+offset3+"  "+f"{bcolors.FAIL}"+after_offset+"     "+f"{bcolors.WARNING}"+i+f"{bcolors.ENDC}")
+            print(f"{bcolors.OKBLUE}"+offset3+"  "+f"{bcolors.FAIL}"+after_offset+"     "+f"{bcolors.WARNING}"+i+f"{bcolors.RESET}")
             prt = True
 
 def extract_disassembly(ascii, bytes):
@@ -142,7 +142,7 @@ def extract(ascii):
             string_toappend = ""
             string_toappend2 = ""
 
-    print(f"{bcolors.OKGREEN}length   {bcolors.FAIL}- string -{bcolors.ENDC}")
+    print(f"{bcolors.OKGREEN}length   {bcolors.FAIL}- string -{bcolors.RESET}")
     prt = True
 
     for i in strings:
@@ -156,7 +156,7 @@ def extract(ascii):
             else:
                 after_len = " "
             after_offset = str(len(i))+after_len
-            print(f"{bcolors.OKBLUE}"+after_offset+"     "+f"{bcolors.WARNING}"+i+f"{bcolors.ENDC}")
+            print(f"{bcolors.OKBLUE}"+after_offset+"     "+f"{bcolors.WARNING}"+i+f"{bcolors.RESET}")
             prt = True
 
 def extract_clean(ascii):
@@ -187,14 +187,14 @@ def extract_clean(ascii):
             string_toappend = ""
             string_toappend2 = ""
 
-    print(f"{bcolors.FAIL}- string -{bcolors.ENDC}")
+    print(f"{bcolors.FAIL}- string -{bcolors.RESET}")
     prt = True
 
     for i in strings:
         if prt:
             prt = False
         else:
-            print(f"{bcolors.WARNING}"+i+f"{bcolors.ENDC}")
+            print(f"{bcolors.WARNING}"+i+f"{bcolors.RESET}")
             prt = True
 
 def extract_list(ascii):
