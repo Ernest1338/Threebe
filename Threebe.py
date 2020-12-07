@@ -92,7 +92,7 @@ def main():
                 bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
 
                 hexdump.hexdump_parser(file_o, bytes_for_hexdump, "@")
-            
+
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -118,7 +118,7 @@ def main():
                 bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
 
                 hexdump.hexdump_parser_compressed(file_o, bytes_for_hexdump, "@")
-            
+
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -302,7 +302,7 @@ def main():
                 bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
                 address_to_hexdump = int(sys.argv[2],16)
                 bin_arch = bin_architecture(bytes_for_hexdump)
-                
+
                 if bin_arch=="x86":
                     if address_to_hexdump>=134512640:
                         offset1 = address_to_hexdump-134512640
@@ -316,7 +316,7 @@ def main():
 
                 file_o = bytes(file_o2)
                 hexdump.hexdump_parser(file_o, bytes_for_hexdump, address_to_hexdump)
-            
+
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -332,7 +332,7 @@ def main():
                 bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
                 address_to_hexdump = int(sys.argv[2],16)
                 bin_arch = bin_architecture(bytes_for_hexdump)
-                
+
                 if bin_arch=="x86":
                     if address_to_hexdump>=134512640:
                         offset1 = address_to_hexdump-134512640
@@ -346,7 +346,7 @@ def main():
 
                 file_o = bytes(file_o2)
                 hexdump.hexdump_parser_32(file_o, bytes_for_hexdump, address_to_hexdump)
-            
+
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
