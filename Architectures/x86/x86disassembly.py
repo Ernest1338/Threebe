@@ -263,11 +263,11 @@ def disassemble_x86(bytes, ascii_dict):
                     if _68offset_to_dict in ascii_dict:
                         after_instruction = _68offset
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(ascii_dict[_68offset_to_dict])
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[_68offset_to_dict])
                     elif _68offset_to_dict_1 in ascii_dict:
                         after_instruction = _68offset
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(ascii_dict[_68offset_to_dict_1])
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[_68offset_to_dict_1])
                     else:
                         after_instruction = _68offset
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
