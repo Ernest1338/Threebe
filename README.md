@@ -8,7 +8,13 @@
 
 # **Screenshots**
 
+### Hexdump:
+
 ![](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/threebe.png)
+
+### Disassembly:
+
+![](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/threebeDisassembly.png)
 
 # **Installation**
 
