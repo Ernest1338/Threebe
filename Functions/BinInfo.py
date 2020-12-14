@@ -1,6 +1,5 @@
 # This is an file containing different functions that extracts information from a executable file.
 
-from Functions.Colors import bcolors
 import sys
 
 def return_filename():
@@ -10,11 +9,9 @@ def return_filename():
     else:
         return file_name.split("/")[-1]
 
-def bin_get_info(bytes, clean):
-    if clean:
-        colors=['','','']
-    else:
-        colors=['\033[94m', '\033[93m', '\033[0m']
+def bin_get_info(bytes, colorsFromFunction):
+    bcolors = colorsFromFunction
+    colors=[bcolors.OKBLUE, bcolors.WARNING, bcolors.RESET]
     # File name
     print(f"{colors[0]}"+"File name:           "+f"{colors[1]}"+str(return_filename())+f"{colors[2]}")
 

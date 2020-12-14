@@ -13,7 +13,7 @@ import Functions.BinInfo as binfo
 import Functions.Strings as strings
 import Functions.Patching as patching
 from Functions.BinArchitecture import bin_architecture
-from Functions.Colors import bcolors
+from Functions.Colors import returnColors
 
 # ========== FUNCTIONS / CLASSES ==========
 
@@ -29,6 +29,7 @@ def print_usage(clean):
     if clean:
         helpColors = ['','','','']
     else:
+        bcolors = returnColors(1)
         helpColors = [bcolors.WARNING, bcolors.OKGREEN, bcolors.OKBLUE, bcolors.RESET]
     print(f"{helpColors[0]}Threebe {helpColors[2]}- Tool for displaying a Hexdump / Disassembly / Strings / Information from/of a (binary) file.")
     print("")
@@ -91,7 +92,8 @@ def main():
                 file_o = open(file_name,'rb').read()
                 bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
 
-                hexdump.hexdump_parser(file_o, bytes_for_hexdump, "@")
+                bcolors = returnColors(1)
+                hexdump.hexdump_parser(file_o, bytes_for_hexdump, "@", bcolors)
 
             except IOError as e:
                 if e.errno == errno.EPIPE:
@@ -103,8 +105,11 @@ def main():
             try:
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
 
-                hexdump.hexdump_clean(file_o)
+                bcolors = returnColors(2)
+                hexdump.hexdump_parser(file_o, bytes_for_hexdump, "@", bcolors)
+
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -117,7 +122,8 @@ def main():
                 file_o = open(file_name,'rb').read()
                 bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
 
-                hexdump.hexdump_parser_compressed(file_o, bytes_for_hexdump, "@")
+                bcolors = returnColors(1)
+                hexdump.hexdump_parser_compressed(file_o, bytes_for_hexdump, "@", bcolors)
 
             except IOError as e:
                 if e.errno == errno.EPIPE:
@@ -130,8 +136,8 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
                 bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
-
-                hexdump.hexdump_parser_32(file_o, bytes_for_hexdump, "@")
+                bcolors = returnColors(1)
+                hexdump.hexdump_parser_32(file_o, bytes_for_hexdump, "@", bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -155,7 +161,7 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                hexdump.hexdump_clean_without_parsing(file_o)
+                hexdump.hexdump_clean(file_o)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -167,7 +173,8 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o), False)
+                bcolors = returnColors(1)
+                binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o), bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -179,7 +186,8 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o), True)
+                bcolors = returnColors(2)
+                binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o), bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -191,7 +199,8 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                strings.extract_binary(hexdump.hexdump_ascii(file_o), hexdump.hexdump_clean_for_disassembly(file_o))
+                bcolors = returnColors(1)
+                strings.extract_binary(hexdump.hexdump_ascii(file_o, bcolors), hexdump.hexdump_clean_for_disassembly(file_o), bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -203,7 +212,8 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                strings.extract_clean(hexdump.hexdump_ascii(file_o))
+                bcolors = returnColors(1)
+                strings.extract_clean(hexdump.hexdump_ascii(file_o, bcolors), bcolors, True)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -215,7 +225,8 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                strings.extract_list(hexdump.hexdump_ascii(file_o))
+                bcolors = returnColors(1)
+                strings.extract_list(hexdump.hexdump_ascii(file_o, bcolors))
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -227,7 +238,8 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                strings.extract_without_parsing(hexdump.hexdump_ascii(file_o))
+                bcolors = returnColors(2)
+                strings.extract_clean(hexdump.hexdump_ascii(file_o, bcolors), bcolors, False)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -239,7 +251,8 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
-                strings.extract(hexdump.hexdump_ascii(file_o))
+                bcolors = returnColors(1)
+                strings.extract(hexdump.hexdump_ascii(file_o, bcolors), bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -251,9 +264,10 @@ def main():
                 file_name = sys.argv[2]
                 file_o = open(file_name,'rb').read()
 
+                bcolors = returnColors(1)
                 hexdfd = hexdump.hexdump_clean_for_disassembly(file_o)
-                ascii_dict = strings.extract_disassembly(hexdump.hexdump_ascii(file_o), hexdump.hexdump_clean_for_disassembly(file_o))
-                x86disassembly.disassemble_x86(hexdfd, ascii_dict)
+                ascii_dict = strings.extract_disassembly(hexdump.hexdump_ascii(file_o, bcolors), hexdump.hexdump_clean_for_disassembly(file_o))
+                x86disassembly.disassemble_x86(hexdfd, ascii_dict, bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -315,7 +329,8 @@ def main():
                     file_o2.append(file_o[a+offset1])
 
                 file_o = bytes(file_o2)
-                hexdump.hexdump_parser(file_o, bytes_for_hexdump, address_to_hexdump)
+                bcolors = returnColors(1)
+                hexdump.hexdump_parser(file_o, bytes_for_hexdump, address_to_hexdump, bcolors)
 
             except IOError as e:
                 if e.errno == errno.EPIPE:
@@ -345,7 +360,8 @@ def main():
                     file_o2.append(file_o[a+offset1])
 
                 file_o = bytes(file_o2)
-                hexdump.hexdump_parser_32(file_o, bytes_for_hexdump, address_to_hexdump)
+                bcolors = returnColors(1)
+                hexdump.hexdump_parser_32(file_o, bytes_for_hexdump, address_to_hexdump, bcolors)
 
             except IOError as e:
                 if e.errno == errno.EPIPE:

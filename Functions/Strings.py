@@ -1,9 +1,9 @@
 # This file contains funtions that extracts strings from a given (binary) files.
 
-from Functions.Colors import bcolors
 from Functions.BinArchitecture import bin_architecture
 
-def extract_binary(ascii, bytes):
+def extract_binary(ascii, bytes, colors):
+    bcolors = colors
     streak = 0
     string_toappend = ""
     string_toappend2 = ""
@@ -114,7 +114,8 @@ def extract_disassembly(ascii, bytes):
             prt = True
     return ascii_dict
 
-def extract(ascii):
+def extract(ascii, colors):
+    bcolors = colors
     streak = 0
     string_toappend = ""
     string_toappend2 = ""
@@ -159,7 +160,8 @@ def extract(ascii):
             print(f"{bcolors.OKBLUE}"+after_offset+"     "+f"{bcolors.WARNING}"+i+f"{bcolors.RESET}")
             prt = True
 
-def extract_clean(ascii):
+def extract_clean(ascii, colors, header):
+    bcolors = colors
     streak = 0
     string_toappend = ""
     string_toappend2 = ""
@@ -187,7 +189,8 @@ def extract_clean(ascii):
             string_toappend = ""
             string_toappend2 = ""
 
-    print(f"{bcolors.FAIL}- string -{bcolors.RESET}")
+    if header:
+        print(f"{bcolors.FAIL}- string -{bcolors.RESET}")
     prt = True
 
     for i in strings:
@@ -225,39 +228,3 @@ def extract_list(ascii):
             string_toappend2 = ""
 
     print(strings)
-
-def extract_without_parsing(ascii):
-    streak = 0
-    string_toappend = ""
-    string_toappend2 = ""
-    strings = []
-
-    for i in range(len(ascii)):
-        if ascii[i] != False:
-            streak += 1
-            string_toappend += ascii[i]
-        else:
-            if streak>2:
-                for a in string_toappend:
-                    if ord(a)>=32 and ord(a)<=126:
-                        string_toappend2 += a
-                    else:
-                        pass
-
-                if len(string_toappend2)<=2:
-                    pass
-                else:
-                    strings.append(i-len(string_toappend2))
-                    strings.append(string_toappend2)
-
-            streak = 0
-            string_toappend = ""
-            string_toappend2 = ""
-    prt = True
-
-    for i in strings:
-        if prt:
-            prt = False
-        else:
-            print(i)
-            prt = True

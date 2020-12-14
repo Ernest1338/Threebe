@@ -1,7 +1,6 @@
 # This file contains function(s) that translates raw bytes into assembly instructions using x86opcodesTable and some python logic.
 
 import Architectures.x86.x86opcodesTable as x86opT
-from Functions.Colors import bcolors
 
 times = 0
 
@@ -9,8 +8,9 @@ def cancle_function_iteration(howmany):
     global times
     times += int(howmany)
 
-def disassemble_x86(bytes, ascii_dict):
+def disassemble_x86(bytes, ascii_dict, colors):
     global times
+    bcolors = colors
     offset1 = 134512640
     counter1 = 0
 

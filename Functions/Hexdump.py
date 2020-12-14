@@ -1,63 +1,6 @@
 # This is an file containing different functions that parses binary data in a variety of ways.
 
 from Functions.BinArchitecture import bin_architecture
-from Functions.Colors import bcolors
-
-def hexdump_clean_without_parsing(hexdump):
-    hexdump = str(hexdump)
-    parsed1 = hexdump[2:-1]
-    parsed2 = []
-    flag1 = False
-    flag2 = False
-    flag3 = False
-
-    for i in range(len(parsed1)):
-        if parsed1[i]=="\\":
-            flag1 = True
-            if parsed1[i+1]=="\\":
-                parsed2.append(parsed1[i])
-        elif flag1:
-            flag1 = False
-            flag2 = True
-
-            if parsed1[i]!="x":
-                if parsed1[i]=="t":
-                    parsed2.append("09")
-                    flag1 = False
-                    flag2 = False
-                    flag3 = False
-                elif parsed1[i]=="n":
-                    parsed2.append("0A")
-                    flag1 = False
-                    flag2 = False
-                    flag3 = False
-                elif parsed1[i]=="r":
-                    parsed2.append("0D")
-                    flag1 = False
-                    flag2 = False
-                    flag3 = False
-                else:
-                    parsed2.append(parsed1[i])
-                    flag1 = False
-                    flag2 = False
-                    flag3 = False
-        elif flag2:
-            flag2 = False
-            flag3 = True
-        elif flag3:
-            parsed2.append(parsed1[i-1]+parsed1[i])
-            flag3 = False
-        else:
-            parsed2.append(parsed1[i])
-
-    parsed3 = ""
-    for i in parsed2:
-        if len(i)==2:
-            parsed3 += str(i)+" "
-        else:
-            parsed3 += str(hex(ord(i))[2:])+" "
-    print(parsed3[:-1].upper())
-    return True
 
 def hexdump_clean_for_disassembly(hexdump):
     hexdump = str(hexdump)
@@ -180,7 +123,8 @@ def hexdump_clean(hexdump):
     print(parsed3.upper())
     return True
 
-def hexdump_parser_32(hexdump, bytes, address1):
+def hexdump_parser_32(hexdump, bytes, address1, colors):
+    bcolors = colors
     hexdump = str(hexdump)
     parsed1 = hexdump[2:-1]
     parsed2 = []
@@ -341,7 +285,8 @@ def hexdump_parser_32(hexdump, bytes, address1):
 
     return True
 
-def hexdump_ascii(hexdump):
+def hexdump_ascii(hexdump, colors):
+    bcolors = colors
     hexdump = str(hexdump)
     parsed1 = hexdump[2:-1]
     parsed2 = []
@@ -464,7 +409,8 @@ def hexdump_ascii(hexdump):
 
     return _ascii
 
-def hexdump_parser(hexdump, bytes, address1):
+def hexdump_parser(hexdump, bytes, address1, colors):
+    bcolors = colors
     hexdump = str(hexdump)
     parsed1 = hexdump[2:-1]
     parsed2 = []
@@ -618,7 +564,8 @@ def hexdump_parser(hexdump, bytes, address1):
 
     return True
 
-def hexdump_parser_compressed(hexdump, bytes, address1):
+def hexdump_parser_compressed(hexdump, bytes, address1, colors):
+    bcolors = colors
     hexdump = str(hexdump)
     parsed1 = hexdump[2:-1]
     parsed2 = []
