@@ -50,14 +50,14 @@ def returnColors(colorS):
             quit()
     elif colorS == 2:  # CLEAN
         class bcolors:
-            HEADER = '\033[00m'
-            OKBLUE = '\033[00m'
-            OKGREEN = '\033[00m'
-            WARNING = '\033[00m'
-            FAIL = '\033[00m'
-            BOLD = '\033[00m'
-            UNDERLINE = '\033[00m'
-            RESET = '\033[00m'
+            HEADER = ''
+            OKBLUE = ''
+            OKGREEN = ''
+            WARNING = ''
+            FAIL = ''
+            BOLD = ''
+            UNDERLINE = ''
+            RESET = ''
     else:
         class bcolors:
             HEADER = '\033[91m'
