@@ -45,6 +45,14 @@ python3 Threebe.py [parameter(s)] [file_name/or/path/to/file]   or   ./Threebe.p
 ./Threebe --help
 ```
 
+# **Color Schemes**
+
+To change **color scheme** of Threebe, edit the colorScheme variable at the top of the **Colors.py** file inside of Functions directory. (Path: Threebe/Functions/Colors.py)
+
+Color schemes to choose from:
+- 1 (Default)
+- 2 (slightly darker)
+
 # **Links**
 
 - Github mirror: https://github.com/Ernest1338/Threebe
