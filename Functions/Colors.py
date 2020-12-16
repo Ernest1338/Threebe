@@ -17,14 +17,14 @@ def returnColors(colorS):
         # 35 - pink
         # 36 - light blue
         # 37 - white/gray
-        # 90 - gray
+        # 90 - gray         # colors 90-97 are a lighter version of colors 30-37
         # 91 - red/pink
         # 92 - light green
         # 93 - yellow
         # 94 - blue/purple
         # 95 - pink
         # 96 - light blue
-        # 97,98 - white
+        # 97 - white
         if colorScheme == 1:  # COLOR SCHEME NR. 1
             class bcolors:
                 HEADER = '\033[95m'
