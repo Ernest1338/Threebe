@@ -18,12 +18,14 @@ from Functions.Colors import returnColors
 # ========== FUNCTIONS / CLASSES ==========
 
 def print_help():
-    sys.stderr.write("Usage: {0} <parameter(s)> <file(s)>\n".format(sys.argv[0]))
-    sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+    bcolors = returnColors(1)
+    sys.stderr.write(f"{bcolors.FAIL}Usage: {sys.argv[0]} <parameter(s)> <file(s)>\n")
+    sys.stderr.write(f"For help use the --help parameter: {sys.argv[0]} --help{bcolors.RESET}\n")
 
 def print_wrong_file_help():
-    sys.stderr.write("ERROR: No such file / Wrong file type.\n")
-    sys.stderr.write("For help use the --help parameter: {0} --help\n".format(sys.argv[0]))
+    bcolors = returnColors(1)
+    sys.stderr.write(f"{bcolors.FAIL}ERROR: No such file / Wrong file type.\n")
+    sys.stderr.write(f"For help use the --help parameter: {sys.argv[0]} --help{bcolors.RESET}\n")
 
 def print_usage(clean):
     if clean:
@@ -284,12 +286,13 @@ def main():
                 file_name = sys.argv[4]
                 file_o = open(file_name,'rb').read()
                 architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
+                bcolors = returnColors(1)
                 if architecture != 1:
-                    patching.patch_bin(file_o, sys.argv[2], sys.argv[3], architecture, file_name)
+                    patching.patch_bin(file_o, sys.argv[2], sys.argv[3], architecture, file_name, bcolors)
                 else:
-                    sys.stderr.write("ERROR: File header not recognized.\n")
+                    sys.stderr.write(f"{bcolors.FAIL}ERROR: File header not recognized.\n")
                     sys.stderr.write("This may be because this binary type is not yet supported or your binary's header got corrupted.\n")
-                    sys.stderr.write("Try using -p function. (Remember to change addresses in that case.)\n")
+                    sys.stderr.write(f"Try using -p function. (Remember to change addresses in that case.){bcolors.RESET}\n")
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
@@ -302,7 +305,8 @@ def main():
                 file_o = open(file_name,'rb').read()
                 architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
 
-                patching.patch(file_o, sys.argv[2], sys.argv[3], architecture, file_name)
+                bcolors = returnColors(1)
+                patching.patch(file_o, sys.argv[2], sys.argv[3], architecture, file_name, bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
