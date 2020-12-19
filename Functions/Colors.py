@@ -1,7 +1,7 @@
 # This file contains all entries to colors used in this project.
 
 # Here you can change the color scheme.
-# Choose a number between 1 and 2
+# Choose a number between 1 and 3
 colorScheme = 1
 
 def returnColors(colorS):
@@ -25,7 +25,7 @@ def returnColors(colorS):
         # 95 - pink
         # 96 - light blue
         # 97 - white
-        if colorScheme == 1:  # COLOR SCHEME NR. 1
+        if colorScheme == 1:  # COLOR SCHEME NR. 1 - DEFAULT
             class bcolors:
                 HEADER = '\033[95m'
                 OKBLUE = '\033[94m'
@@ -35,7 +35,7 @@ def returnColors(colorS):
                 BOLD = '\033[01m'
                 UNDERLINE = '\033[04m'
                 RESET = '\033[00m'
-        elif colorScheme == 2:  # COLOR SCHEME NR. 2
+        elif colorScheme == 2:  # COLOR SCHEME NR. 2 - SLIGHTLY DARKER
             class bcolors:
                 HEADER = '\033[97m'
                 OKBLUE = '\033[34m'
@@ -45,6 +45,16 @@ def returnColors(colorS):
                 BOLD = '\033[01m'
                 UNDERLINE = '\033[04m'
                 RESET = '\033[00m'
+        elif colorScheme == 3:  # COLOR SCHEME NR. 3 - CLEAN - WINDOWS CMD MODE
+            class bcolors:
+                HEADER = ''
+                OKBLUE = ''
+                OKGREEN = ''
+                WARNING = ''
+                FAIL = ''
+                BOLD = ''
+                UNDERLINE = ''
+                RESET = ''
         else:
             print("\033[91mERROR: WRONG COLOR SCHEME SELECTED!'\033[00m")
             quit()
@@ -58,7 +68,7 @@ def returnColors(colorS):
             BOLD = ''
             UNDERLINE = ''
             RESET = ''
-    else:
+    elif colorS == 3:  # CLEAN - RESET
         class bcolors:
             HEADER = '\033[91m'
             OKBLUE = '\033[91m'
@@ -68,4 +78,7 @@ def returnColors(colorS):
             BOLD = '\033[91m'
             UNDERLINE = '\033[91m'
             RESET = '\033[91m'
+    else:
+        print("\033[91mERROR: WRONG COLOR SCHEME SELECTED! - DEV'\033[00m")
+        quit()
     return bcolors
