@@ -51,7 +51,12 @@ To change **color scheme** of Threebe, edit the colorScheme variable at the top 
 
 Color schemes to choose from:
 - 1 (Default)
-- 2 (slightly darker)
+- 2 (Slightly darker)
+- 3 (Clean / Windows CMD mode)
+
+# **For Windows users**
+
+If you are using Windows CMD and experiencing weird text rendering, this is because CMD doesn't support using ANSI escape codes which i'm using to make output colorful. To solve this issue you need to set color scheme (see: Color Schemes section) to a value of 3 (windows cmd mode).
 
 # **Links**
 
