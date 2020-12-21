@@ -153,8 +153,8 @@ x86opcodes = {
                             # PENDING  #           -||-        to F0 then: TEST al, dh
                             # PENDING  #           -||-        to EF then: TEST bh, ch
                             # PENDING  #           -||-        to EE then: TEST dh, ch
-                            # PENDING  #           -||-        to ED then: TEST ch, ch
-                            # PENDING  #           -||-        to EC then: TEST ah, ch
+                            # DONE?    #           -||-        to ED then: TEST ch, ch
+                            # DONE?    #           -||-        to EC then: TEST ah, ch
                             # DONE?    #           -||-        to EB then: TEST bl, ch
                             # DONE?    #           -||-        to EA then: TEST dl, ch
                             # DONE?    #           -||-        to E9 then: TEST cl, ch
