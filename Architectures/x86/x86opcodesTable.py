@@ -133,7 +133,7 @@ x86opcodes = {
     "27" : "DAA",           # DONE
     "2F" : "DAS",           # DONE
     "CF" : "IRETD",         # DONE
-    "98" : "CWDE",          # PENDING
+    "98" : "CWDE",          # DONE
     "99" : "CDQ",           # PENDING
     "84" : "TEST",          # PENDING  # if next byte is equal to FF then: TEST bh, bh
                             # PENDING  #           -||-        to FE then: TEST dh, bh
