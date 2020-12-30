@@ -137,8 +137,8 @@ x86opcodes = {
     "99" : "CDQ",           # PENDING
     "84" : "TEST",          # PENDING  # if next byte is equal to FF then: TEST bh, bh
                             # PENDING  #           -||-        to FE then: TEST dh, bh
-                            # PENDING  #           -||-        to FD then: TEST ch, bh
-                            # PENDING  #           -||-        to FC then: TEST ah, bh
+                            # DONE?    #           -||-        to FD then: TEST ch, bh
+                            # DONE?    #           -||-        to FC then: TEST ah, bh
                             # DONE?    #           -||-        to FB then: TEST bl, bh
                             # DONE?    #           -||-        to FA then: TEST dl, bh
                             # DONE?    #           -||-        to F9 then: TEST cl, bh
