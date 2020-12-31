@@ -135,8 +135,8 @@ x86opcodes = {
     "CF" : "IRETD",         # DONE
     "98" : "CWDE",          # DONE
     "99" : "CDQ",           # PENDING
-    "84" : "TEST",          # PENDING  # if next byte is equal to FF then: TEST bh, bh
-                            # PENDING  #           -||-        to FE then: TEST dh, bh
+    "84" : "TEST",          # DONE?    # if next byte is equal to FF then: TEST bh, bh
+                            # DONE?    #           -||-        to FE then: TEST dh, bh
                             # DONE?    #           -||-        to FD then: TEST ch, bh
                             # DONE?    #           -||-        to FC then: TEST ah, bh
                             # DONE?    #           -||-        to FB then: TEST bl, bh
