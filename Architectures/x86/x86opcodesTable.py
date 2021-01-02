@@ -272,7 +272,7 @@ x86opcodes = {
     "22" : "AND al",        # PENDING  # next byte represents and value (in hex), eg. 24 22 > AND al, 0x24  ; 34
     "48" : "DEC eax",       # DONE
     "49" : "DEC ecx",       # DONE
-    "4A" : "DEC edx",       # PENDING
+    "4A" : "DEC edx",       # DONE
     "4B" : "DEC ebx",       # PENDING
     "4C" : "DEC esp",       # DONE
     "4D" : "DEC ebp",       # PENDING 
