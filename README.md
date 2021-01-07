@@ -5,6 +5,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Threebe</b> is a Libre (FOSS - Free and Open Source) tool for displaying a Hexdump / Disassembly / Strings / <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ Information from/of a (binary) file and (at this time) is fully written in Python3.
 <br /><br />
+<br /><br />
+![Updated Badge](https://badges.pufler.dev/updated/Ernest1338/Threebe) ![Created Badge](https://badges.pufler.dev/created/Ernest1338/Threebe) ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg) ![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg) ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg) ![Code Size](https://img.shields.io/github/languages/code-size/Ernest1338/Threebe.svg) ![Repo Size](https://img.shields.io/github/repo-size/Ernest1338/Threebe.svg)
 
 # **Screenshots**
 
