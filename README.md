@@ -6,7 +6,33 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ Information from/of a (binary) file and (at this time) is fully written in Python3.
 <br /><br />
 <br /><br />
-![Updated Badge](https://badges.pufler.dev/updated/Ernest1338/Threebe) ![Created Badge](https://badges.pufler.dev/created/Ernest1338/Threebe) ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg) ![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg) ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg) ![Code Size](https://img.shields.io/github/languages/code-size/Ernest1338/Threebe.svg) ![Repo Size](https://img.shields.io/github/repo-size/Ernest1338/Threebe.svg)
+<p align="center">
+    <a href="https://gitlab.com/Ernest1337/threebe">
+        <img src="https://badges.pufler.dev/updated/Ernest1338/Threebe" alt="Updated Badge" />
+    </a>
+    <a href="https://gitlab.com/Ernest1337/threebe">
+        <img src="https://badges.pufler.dev/created/Ernest1338/Threebe" alt="Created Badge" />
+    </a>
+    <a href="https://gitlab.com/Ernest1337/threebe">
+        <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="Maintenance" />
+    </a>
+</p>
+<p align="center">
+    <a href="https://gitlab.com/Ernest1337/threebe">
+        <img src="http://ForTheBadge.com/images/badges/made-with-python.svg" alt="forthebadge made-with-python" />
+    </a>
+</p>
+<p align="center">
+    <a href="https://gitlab.com/Ernest1337/threebe">
+        <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT license" />
+    </a>
+    <a href="https://gitlab.com/Ernest1337/threebe">
+        <img src="https://img.shields.io/github/languages/code-size/Ernest1338/Threebe.svg" alt="Code Size" />
+    </a>
+    <a href="https://gitlab.com/Ernest1337/threebe">
+        <img src="https://img.shields.io/github/repo-size/Ernest1338/Threebe.svg" alt="Repo Size" />
+    </a>
+</p>
 
 # **Screenshots**
 
