@@ -815,8 +815,9 @@ def disassemble_x86(bytes, ascii_dict, colors):
                         cancle_function_iteration(ofvar1)
                     
             else:
-                pass
-                #print(f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+"                 "+f"{bcolors.WARNING}"+"???"+f"{bcolors.RESET}")
+                #pass
+                bcolors = colors
+                print(f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+"                 "+f"{bcolors.WARNING}"+"???"+f"{bcolors.RESET}")
 
         else:
             times -= 1
