@@ -124,7 +124,10 @@ def disassemble_x86(bytes, ascii_dict, colors):
                         BAvar = bytes[counter1+1][1]
                     after_instruction = ", "+"0x"+str(BAvar.lower())
                     lenWholeOpcode = len(instruction)+len(after_instruction)
-                    after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(BAvar,16))
+                    if isClean:
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(BAvar,16))
+                    else:
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(BAvar,16))
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 51+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
@@ -215,46 +218,73 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     if bytes[counter1+1]=="C2":
                         after_instruction = " edx, "+"0x"+str(ADD83var.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
                     elif bytes[counter1+1]=="C4":
                         after_instruction = " esp, "+"0x"+str(ADD83var.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
                     elif bytes[counter1+1]=="C7":
                         after_instruction = " edi, "+"0x"+str(ADD83var.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
                     elif bytes[counter1+1]=="C0":
                         after_instruction = " eax, "+"0x"+str(ADD83var.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
                     elif bytes[counter1+1]=="F8":
                         instruction = "CMP"
                         after_instruction = " eax, "+"0x"+str(ADD83var.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
                     elif bytes[counter1+1]=="3B":
                         instruction = "CMP"
                         after_instruction = " dword [ebx], "+"0x"+str(ADD83var.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
                     elif bytes[counter1+1]=="EC":
                         instruction = "SUB"
                         after_instruction = " esp, "+"0x"+str(ADD83var.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
                     elif bytes[counter1+1]=="EA":
                         instruction = "SUB"
                         after_instruction = " edx, "+"0x"+str(ADD83var.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
                     elif bytes[counter1+1]=="08":
                         instruction = "OR"
                         if ADD83var=="FF":
                             ADD83var4 = "-1"
                         after_instruction = " dword [eax], "+"0x"+str(ADD83var.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
                     elif bytes[counter1+1]=="E4":
                         instruction = "AND"
                         if ADD83var=="FF":
@@ -266,7 +296,10 @@ def disassemble_x86(bytes, ascii_dict, colors):
                         ADD83var4 = str(int(bytes[counter1+3],16))
                         after_instruction = " dword [var_4h], "+"0x"+str(ADD83var3.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
                         after_byte += " "+bytes[counter1+3]
                         ADD83var2 = 4
                     elif bytes[counter1+1]=="7D" and bytes[counter1+2]=="08":
@@ -274,7 +307,10 @@ def disassemble_x86(bytes, ascii_dict, colors):
                         instruction = "CMP"
                         after_instruction = " dword [arg_8h], "+"0x"+str(ADD83var3.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
                         after_byte += " "+bytes[counter1+3]
                         ADD83var2 = 4
                     else:
@@ -302,11 +338,17 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     if _68offset_to_dict in ascii_dict:
                         after_instruction = _68offset
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[_68offset_to_dict])
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; str: "+str(ascii_dict[_68offset_to_dict])
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[_68offset_to_dict])
                     elif _68offset_to_dict_1 in ascii_dict:
                         after_instruction = _68offset
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[_68offset_to_dict_1])
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; str: "+str(ascii_dict[_68offset_to_dict_1])
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[_68offset_to_dict_1])
                     else:
                         after_instruction = _68offset
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
@@ -329,7 +371,10 @@ def disassemble_x86(bytes, ascii_dict, colors):
                         BAvar = bytes[counter1+1][1]
                     after_instruction = " al, "+"0x"+str(BAvar.lower())
                     lenWholeOpcode = len(instruction)+len(after_instruction)
-                    after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(BAvar,16))
+                    if isClean:
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(BAvar,16))
+                    else:
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(BAvar,16))
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 51+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
@@ -350,7 +395,10 @@ def disassemble_x86(bytes, ascii_dict, colors):
                         BAvar = bytes[counter1+1][1]
                     after_instruction = " al, "+"0x"+str(BAvar.lower())
                     lenWholeOpcode = len(instruction)+len(after_instruction)
-                    after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(BAvar,16))
+                    if isClean:
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(BAvar,16))
+                    else:
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(BAvar,16))
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 51+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
@@ -695,7 +743,10 @@ def disassemble_x86(bytes, ascii_dict, colors):
                             _81var += str(bytes[counter1+2])
                         after_instruction = " ebx, 0x"+_81var
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(_81var,16))
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(_81var,16))
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(_81var,16))
                     elif bytes[counter1+1]=="EC":
                         instruction = "SUB"
                         if bytes[counter1+5]!="00":
@@ -708,7 +759,10 @@ def disassemble_x86(bytes, ascii_dict, colors):
                             _81var += str(bytes[counter1+2])
                         after_instruction = " esp, 0x"+_81var
                         lenWholeOpcode = len(instruction)+len(after_instruction)
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(_81var,16))
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(_81var,16))
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(_81var,16))
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
