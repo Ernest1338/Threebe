@@ -24,7 +24,6 @@ def disassemble_x86(bytes, ascii_dict, colors):
         isClean = True
     else:
         isClean = False
-    print(isClean)
     offset1 = 134512640
     counter1 = 0
 
