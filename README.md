@@ -42,7 +42,7 @@
 
 ### Disassembly:
 
-![Disassembly](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/threebeDisassembly.png)
+![Disassembly](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/disas.png)
 
 # **Installation**
 
