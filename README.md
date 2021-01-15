@@ -44,6 +44,12 @@
 
 ![Disassembly](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/disas.png)
 
+### Color Schemes:
+
+#### Color scheme nr. 2:
+
+![SchemeNR2](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/color1.png)
+
 # **Installation**
 
 Threebe is written in Python3, so to run it, you need to have Python3 installed on your system. 
