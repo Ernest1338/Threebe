@@ -50,6 +50,10 @@
 
 ![SchemeNR2](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/color1.png)
 
+#### Color scheme nr. 3 (Windows CMD mode):
+
+![SchemeNR3](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/color2.png)
+
 # **Installation**
 
 Threebe is written in Python3, so to run it, you need to have Python3 installed on your system. 
