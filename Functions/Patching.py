@@ -43,15 +43,15 @@ def patch_bin(hexdump, address, bytes_to_write, architecture, file_name, colors)
             return 1
         bytes_list[bytes_pointer]=int(bytes_to_write[i+i:i+i+2],16)
         bytes_pointer+=1
-    userConfirmation = input("You WILL change the file, do you want to proceed? (Y/n): ")
+    userConfirmation = input(f"{bcolors.WARNING}You WILL change the file, do you want to proceed? (Y/n): ")
     if userConfirmation=='' or userConfirmation=="Y" or userConfirmation=="y" or userConfirmation=="Yes" or userConfirmation=="yes":
         file_o = open(file_name, 'wb')
         file_o.write(bytes(bytes_list))
-        print("Patching succed.")
-        print("Old bytes: "+str(''.join(old_bytes)))
-        print("New bytes: "+bytes_to_write)
+        print(f"{bcolors.OKGREEN}Patching succed.{bcolors.WARNING}")
+        print(f"Old bytes: {bcolors.OKBLUE}"+str(''.join(old_bytes)))
+        print(f"{bcolors.WARNING}New bytes: {bcolors.OKBLUE}"+bytes_to_write+f"{bcolors.RESET}")
     else:
-        print("Canceled")
+        print(f"Canceled{bcolors.RESET}")
 
 def patch(hexdump, address, bytes_to_write, architecture, file_name, colors):
     bcolors = colors
