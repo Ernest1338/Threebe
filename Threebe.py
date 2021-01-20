@@ -298,6 +298,24 @@ def main():
                     pass
                 else:
                     print_wrong_file_help()
+        
+        elif sys.argv[1]=="-pbc" or sys.argv[1]=="-PBC": # PATCHING BINARY -  CLEAN
+            try:
+                file_name = sys.argv[4]
+                file_o = open(file_name,'rb').read()
+                architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
+                bcolors = returnColors(2)
+                if architecture != 1:
+                    patching.patch_bin(file_o, sys.argv[2], sys.argv[3], architecture, file_name, bcolors)
+                else:
+                    sys.stderr.write(f"{bcolors.FAIL}ERROR: File header not recognized.\n")
+                    sys.stderr.write("This may be because this binary type is not yet supported or your binary's header got corrupted.\n")
+                    sys.stderr.write(f"Try using -p function. (Remember to change addresses in that case.){bcolors.RESET}\n")
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
 
         elif sys.argv[1]=="-p" or sys.argv[1]=="-P": # PATCHING
             try:
