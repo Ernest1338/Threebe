@@ -71,6 +71,7 @@ def print_usage(clean):
     print("===== PATCHING =====")
     print(f"{helpColors[1]}")
     print("-pb    - Patch given binary. Format: ./Threebe.py -pb address bytes path/to/binary (address format: 0x0000000, bytes format: 9090).")
+    print("-pbc   - Patch given binary. Clean version (without colors). Format is the same.")
     print("-p     - Patch given binary. Use this option if the binary type you want to patch is not supported. (format the same).")
     print(f"{helpColors[2]}")
     print("===== OTHERS =====")
