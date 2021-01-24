@@ -332,6 +332,20 @@ def main():
                 else:
                     print_wrong_file_help()
 
+        elif sys.argv[1]=="-pc" or sys.argv[1]=="-PC": # PATCHING - CLEAN
+            try:
+                file_name = sys.argv[4]
+                file_o = open(file_name,'rb').read()
+                architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
+
+                bcolors = returnColors(2)
+                patching.patch(file_o, sys.argv[2], sys.argv[3], architecture, file_name, bcolors)
+            except IOError as e:
+                if e.errno == errno.EPIPE:
+                    pass
+                else:
+                    print_wrong_file_help()
+
         elif sys.argv[1]=="-ha" or sys.argv[1]=="-HA": # HEXDUMP at a given address
             try:
                 file_name = sys.argv[4]
