@@ -407,6 +407,8 @@ def main():
                     print_wrong_file_help()
             except IndexError as e:
                 print_help()
+        else:
+            print_help()
 
     elif sys.argv[1]=="--help":
         print_usage(False)
