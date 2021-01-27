@@ -82,6 +82,39 @@ def print_usage(clean):
     print(f"{helpColors[2]}")
     print(f"Original author: Dawid J. (Ernest Gupik) 2020-2021{helpColors[3]}")
 
+def print_usage_simple(clean):
+    if clean:
+        helpColors = ['','','','']
+    else:
+        bcolors = returnColors(1)
+        helpColors = [bcolors.WARNING, bcolors.OKGREEN, bcolors.OKBLUE, bcolors.RESET]
+    print(f"{helpColors[2]}Usage:")
+    print(f"{helpColors[1]}./Threebe.py <parameter(s)> <file>")
+    print(f"{helpColors[2]}")
+    print(f"{helpColors[0]}Possible parameters:{helpColors[1]}")
+    print("-h     - Display the hexdump of a given binary file.")
+    print("-h32   - Display the hexdump of a given binary file (32 bytes per line).")
+    print("-ha    - Display the hexdump of a given binary file at given address. Format: ./Threebe.py -ha 0xADDRESS HOW_MUCH path/to/binary")
+    print("-h32a  - Display the hexdump of a given binary file (32 bytes per line) at given address. Format: ./Threebe.py -ha 0xADDRESS HOW_MUCH path/to/binary")
+    print("-hc    - Display the clean version of the hexdump from a given binary file.")
+    print("-hl    - Display the hexdump from a given binary file as a python list.")
+    print("-hw    - Display the hexdump from a given binary file without parsing (without ascii and offsets).")
+    print('-hs    - Display the hexdump from a given binary file. ("Squashed"/Compressed) version.')
+    print("-dx86  - Display the disassembly of a given x86 binary file.")
+    print("-i     - Display informations about a given binary file.")
+    print("-ic    - Display clean version (without colors) of informations about a given binary file.")
+    print("-s     - Display extracted strings from a given file.")
+    print("-sb    - Display extracted strings from a given binary file.")
+    print("-sc    - Display clean version of extracted strings from a given file.")
+    print("-sl    - Display extracted strings from a given file as a python list.")
+    print("-sw    - Display extracted strings from a given file without parsing.")
+    print("-pb    - Patch given binary. Format: ./Threebe.py -pb address bytes path/to/binary (address format: 0x0000000, bytes format: 9090).")
+    print("-pbc   - Patch given binary. Clean version (without colors). Format is the same.")
+    print("-p     - Patch given binary. Use this option if the binary type you want to patch is not supported. (format the same)")
+    print("-pc    - Patch given binary. Clean version. Use this option if the binary type you want to patch is not supported. (format the same)")
+    print("--help - Display this help screen.")
+    print("--help-clean - Display this help screen without any coloring.")
+
 # ========== MAIN FUNCTION ==========
 
 def main():
