@@ -448,6 +448,8 @@ def main():
         print_usage(False)
     elif sys.argv[1]=="--help-clean":
         print_usage(True)
+    elif sys.argv[1]=="--help-simple":
+        print_usage_simple(False)
     else:
         print_help()
 
