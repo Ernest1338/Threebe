@@ -79,6 +79,7 @@ def print_usage(clean):
     print(f"{helpColors[1]}")
     print("--help - Display this help screen.")
     print("--help-clean - Display this help screen without any coloring.")
+    print("--help-simple - Display simple version of help screen.")
     print(f"{helpColors[2]}")
     print(f"Original author: Dawid J. (Ernest Gupik) 2020-2021{helpColors[3]}")
 
