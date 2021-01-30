@@ -115,6 +115,7 @@ def print_usage_simple(clean):
     print("-pc    - Patch given binary. Clean version. Use this option if the binary type you want to patch is not supported. (format the same)")
     print("--help - Display this help screen.")
     print("--help-clean - Display this help screen without any coloring.")
+    print("--help-simple - Display simple version of help screen.")
 
 # ========== MAIN FUNCTION ==========
 
