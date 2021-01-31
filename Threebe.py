@@ -452,6 +452,8 @@ def main():
         print_usage(True)
     elif sys.argv[1]=="--help-simple":
         print_usage_simple(False)
+    elif sys.argv[1]=="--help-simple-clean":
+        print_usage_simple(True)
     else:
         print_help()
 
