@@ -117,6 +117,7 @@ def print_usage_simple(clean):
     print("--help - Display this help screen.")
     print("--help-clean - Display this help screen without any coloring.")
     print("--help-simple - Display simple version of help screen.")
+    print("--help-simple-clean - Display simple version of help screen without any coloring.")
 
 # ========== MAIN FUNCTION ==========
 
