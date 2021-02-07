@@ -78,7 +78,7 @@ def print_usage(clean):
     print("===== OTHERS =====")
     print(f"{helpColors[1]}")
     print("--help - Display help screen.")
-    print("--help-clean - Display this help screen without any coloring.")
+    print("--help-clean - Display help screen without any coloring.")
     print("--help-simple - Display simple version of help screen.")
     print("--help-simple-clean - Display simple version of help screen without any coloring.")
     print(f"{helpColors[2]}")
