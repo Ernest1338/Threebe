@@ -36,7 +36,7 @@ def print_usage(clean):
     print(f"{helpColors[0]}Threebe {helpColors[2]}- Tool for displaying a Hexdump / Disassembly / Strings / Information from/of a (binary) file.")
     print("")
     print("Usage:")
-    print(f"{helpColors[1]}./Threebe.py <parameter(s)> <file>")
+    print(f"{helpColors[1]}./{sys.argv[0]} <parameter(s)> <file>")
     print(f"{helpColors[2]}")
     print(f"{helpColors[0]}Possible parameters:")
     print(f"{helpColors[2]}")
