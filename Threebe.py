@@ -91,7 +91,7 @@ def print_usage_simple(clean):
         bcolors = returnColors(1)
         helpColors = [bcolors.WARNING, bcolors.OKGREEN, bcolors.OKBLUE, bcolors.RESET]
     print(f"{helpColors[2]}Usage:")
-    print(f"{helpColors[1]}./Threebe.py <parameter(s)> <file>")
+    print(f"{helpColors[1]}./{sys.argv[0]} <parameter(s)> <file>")
     print(f"{helpColors[2]}")
     print(f"{helpColors[0]}Possible parameters:{helpColors[1]}")
     print("-h     - Display the hexdump of a given binary file.")
