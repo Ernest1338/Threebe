@@ -44,7 +44,7 @@ def print_usage(clean):
     print(f"{helpColors[1]}")
     print("-h     - Display the hexdump of a given (binary) file.")
     print("-h32   - Display the hexdump of a given (binary) file (32 bytes per line).")
-    print("-ha    - Display the hexdump of a given binary file at given address. Format: ./Threebe.py -ha 0xADDRESS HOW_MUCH path/to/binary")
+    print("-ha    - Display the hexdump of a given (binary) file at given address. Format: ./Threebe.py -ha 0xADDRESS HOW_MUCH path/to/binary")
     print("-h32a  - Display the hexdump of a given binary file (32 bytes per line) at given address. Format: ./Threebe.py -ha 0xADDRESS HOW_MUCH path/to/binary")
     print("-hc    - Display the clean version of the hexdump from a given binary file.")
     print("-hl    - Display the hexdump from a given binary file as a python list.")
