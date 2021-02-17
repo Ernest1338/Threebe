@@ -47,7 +47,7 @@ def print_usage(clean):
     print("-ha    - Display the hexdump of a given (binary) file at given address. Format: ./Threebe.py -ha 0xADDRESS HOW_MUCH path/to/binary")
     print("-h32a  - Display the hexdump of a given (binary) file (32 bytes per line) at given address. Format: ./Threebe.py -ha 0xADDRESS HOW_MUCH path/to/binary")
     print("-hc    - Display the clean version of the hexdump from a given (binary) file.")
-    print("-hl    - Display the hexdump from a given binary file as a python list.")
+    print("-hl    - Display the hexdump from a given (binary) file as a python list.")
     print("-hw    - Display the hexdump from a given binary file without parsing (without ascii and offsets).")
     print('-hs    - Display the hexdump from a given binary file. ("Squashed"/Compressed) version.')
     print("")
