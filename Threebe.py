@@ -49,7 +49,7 @@ def print_usage(clean):
     print("-hc    - Display the clean version of the hexdump from a given (binary) file.")
     print("-hl    - Display the hexdump from a given (binary) file as a python list.")
     print("-hw    - Display the hexdump from a given (binary) file without parsing (without ascii and offsets).")
-    print('-hs    - Display the hexdump from a given binary file. ("Squashed"/Compressed) version.')
+    print('-hs    - Display the hexdump from a given (binary) file. ("Squashed"/Compressed) version.')
     print("")
     print(f"{helpColors[2]}===== DISASSEMBLY =====")
     print(f"{helpColors[1]}")
