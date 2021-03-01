@@ -58,7 +58,7 @@ def print_usage(clean):
     print(f"{helpColors[2]}===== INFORMATION =====")
     print(f"{helpColors[1]}")
     print("-i     - Display informations about a given (binary) file.")
-    print("-ic    - Display clean version (without colors) of informations about a given binary file.")
+    print("-ic    - Display clean version (without colors) of informations about a given (binary) file.")
     print("")
     print(f"{helpColors[2]}===== STRINGS =====")
     print(f"{helpColors[1]}")
