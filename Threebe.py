@@ -103,7 +103,7 @@ def print_usage_simple(clean):
     print("-hw    - Display the hexdump from a given (binary) file without parsing (without ascii and offsets).")
     print('-hs    - Display the hexdump from a given (binary) file. ("Squashed"/Compressed) version.')
     print("-dx86  - Display the disassembly of a given x86 binary file.")
-    print("-i     - Display informations about a given binary file.")
+    print("-i     - Display informations about a given (binary) file.")
     print("-ic    - Display clean version (without colors) of informations about a given binary file.")
     print("-s     - Display extracted strings from a given file.")
     print("-sb    - Display extracted strings from a given binary file.")
