@@ -416,6 +416,12 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     XOR30var = 1
                     if bytes[counter1+1]=="00":
                         after_instruction = " byte [eax], al"
+                    elif bytes[counter1+1]=="4D":
+                        XOR30var2 = str(bytes[counter1+2])
+                        if str(bytes[counter1+2][0])=="0":
+                            XOR30var2 = str(bytes[counter1+2][1])
+                        after_instruction = " byte [ebp + 0x"+XOR30var2+"], cl"
+                        XOR30var = 2
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
