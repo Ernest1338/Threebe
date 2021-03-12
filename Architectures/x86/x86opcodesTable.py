@@ -16,7 +16,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to FF then: XOR edi, edi
     "32" : "XOR",           # DONE?    # if next byte is equal to 00 then: XOR al, byte [eax]
                             # DONE?    #           -||-        to 2E then: XOR ch, byte [esi]
-    "34" : "XOR al",        # PENDING  # next byte represents XOR value: XOR al, <VALUE>
+    "34" : "XOR",           # PENDING  # next byte represents XOR value: XOR al, <VALUE>
     "0A" : "OR",            # DONE?    # if next byte is equal to 36 then: OR dh, byte [esi]
                             # DONE?    #           -||-        to 00 then: OR al, byte [eax]
     "0B" : "OR",            # DONE?    # if next byte is equal to 00 then: OR eax, dword [eax]
