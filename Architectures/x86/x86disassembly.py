@@ -529,6 +529,30 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     if should_print:
                         cancle_function_iteration(1)
 
+                elif i == "34": # XOR al, <value>
+                    after_byte = " "+bytes[counter1+1]
+                    BAvar = bytes[counter1+1]
+                    if bytes[counter1+1][0]=="0":
+                        BAvar = bytes[counter1+1][1]
+                    after_instruction = " al, "+"0x"+str(BAvar.lower())
+                    lenWholeOpcode = len(instruction)+len(after_instruction)
+                    if isClean:
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(BAvar,16))
+                    else:
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(BAvar,16))
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    if isClean:
+                        bcolors = colors
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    cancle_function_iteration(1)
+
                 elif i == "85": # TEST
                     after_byte = " "+bytes[counter1+1]
                     if bytes[counter1+1]=="C0":
