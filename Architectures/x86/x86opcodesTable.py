@@ -21,7 +21,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to 00 then: OR al, byte [eax]
     "0B" : "OR",            # DONE?    # if next byte is equal to 00 then: OR eax, dword [eax]
     "0C" : "OR",            # DONE?    # next byte represents OR value: OR al, <VALUE>
-    "08" : "OR",            # PENDING  # if next byte is equal to 00 then: OR byte [eax], al
+    "08" : "OR",            # DONE?    # if next byte is equal to 00 then: OR byte [eax], al
                             # PENDING  #           -||-        to 01 then: OR byte [ecx], al
                             # PENDING  #           -||-        to 02 then: OR byte [edx], al
                             # PENDING  #           -||-        to 03 then: OR byte [ebx], al
