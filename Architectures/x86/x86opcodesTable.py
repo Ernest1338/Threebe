@@ -24,7 +24,7 @@ x86opcodes = {
     "08" : "OR",            # DONE?    # if next byte is equal to 00 then: OR byte [eax], al
                             # DONE?    #           -||-        to 01 then: OR byte [ecx], al
                             # DONE?    #           -||-        to 02 then: OR byte [edx], al
-                            # PENDING  #           -||-        to 03 then: OR byte [ebx], al
+                            # DONE?    #           -||-        to 03 then: OR byte [ebx], al
                             # PENDING  #           -||-        to 06 then: OR byte [esi], al
                             # PENDING  #           -||-        to 07 then: OR byte [edi], al
                             # PENDING  #           -||-        to 08 then: OR byte [eax], cl
