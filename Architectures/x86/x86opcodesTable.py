@@ -26,7 +26,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to 02 then: OR byte [edx], al
                             # DONE?    #           -||-        to 03 then: OR byte [ebx], al
                             # DONE?    #           -||-        to 06 then: OR byte [esi], al
-                            # PENDING  #           -||-        to 07 then: OR byte [edi], al
+                            # DONE?    #           -||-        to 07 then: OR byte [edi], al
                             # PENDING  #           -||-        to 08 then: OR byte [eax], cl
                             # PENDING  #           -||-        to 09 then: OR byte [ecx], cl
                             # PENDING  #           -||-        to 0A then: OR byte [edx], cl
