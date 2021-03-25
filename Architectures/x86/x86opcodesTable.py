@@ -33,7 +33,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to 0B then: OR byte [ebx], cl
                             # DONE?    #           -||-        to 0E then: OR byte [esx], cl
                             # DONE?    #           -||-        to 0F then: OR byte [edi], cl
-    "F6" : "NOT",           # PENDING  # if next byte is equal to FF then: IDIV bh
+    "F6" : "NOT",           # DONE?    # if next byte is equal to FF then: IDIV bh
                             # PENDING  #           -||-        to FE then: IDIV dh
                             # PENDING  #           -||-        to FD then: IDIV ch
                             # PENDING  #           -||-        to FC then: IDIV ah

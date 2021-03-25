@@ -962,6 +962,28 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     if should_print:
                         cancle_function_iteration(1)
 
+                elif i == "F6": # NOT, NEG, IDIV, DIV, IMUL, MUL
+                    after_byte = " "+bytes[counter1+1]
+                    if bytes[counter1+1]=="FF":
+                        instruction = "IDIV"
+                        after_instruction = " bh"
+                    else:
+                        should_print = False
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    if isClean:
+                        bcolors = colors
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    if should_print:
+                        print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    if should_print:
+                        cancle_function_iteration(1)
+
                 elif i == "FF": # CALL
                     after_byte = " "+bytes[counter1+1]
                     if bytes[counter1+1]=="D0":
