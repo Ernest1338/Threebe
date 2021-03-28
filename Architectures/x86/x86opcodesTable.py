@@ -36,7 +36,7 @@ x86opcodes = {
     "F6" : "NOT",           # DONE?    # if next byte is equal to FF then: IDIV bh
                             # DONE?    #           -||-        to FE then: IDIV dh
                             # DONE?    #           -||-        to FD then: IDIV ch
-                            # PENDING  #           -||-        to FC then: IDIV ah
+                            # DONE?    #           -||-        to FC then: IDIV ah
                             # PENDING  #           -||-        to FB then: IDIV bl
                             # PENDING  #           -||-        to FA then: IDIV dl
                             # PENDING  #           -||-        to F9 then: IDIV cl
