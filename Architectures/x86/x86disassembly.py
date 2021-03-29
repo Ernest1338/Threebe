@@ -976,6 +976,9 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     elif bytes[counter1+1]=="FC":
                         instruction = "IDIV"
                         after_instruction = " ah"
+                    elif bytes[counter1+1]=="FB":
+                        instruction = "IDIV"
+                        after_instruction = " bl"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
