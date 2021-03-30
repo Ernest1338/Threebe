@@ -38,7 +38,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to FD then: IDIV ch
                             # DONE?    #           -||-        to FC then: IDIV ah
                             # DONE?    #           -||-        to FB then: IDIV bl
-                            # PENDING  #           -||-        to FA then: IDIV dl
+                            # DONE?    #           -||-        to FA then: IDIV dl
                             # PENDING  #           -||-        to F9 then: IDIV cl
                             # PENDING  #           -||-        to F8 then: IDIV al
                             # PENDING  #           -||-        to F7 then: DIV bh
