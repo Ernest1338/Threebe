@@ -59,7 +59,7 @@
 
 # **Installation**
 
-Threebe is written in Python3, so to run it, you need to have Python3 installed on your system. 
+Threebe is written from the ground up in pure Python3 (without any dependencies), so to run it, you only need to have Python3 installed on your system.
 (On Windows you may need to add Python3 to your system PATH.)
 
 Link to python website: https://www.python.org/
