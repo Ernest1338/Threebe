@@ -52,7 +52,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to EF then: IMUL bh
                             # DONE?    #           -||-        to EE then: IMUL dh
                             # DONE?    #           -||-        to ED then: IMUL ch
-                            # PENDING  #           -||-        to EC then: IMUL ah
+                            # DONE?    #           -||-        to EC then: IMUL ah
                             # PENDING  #           -||-        to EB then: IMUL bl
                             # PENDING  #           -||-        to EA then: IMUL dl
                             # PENDING  #           -||-        to E9 then: IMUL cl
