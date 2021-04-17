@@ -1030,6 +1030,9 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     elif bytes[counter1+1]=="EA":
                         instruction = "IMUL"
                         after_instruction = " dl"
+                    elif bytes[counter1+1]=="E9":
+                        instruction = "IMUL"
+                        after_instruction = " cl"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
