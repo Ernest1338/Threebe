@@ -61,7 +61,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to E6 then: MUL dh
                             # DONE?    #           -||-        to E5 then: MUL ch
                             # DONE?    #           -||-        to E4 then: MUL ah
-                            # PENDING  #           -||-        to E3 then: MUL bl
+                            # DONE?    #           -||-        to E3 then: MUL bl
                             # PENDING  #           -||-        to E2 then: MUL dl
                             # PENDING  #           -||-        to E1 then: MUL cl
                             # PENDING  #           -||-        to E0 then: MUL al
