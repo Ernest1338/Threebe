@@ -64,7 +64,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to E3 then: MUL bl
                             # DONE?    #           -||-        to E2 then: MUL dl
                             # DONE?    #           -||-        to E1 then: MUL cl
-                            # PENDING  #           -||-        to E0 then: MUL al
+                            # DONE?    #           -||-        to E0 then: MUL al
                             # PENDING  #           -||-        to DF then: NEG bh
                             # PENDING  #           -||-        to DE then: NEG dh
                             # PENDING  #           -||-        to DD then: NEG ch
