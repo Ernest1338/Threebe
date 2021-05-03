@@ -71,7 +71,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to DC then: NEG ah
                             # DONE?    #           -||-        to DB then: NEG bl
                             # DONE?    #           -||-        to DA then: NEG dl
-                            # PENDING  #           -||-        to D9 then: NEG cl
+                            # DONE?    #           -||-        to D9 then: NEG cl
                             # PENDING  #           -||-        to D8 then: NEG al
                             # PENDING  #           -||-        to D7 then: NOT bh
                             # PENDING  #           -||-        to D6 then: NOT dh
