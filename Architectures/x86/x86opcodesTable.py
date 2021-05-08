@@ -76,7 +76,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to D7 then: NOT bh
                             # DONE?    #           -||-        to D6 then: NOT dh
                             # DONE?    #           -||-        to D5 then: NOT ch
-                            # PENDING  #           -||-        to D4 then: NOT ah
+                            # DONE?    #           -||-        to D4 then: NOT ah
                             # PENDING  #           -||-        to D3 then: NOT bl
                             # PENDING  #           -||-        to D2 then: NOT dl
                             # PENDING  #           -||-        to D1 then: NOT cl
