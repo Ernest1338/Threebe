@@ -78,7 +78,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to D5 then: NOT ch
                             # DONE?    #           -||-        to D4 then: NOT ah
                             # DONE?    #           -||-        to D3 then: NOT bl
-                            # PENDING  #           -||-        to D2 then: NOT dl
+                            # DONE?    #           -||-        to D2 then: NOT dl
                             # PENDING  #           -||-        to D1 then: NOT cl
                             # PENDING  #           -||-        to D0 then: NOT al
     "F7" : "NOT",           # PENDING  # if next byte is equal to FF then: IDIV edi
