@@ -86,6 +86,29 @@ python3 Threebe.py [parameter(s)] [file_name/or/path/to/file]   or   ./Threebe.p
 ./Threebe --help
 ```
 
+# **Features**
+
+**This is a list of current features:**
+* Hexdump / Hexdump at a given address
+* Information about binary
+* Extracting strings
+* Binary patching
+* x86 disassembly (partially)
+* (more in the future)
+
+# **Supported architectures**
+
+**Disassembly:**
+- x86 (not fully completed)
+- (There will be more in the future)
+
+**Hexdump, strings, pathing:**
+- All architectures will "probably" work. (If you have problems with an architecture please open an issue for that.)
+
+# **Operating systems**
+
+Threebe is cross-platform and can be run on any operating system which allows to install python3.
+
 # **Color Schemes**
 
 To change **color scheme** of Threebe, edit the colorScheme variable at the top of the **Colors.py** file inside of Functions directory. (Path: Threebe/Functions/Colors.py)
@@ -104,29 +127,6 @@ If you are using Windows CMD and experiencing weird text rendering, this is beca
 - Main Gitlab repo: https://gitlab.com/Ernest1337/threebe
 - Github mirror: https://github.com/Ernest1338/Threebe
 - Issues/Bug tracker/Feature request: https://gitlab.com/Ernest1337/threebe/-/issues
-
-# **Operating systems**
-
-Threebe is cross-platform and can be run on any operating system which allows to install python3.
-
-# **Supported architectures**
-
-**Disassembly:**
-- x86 (not fully completed)
-- (There will be more in the future)
-
-**Hexdump, strings, pathing:**
-- All architectures will "probably" work. (If you have problems with an architecture please open an issue for that.)
-
-# **Features**
-
-**This is a list of current features:**
-* Hexdump / Hexdump at a given address
-* Information about binary
-* Extracting strings
-* x86 disassembly (partially)
-* Binary patching
-* (more in the future)
 
 # **Contribution**
 
