@@ -82,7 +82,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to D1 then: NOT cl
                             # DONE?    #           -||-        to D0 then: NOT al
     "F7" : "NOT",           # DONE?    # if next byte is equal to FF then: IDIV edi
-                            # PENDING  #           -||-        to FE then: IDIV esi
+                            # DONE?    #           -||-        to FE then: IDIV esi
                             # PENDING  #           -||-        to FD then: IDIV ebp
                             # PENDING  #           -||-        to FC then: IDIV esp
                             # PENDING  #           -||-        to FB then: IDIV ebx
