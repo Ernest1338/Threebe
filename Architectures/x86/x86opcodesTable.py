@@ -85,7 +85,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to FE then: IDIV esi
                             # DONE?    #           -||-        to FD then: IDIV ebp
                             # DONE?    #           -||-        to FC then: IDIV esp
-                            # PENDING  #           -||-        to FB then: IDIV ebx
+                            # DONE?    #           -||-        to FB then: IDIV ebx
                             # PENDING  #           -||-        to FA then: IDIV edx
                             # PENDING  #           -||-        to F9 then: IDIV ecx
                             # PENDING  #           -||-        to F8 then: IDIV eax
