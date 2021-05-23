@@ -90,7 +90,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to F9 then: IDIV ecx
                             # DONE?    #           -||-        to F8 then: IDIV eax
                             # DONE?    #           -||-        to F7 then: DIV edi
-                            # PENDING  #           -||-        to F6 then: DIV esi
+                            # DONE?    #           -||-        to F6 then: DIV esi
                             # PENDING  #           -||-        to F5 then: DIV ebp
                             # PENDING  #           -||-        to F4 then: DIV esp
                             # PENDING  #           -||-        to F3 then: DIV ebx
