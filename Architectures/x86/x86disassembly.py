@@ -1169,6 +1169,9 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     elif bytes[counter1+1]=="F2":
                         instruction = "DIV"
                         after_instruction = " edx"
+                    elif bytes[counter1+1]=="F1":
+                        instruction = "DIV"
+                        after_instruction = " ecx"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
