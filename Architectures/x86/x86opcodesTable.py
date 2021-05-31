@@ -98,7 +98,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to F1 then: DIV ecx
                             # DONE?    #           -||-        to F0 then: DIV eax
                             # DONE?    #           -||-        to EF then: IMUL edi
-                            # PENDING  #           -||-        to EE then: IMUL esi
+                            # DONE?    #           -||-        to EE then: IMUL esi
                             # PENDING  #           -||-        to ED then: IMUL ebp
                             # PENDING  #           -||-        to EC then: IMUL esp
                             # PENDING  #           -||-        to EB then: IMUL ebx
