@@ -107,7 +107,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to E8 then: IMUL eax
                             # DONE?    #           -||-        to E7 then: MUL edi
                             # DONE?    #           -||-        to E6 then: MUL esi
-                            # PENDING  #           -||-        to E5 then: MUL ebp
+                            # DONE?    #           -||-        to E5 then: MUL ebp
                             # PENDING  #           -||-        to E4 then: MUL esp
                             # PENDING  #           -||-        to E3 then: MUL ebx
                             # PENDING  #           -||-        to E2 then: MUL edx
