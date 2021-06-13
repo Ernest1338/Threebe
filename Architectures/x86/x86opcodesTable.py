@@ -111,7 +111,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to E4 then: MUL esp
                             # DONE?    #           -||-        to E3 then: MUL ebx
                             # DONE?    #           -||-        to E2 then: MUL edx
-                            # PENDING  #           -||-        to E1 then: MUL ecx
+                            # DONE?    #           -||-        to E1 then: MUL ecx
                             # PENDING  #           -||-        to E0 then: MUL eax
                             # PENDING  #           -||-        to DF then: NEG edi
                             # PENDING  #           -||-        to DE then: NEG esi
