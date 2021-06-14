@@ -1220,6 +1220,9 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     elif bytes[counter1+1]=="E1":
                         instruction = "MUL"
                         after_instruction = " ecx"
+                    elif bytes[counter1+1]=="E0":
+                        instruction = "MUL"
+                        after_instruction = " eax"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
