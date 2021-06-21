@@ -119,7 +119,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to DC then: NEG esp
                             # DONE?    #           -||-        to DB then: NEG ebx
                             # DONE?    #           -||-        to DA then: NEG edx
-                            # PENDING  #           -||-        to D9 then: NEG ecx
+                            # DONE?    #           -||-        to D9 then: NEG ecx
                             # PENDING  #           -||-        to D8 then: NEG eax
                             # PENDING  #           -||-        to D7 then: NOT edi
                             # PENDING  #           -||-        to D6 then: NOT esi
