@@ -1256,6 +1256,9 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     elif bytes[counter1+1]=="D5":
                         instruction = "NOT"
                         after_instruction = " ebp"
+                    elif bytes[counter1+1]=="D4":
+                        instruction = "NOT"
+                        after_instruction = " esp"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
