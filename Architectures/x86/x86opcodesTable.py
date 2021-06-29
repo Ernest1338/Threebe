@@ -127,7 +127,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to D4 then: NOT esp
                             # DONE?    #           -||-        to D3 then: NOT ebx
                             # DONE?    #           -||-        to D2 then: NOT edx
-                            # PENDING  #           -||-        to D1 then: NOT ecx
+                            # DONE?    #           -||-        to D1 then: NOT ecx
                             # PENDING  #           -||-        to D0 then: NOT eax
     "27" : "DAA",           # DONE
     "2F" : "DAS",           # DONE
