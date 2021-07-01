@@ -262,7 +262,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to C2 then: TEST edx, eax
                             # DONE?    #           -||-        to C1 then: TEST ecx, eax
                             # DONE?    #           -||-        to C0 then: TEST eax, eax
-    "29" : "SUB",           # PENDING  # if nexy byte is equal to C6 then: SUB esi, eax
+    "29" : "SUB",           # DONE?    # if nexy byte is equal to C6 then: SUB esi, eax
     "2C" : "SUB al",        # PENDING  # next byte represents sub value (in hex), eg. 2C 87 > SUB al, 0x87  ; 135
     "20" : "AND",           # PENDING  # if next byte is equal to 00 then: AND byte [eax], al
                             # PENDING  #           -||-        to 01 then: AND byte [ecx], al
