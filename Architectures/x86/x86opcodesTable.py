@@ -265,7 +265,7 @@ x86opcodes = {
     "29" : "SUB",           # DONE?    # if nexy byte is equal to C6 then: SUB esi, eax
     "2C" : "SUB al",        # PENDING  # next byte represents sub value (in hex), eg. 2C 87 > SUB al, 0x87  ; 135
     "20" : "AND",           # DONE?    # if next byte is equal to 00 then: AND byte [eax], al
-                            # PENDING  #           -||-        to 01 then: AND byte [ecx], al
+                            # DONE?    #           -||-        to 01 then: AND byte [ecx], al
                             # PENDING  #           -||-        to 02 then: AND byte [edx], al
                             # PENDING  #           -||-        to 03 then: AND byte [ebx], al
     "22" : "AND al",        # PENDING  # next byte represents and value (in hex), eg. 24 22 > AND al, 0x24  ; 34
