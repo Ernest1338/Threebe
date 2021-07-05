@@ -267,7 +267,7 @@ x86opcodes = {
     "20" : "AND",           # DONE?    # if next byte is equal to 00 then: AND byte [eax], al
                             # DONE?    #           -||-        to 01 then: AND byte [ecx], al
                             # DONE?    #           -||-        to 02 then: AND byte [edx], al
-                            # PENDING  #           -||-        to 03 then: AND byte [ebx], al
+                            # DONE?    #           -||-        to 03 then: AND byte [ebx], al
     "22" : "AND al",        # PENDING  # next byte represents and value (in hex), eg. 24 22 > AND al, 0x24  ; 34
     "48" : "DEC eax",       # DONE
     "49" : "DEC ecx",       # DONE
