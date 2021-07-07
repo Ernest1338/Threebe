@@ -268,7 +268,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to 01 then: AND byte [ecx], al
                             # DONE?    #           -||-        to 02 then: AND byte [edx], al
                             # DONE?    #           -||-        to 03 then: AND byte [ebx], al
-    "24" : "AND al",        # DONE?    # next byte represents and value (in hex), eg. 24 22 > AND al, 0x24  ; 34
+    "24" : "AND al",        # DONE?    # next byte represents and value (in hex), eg. 24 22 > AND al, 0x22  ; 34
     "48" : "DEC eax",       # DONE
     "49" : "DEC ecx",       # DONE
     "4A" : "DEC edx",       # DONE
