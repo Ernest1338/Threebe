@@ -316,7 +316,7 @@ x86opcodes = {
     "00" : "ADD",           # PENDING  # if next byte is equal to 00 then: ADD byte [eax], al       # this instruction will be added at the end 
     "B8" : "MOV eax",       # PENDING  # next byte represents MOV value / if 4 next bytes are not instructions, then those bytes represent an adress in format: B8 AB CD EF GH > MOV eax, 0xGHEFCDAB
     "BA" : "MOV edx",       # DONE?    # next byte represents MOV value
-    "8B" : "MOV",           # DONE?    # if next byte is equal to 1C then: MOV ebx, dword [esp]
+    "8B" : "MOV",           # PENDING  # if next byte is equal to 1C and next byte equal to 24 then: MOV ebx, dword [esp]
                             # DONE?    #             -||-      to 10 then: MOV edx, dword [eax]
                             # DONE?    #             -||-      to 55 then: MOV edx, dword [var_4h]
                             # DONE?    #             -||-      to 45 then: MOV eax, dword [arg_8h]
