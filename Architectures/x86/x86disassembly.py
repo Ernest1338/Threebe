@@ -168,7 +168,10 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     after_byte = " "+bytes[counter1+1]
                     _8Bvar = 1
                     if bytes[counter1+1]=="1C":
-                        after_instruction = " ebx, dword [esp]"
+                        if bytes[counter1+2]=="24":
+                            after_instruction = " ebx, dword [esp]"
+                            after_byte += " "+bytes[counter1+2]
+                            _8Bvar += 1
                     elif bytes[counter1+1]=="10":
                         after_instruction = " edx, dword [eax]"
                     elif bytes[counter1+1]=="55":
