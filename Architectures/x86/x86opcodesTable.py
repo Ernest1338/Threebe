@@ -297,7 +297,7 @@ x86opcodes = {
     "16" : "PUSH ss",       # DONE
     "1E" : "PUSH ds",       # DONE
     "06" : "PUSH es",       # DONE
-    "64" : "NOP",           # PENDING  # if next byte is equal to 90 then: NOP
+    "64" : "NOP",           # DONE?    # if next byte is equal to 90 then: NOP
     "65" : "NOP",           # PENDING  # if next byte is equal to 90 then: NOP
     "66" : "NOP",           # PENDING  # if next byte is equal to 90 then: NOP
     "67" : "NOP",           # PENDING  # if next byte is equal to 90 then: NOP
