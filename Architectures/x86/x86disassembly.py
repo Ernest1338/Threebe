@@ -332,7 +332,7 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     if should_print:
                         cancle_function_iteration(ADD83var2)
 
-                elif (i == "64" or i == "65"): # NOP
+                elif (i == "64" or i == "65" or i == "66"): # NOP
                     after_byte = " "+bytes[counter1+1]
                     if bytes[counter1+1]=="90":
                         after_instruction = ""
