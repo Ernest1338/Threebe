@@ -351,6 +351,11 @@ x86opcodes = {
     "81" : "ADD",           # DONE?    # if next byte is equal to C3 then: ADD ebx, <value> where VALUE is (hexadecimal, and) equal to next for bytes in this format: GH EF CD AB
                             # DONE?    #             -||-      to EC then: SUB esp, <value>                                  -||-
     "04" : "ADD",           # DONE?    # next byte represents add value: ADD al, <VALUE>
+    "E8" : "CALL",          # PENDING  # need to add more info
+    "EC" : "IN al, dx",     # PENDING
+    "ED" : "IN eax, dx",    # PENDING
+    "EE" : "OUT dx, al",    # PENDING
+    "EF" : "OUT dx, eax",   # PENDING
     "FF" : "CALL",          # DONE?    # if next byte is equal to d0 then: CALL eax    # FF is also associated with JMP, INC, need to add more info
                             # DONE?    #             -||-      to d1 then: CALL ecx
                             # DONE?    #             -||-      to d2 then: CALL edx
@@ -359,7 +364,6 @@ x86opcodes = {
                             # DONE?    #             -||-      to d5 then: CALL ebp
                             # DONE?    #             -||-      to d6 then: CALL esi
                             # DONE?    #             -||-      to d7 then: CALL edi
-    "E8" : "CALL",          # PENDING  # need to add more info
     "0F" : "INSTRUCTION",   # WIP
 }
 
