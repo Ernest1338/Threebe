@@ -352,7 +352,7 @@ x86opcodes = {
                             # DONE?    #             -||-      to EC then: SUB esp, <value>                                  -||-
     "04" : "ADD",           # DONE?    # next byte represents add value: ADD al, <VALUE>
     "E8" : "CALL",          # PENDING  # need to add more info
-    "EC" : "IN al, dx",     # PENDING
+    "EC" : "IN al, dx",     # DONE
     "ED" : "IN eax, dx",    # PENDING
     "EE" : "OUT dx, al",    # PENDING
     "EF" : "OUT dx, eax",   # PENDING
