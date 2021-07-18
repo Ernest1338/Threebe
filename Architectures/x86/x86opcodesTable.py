@@ -354,7 +354,7 @@ x86opcodes = {
     "E8" : "CALL",          # PENDING  # need to add more info
     "EC" : "IN al, dx",     # DONE
     "ED" : "IN eax, dx",    # DONE
-    "EE" : "OUT dx, al",    # PENDING
+    "EE" : "OUT dx, al",    # DONE
     "EF" : "OUT dx, eax",   # PENDING
     "FF" : "CALL",          # DONE?    # if next byte is equal to d0 then: CALL eax    # FF is also associated with JMP, INC, need to add more info
                             # DONE?    #             -||-      to d1 then: CALL ecx
