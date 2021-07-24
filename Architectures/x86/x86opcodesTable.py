@@ -1,7 +1,6 @@
 # This file contain python dictionary of opcodes for x86 architecture
 
 x86opcodes = {
-
     "74" : "JE",            # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 74 05 -> JE <ADDRESS OF THIS INSTRUCTION>+7 (int('05',16)+2=7)    # + logic behind reverse jumps: if 2nd byte>128
     "75" : "JNE",           # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 75 05 -> JNE <ADDRESS OF THIS INSTRUCTION>+7 (int('05',16)+2=7)   # + logic behind reverse jumps: if 2nd byte>128
     "7E" : "JLE",           # DONE?    # next byte represents how much instructions to jump (+2(dec)). Example: 7E 2C -> JLE <ADDRESS OF THIS INSTRUCTION>+46 (int('2C',16)+2=46) # + logic behind reverse jumps: if 2nd byte>128
@@ -371,7 +370,6 @@ x86opcodes = {
 }
 
 x860Fopcodes = {
-
     "84" : "JE",            # PENDING  # need to add more info
     "A0" : "PUSH fs",       # DONE?
     "A8" : "PUSH gs",       # DONE?
