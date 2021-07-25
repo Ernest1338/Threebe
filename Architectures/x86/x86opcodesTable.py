@@ -351,7 +351,7 @@ x86opcodes = {
     "81" : "ADD",           # DONE?    # if next byte is equal to C3 then: ADD ebx, <value> where VALUE is (hexadecimal, and) equal to next for bytes in this format: GH EF CD AB
                             # DONE?    #             -||-      to EC then: SUB esp, <value>                                  -||-
     "04" : "ADD",           # DONE?    # next byte represents add value: ADD al, <VALUE>
-    "E4" : "IN",            # PENDING  # next byte represents value: IN al, <VALUE>
+    "E4" : "IN",            # DONE?    # next byte represents value: IN al, <VALUE>
     "E8" : "CALL",          # PENDING  # need to add more info
     "EC" : "IN al, dx",     # DONE
     "ED" : "IN eax, dx",    # DONE
