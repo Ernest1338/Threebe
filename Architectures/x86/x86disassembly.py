@@ -142,10 +142,10 @@ def disassemble_x86(bytes, ascii_dict, colors):
 
                 elif i == "89": # MOV ebp, esp; MOV ebx, ecx
                     after_byte = " "+bytes[counter1+1]
-                    _89var = bytes[counter1+1]
-                    if _89var=="E5":
+                    TEMPvar = bytes[counter1+1]
+                    if TEMPvar=="E5":
                         after_instruction = " ebp, esp"
-                    if _89var=="CB":
+                    if TEMPvar=="CB":
                         after_instruction = " ebx, ecx"
                     else:
                         should_print = False
