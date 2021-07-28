@@ -166,12 +166,12 @@ def disassemble_x86(bytes, ascii_dict, colors):
 
                 elif i == "8B": # MOV
                     after_byte = " "+bytes[counter1+1]
-                    _8Bvar = 1
+                    TEMPvar = 1
                     if bytes[counter1+1]=="1C":
                         if bytes[counter1+2]=="24":
                             after_instruction = " ebx, dword [esp]"
                             after_byte += " "+bytes[counter1+2]
-                            _8Bvar += 1
+                            TEMPvar += 1
                     elif bytes[counter1+1]=="10":
                         after_instruction = " edx, dword [eax]"
                     elif bytes[counter1+1]=="55":
@@ -185,11 +185,11 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     elif bytes[counter1+1]=="6C":
                         after_instruction = " ebp, dword [arg_4h]"
                     elif bytes[counter1+1]=="43":
-                        _8Bvar2 = str(bytes[counter1+2])
+                        TEMPvar2 = str(bytes[counter1+2])
                         if str(bytes[counter1+2][0])=="0":
-                            _8Bvar2 = str(bytes[counter1+2][1])
-                        after_instruction = " eax, dword [ebx + "+str(_8Bvar2)+"]"
-                        _8Bvar = 2
+                            TEMPvar2 = str(bytes[counter1+2][1])
+                        after_instruction = " eax, dword [ebx + "+str(TEMPvar2)+"]"
+                        TEMPvar = 2
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
@@ -205,7 +205,7 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     after_byte = ""
                     after_instruction = ""
                     if should_print:
-                        cancle_function_iteration(_8Bvar)
+                        cancle_function_iteration(TEMPvar)
 
                 elif i == "83": # ADD, CMP, SUB, OR
                     after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]
