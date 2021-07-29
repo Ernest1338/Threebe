@@ -124,9 +124,9 @@ If you are using Windows CMD and experiencing weird text rendering, this is beca
 
 # **Links**
 
-- Main Gitlab repo: https://gitlab.com/Ernest1337/threebe
+- Gitlab repo: https://gitlab.com/Ernest1337/threebe
 - Github mirror: https://github.com/Ernest1338/Threebe
-- Issues/Bug tracker/Feature request: https://gitlab.com/Ernest1337/threebe/-/issues
+- Issues/Bug tracker/Feature request: Github issues (https://github.com/Ernest1338/Threebe/issues) or Gitlab issues (https://gitlab.com/Ernest1337/threebe/-/issues)
 
 # **Contribution**
 
