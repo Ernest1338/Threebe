@@ -209,112 +209,112 @@ def disassemble_x86(bytes, ascii_dict, colors):
 
                 elif i == "83": # ADD, CMP, SUB, OR
                     after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]
-                    ADD83var = bytes[counter1+2]
-                    ADD83var2 = 2
-                    ADD83var3 = bytes[counter1+3]
-                    ADD83var4 = str(int(ADD83var,16))
+                    TEMPvar = bytes[counter1+2]
+                    TEMPvar2 = 2
+                    TEMPvar3 = bytes[counter1+3]
+                    TEMPvar4 = str(int(TEMPvar,16))
                     if bytes[counter1+2][0]=="0":
-                        ADD83var = bytes[counter1+2][1]
+                        TEMPvar = bytes[counter1+2][1]
                     if bytes[counter1+3][0]=="0":
-                        ADD83var3 = bytes[counter1+3][1]
+                        TEMPvar3 = bytes[counter1+3][1]
                     if bytes[counter1+1]=="C2":
-                        after_instruction = " edx, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " edx, "+"0x"+str(TEMPvar.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
                     elif bytes[counter1+1]=="C4":
-                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " esp, "+"0x"+str(TEMPvar.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
                     elif bytes[counter1+1]=="C7":
-                        after_instruction = " edi, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " edi, "+"0x"+str(TEMPvar.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
                     elif bytes[counter1+1]=="C0":
-                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " eax, "+"0x"+str(TEMPvar.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
                     elif bytes[counter1+1]=="F8":
                         instruction = "CMP"
-                        after_instruction = " eax, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " eax, "+"0x"+str(TEMPvar.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
                     elif bytes[counter1+1]=="3B":
                         instruction = "CMP"
-                        after_instruction = " dword [ebx], "+"0x"+str(ADD83var.lower())
+                        after_instruction = " dword [ebx], "+"0x"+str(TEMPvar.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
                     elif bytes[counter1+1]=="EC":
                         instruction = "SUB"
-                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " esp, "+"0x"+str(TEMPvar.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
                     elif bytes[counter1+1]=="EA":
                         instruction = "SUB"
-                        after_instruction = " edx, "+"0x"+str(ADD83var.lower())
+                        after_instruction = " edx, "+"0x"+str(TEMPvar.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
                     elif bytes[counter1+1]=="08":
                         instruction = "OR"
-                        if ADD83var=="FF":
-                            ADD83var4 = "-1"
-                        after_instruction = " dword [eax], "+"0x"+str(ADD83var.lower())
+                        if TEMPvar=="FF":
+                            TEMPvar4 = "-1"
+                        after_instruction = " dword [eax], "+"0x"+str(TEMPvar.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
                     elif bytes[counter1+1]=="E4":
                         instruction = "AND"
-                        if ADD83var=="FF":
-                            ADD83var4 = "-1"
-                        elif ADD83var[0]=="F":
-                            ADD83var = "FFFFFF"+ADD83var
-                        after_instruction = " esp, "+"0x"+str(ADD83var.lower())
+                        if TEMPvar=="FF":
+                            TEMPvar4 = "-1"
+                        elif TEMPvar[0]=="F":
+                            TEMPvar = "FFFFFF"+TEMPvar
+                        after_instruction = " esp, "+"0x"+str(TEMPvar.lower())
                     elif bytes[counter1+1]=="45" and bytes[counter1+2]=="FC":
-                        ADD83var4 = str(int(bytes[counter1+3],16))
-                        after_instruction = " dword [var_4h], "+"0x"+str(ADD83var3.lower())
+                        TEMPvar4 = str(int(bytes[counter1+3],16))
+                        after_instruction = " dword [var_4h], "+"0x"+str(TEMPvar3.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
                         after_byte += " "+bytes[counter1+3]
-                        ADD83var2 = 4
+                        TEMPvar2 = 4
                     elif bytes[counter1+1]=="7D" and bytes[counter1+2]=="08":
-                        ADD83var4 = str(int(bytes[counter1+3],16))
+                        TEMPvar4 = str(int(bytes[counter1+3],16))
                         instruction = "CMP"
-                        after_instruction = " dword [arg_8h], "+"0x"+str(ADD83var3.lower())
+                        after_instruction = " dword [arg_8h], "+"0x"+str(TEMPvar3.lower())
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+ADD83var4
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
                         after_byte += " "+bytes[counter1+3]
-                        ADD83var2 = 4
+                        TEMPvar2 = 4
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
@@ -330,7 +330,7 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     after_byte = ""
                     after_instruction = ""
                     if should_print:
-                        cancle_function_iteration(ADD83var2)
+                        cancle_function_iteration(TEMPvar2)
 
                 elif (i == "64" or i == "65" or i == "66" or i == "67"): # NOP
                     after_byte = " "+bytes[counter1+1]
