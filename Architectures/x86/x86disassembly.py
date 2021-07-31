@@ -355,25 +355,25 @@ def disassemble_x86(bytes, ascii_dict, colors):
 
                 elif i == "68": # PUSH string
                     after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]+" "+bytes[counter1+3]+" "+bytes[counter1+4]
-                    _68offset = " 0x"+bytes[counter1+4]+bytes[counter1+3]+bytes[counter1+2]+bytes[counter1+1]
-                    _68offset_to_dict_1 = hex(int(_68offset,16)+1)
-                    _68offset_to_dict = hex(int(_68offset,16))
-                    if _68offset_to_dict in ascii_dict:
-                        after_instruction = _68offset
+                    TEMPoffset = " 0x"+bytes[counter1+4]+bytes[counter1+3]+bytes[counter1+2]+bytes[counter1+1]
+                    TEMPoffset_to_dict2 = hex(int(TEMPoffset,16)+1)
+                    TEMPoffset_to_dict = hex(int(TEMPoffset,16))
+                    if TEMPoffset_to_dict in ascii_dict:
+                        after_instruction = TEMPoffset
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; str: "+str(ascii_dict[_68offset_to_dict])
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; str: "+str(ascii_dict[TEMPoffset_to_dict])
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[_68offset_to_dict])
-                    elif _68offset_to_dict_1 in ascii_dict:
-                        after_instruction = _68offset
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[TEMPoffset_to_dict])
+                    elif TEMPoffset_to_dict2 in ascii_dict:
+                        after_instruction = TEMPoffset
                         lenWholeOpcode = len(instruction)+len(after_instruction)
                         if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; str: "+str(ascii_dict[_68offset_to_dict_1])
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; str: "+str(ascii_dict[TEMPoffset_to_dict2])
                         else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[_68offset_to_dict_1])
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[TEMPoffset_to_dict2])
                     else:
-                        after_instruction = _68offset
+                        after_instruction = TEMPoffset
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 51+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
