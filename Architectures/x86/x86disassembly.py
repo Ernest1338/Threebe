@@ -500,15 +500,15 @@ def disassemble_x86(bytes, ascii_dict, colors):
 
                 elif i == "0C": # OR al, <value>
                     after_byte = " "+bytes[counter1+1]
-                    BAvar = bytes[counter1+1]
+                    TEMPvar = bytes[counter1+1]
                     if bytes[counter1+1][0]=="0":
-                        BAvar = bytes[counter1+1][1]
-                    after_instruction = " al, "+"0x"+str(BAvar.lower())
+                        TEMPvar = bytes[counter1+1][1]
+                    after_instruction = " al, "+"0x"+str(TEMPvar.lower())
                     lenWholeOpcode = len(instruction)+len(after_instruction)
                     if isClean:
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(BAvar,16))
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(TEMPvar,16))
                     else:
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(BAvar,16))
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(TEMPvar,16))
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     intruction_len_for_check = 51+len(instruction)+len(after_instruction)
                     if len(check1) < intruction_len_for_check:
