@@ -1468,7 +1468,7 @@ def disassemble_x86(bytes, ascii_dict, colors):
                         cancle_function_iteration(1)
 
                 elif i == "0F": # PUSH fs, PUSH gs, POP fs, POP gs, ...
-                    ofvar1 = 1
+                    TEMPvar = 1
                     after_byte = " "+bytes[counter1+1]
                     if bytes[counter1+1]=="A0":
                         instruction = "PUSH"
@@ -1497,7 +1497,7 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     after_byte = ""
                     after_instruction = ""
                     if should_print:
-                        cancle_function_iteration(ofvar1)
+                        cancle_function_iteration(TEMPvar)
                     
             else:
                 pass
