@@ -329,8 +329,70 @@ x86opcodes = {
                             # DONE?    #             -||-      to 6C then: MOV ebp, dword [arg_4h]
                             # DONE?    #             -||-      to 43 then: MOV eax, dword [ebx + <VALUE>] where <VALUE> is equal to byte after 43
                             # PENDING  #             -||-      to 83 then: NEED TO ADD MORE INFO! -------------------------------
-    "89" : "MOV",           # DONE?    # if next byte is equal to E5 then: MOV ebp, esp
+    "89" : "MOV",           # PENDING  # if next byte is equal to C0 then: MOV eax, eax
+                            # PENDING  #             -||-      to C1 then: MOV ecx, eax
+                            # PENDING  #             -||-      to C2 then: MOV edx, eax
+                            # PENDING  #             -||-      to C3 then: MOV ebx, eax
+                            # PENDING  #             -||-      to C4 then: MOV esp, eax
+                            # PENDING  #             -||-      to C5 then: MOV ebp, eax
+                            # PENDING  #             -||-      to C6 then: MOV esi, eax
+                            # PENDING  #             -||-      to C7 then: MOV edi, eax
+                            # PENDING  #             -||-      to C8 then: MOV eax, ecx
+                            # PENDING  #             -||-      to C9 then: MOV ecx, ecx
+                            # PENDING  #             -||-      to CA then: MOV edx, ecx
                             # DONE?    #             -||-      to CB then: MOV ebx, ecx
+                            # PENDING  #             -||-      to CC then: MOV esp, ecx
+                            # PENDING  #             -||-      to CD then: MOV ebp, ecx
+                            # PENDING  #             -||-      to CE then: MOV esi, ecx
+                            # PENDING  #             -||-      to CF then: MOV edi, ecx
+                            # PENDING  #             -||-      to D0 then: MOV eax, edx
+                            # PENDING  #             -||-      to D1 then: MOV ecx, edx
+                            # PENDING  #             -||-      to D2 then: MOV edx, edx
+                            # PENDING  #             -||-      to D3 then: MOV ebx, edx
+                            # PENDING  #             -||-      to D4 then: MOV esp, edx
+                            # PENDING  #             -||-      to D5 then: MOV ebp, edx
+                            # PENDING  #             -||-      to D6 then: MOV esi, edx
+                            # PENDING  #             -||-      to D7 then: MOV edi, edx
+                            # PENDING  #             -||-      to D8 then: MOV eax, ebx
+                            # PENDING  #             -||-      to D9 then: MOV ecx, ebx
+                            # PENDING  #             -||-      to DA then: MOV edx, ebx
+                            # PENDING  #             -||-      to DB then: MOV ebx, ebx
+                            # PENDING  #             -||-      to DC then: MOV esp, ebx
+                            # PENDING  #             -||-      to DD then: MOV ebp, ebx
+                            # PENDING  #             -||-      to DE then: MOV esi, ebx
+                            # PENDING  #             -||-      to DF then: MOV edi, ebx
+                            # PENDING  #             -||-      to E0 then: MOV eax, esp
+                            # PENDING  #             -||-      to E1 then: MOV ecx, esp
+                            # PENDING  #             -||-      to E2 then: MOV edx, esp
+                            # PENDING  #             -||-      to E3 then: MOV ebx, esp
+                            # PENDING  #             -||-      to E4 then: MOV esp, esp
+                            # DONE?    #             -||-      to E5 then: MOV ebp, esp
+                            # PENDING  #             -||-      to E6 then: MOV esi, esp
+                            # PENDING  #             -||-      to E7 then: MOV edi, esp
+                            # PENDING  #             -||-      to E8 then: MOV eax, ebp
+                            # PENDING  #             -||-      to E9 then: MOV ecx, ebp
+                            # PENDING  #             -||-      to EA then: MOV edx, ebp
+                            # PENDING  #             -||-      to EB then: MOV ebx, ebp
+                            # PENDING  #             -||-      to EC then: MOV esp, ebp
+                            # PENDING  #             -||-      to ED then: MOV ebp, ebp
+                            # PENDING  #             -||-      to EE then: MOV esi, ebp
+                            # PENDING  #             -||-      to EF then: MOV edi, ebp
+                            # PENDING  #             -||-      to F0 then: MOV eax, esi
+                            # PENDING  #             -||-      to F1 then: MOV ecx, esi
+                            # PENDING  #             -||-      to F2 then: MOV edx, esi
+                            # PENDING  #             -||-      to F3 then: MOV ebx, esi
+                            # PENDING  #             -||-      to F4 then: MOV esp, esi
+                            # PENDING  #             -||-      to F5 then: MOV ebp, esi
+                            # PENDING  #             -||-      to F6 then: MOV esi, esi
+                            # PENDING  #             -||-      to F7 then: MOV edi, esi
+                            # PENDING  #             -||-      to F8 then: MOV eax, edi
+                            # PENDING  #             -||-      to F9 then: MOV ecx, edi
+                            # PENDING  #             -||-      to FA then: MOV edx, edi
+                            # PENDING  #             -||-      to FB then: MOV ebx, edi
+                            # PENDING  #             -||-      to FC then: MOV esp, edi
+                            # PENDING  #             -||-      to FD then: MOV ebp, edi
+                            # PENDING  #             -||-      to FE then: MOV esi, edi
+                            # PENDING  #             -||-      to FF then: MOV edi, edi
     "01" : "ADD",           # DONE?    # if next byte is equal to CA then: ADD EDX, ECX
                             # DONE?    #             -||-      to D0 then: ADD EAX, EDX
                             # DONE?    #             -||-      to 01 then: ADD dword [ecx], eax
