@@ -393,22 +393,22 @@ x86opcodes = {
                             # PENDING  #             -||-      to FD then: MOV ebp, edi
                             # PENDING  #             -||-      to FE then: MOV esi, edi
                             # PENDING  #             -||-      to FF then: MOV edi, edi
-    "01" : "ADD",           # DONE?    # if next byte is equal to CA then: ADD EDX, ECX
-                            # DONE?    #             -||-      to D0 then: ADD EAX, EDX
+    "01" : "ADD",           # DONE?    # if next byte is equal to CA then: ADD edx, ecx
+                            # DONE?    #             -||-      to D0 then: ADD eax, edx
                             # DONE?    #             -||-      to 01 then: ADD dword [ecx], eax
                             # DONE?    #             -||-      to 00 then: ADD dword [eax], eax
-    "83" : "ADD",           # DONE?    # if nexy byte is equal to C2 then: ADD EDX, <value>  where VALUE is equal to byte after C2
-                            # DONE?    #             -||-      to C7 then: ADD EDI, <VALUE>             -||-
-                            # DONE?    #             -||-      to C4 then: ADD ESP, <VALUE>             -||-
-                            # DONE?    #             -||-      to C0 then: ADD EAX, <VALUE>             -||-
-                            # DONE?    #             -||-      to E4 then: AND ESP, <VALUE>             -||-
-                            # DONE?    #             -||-      to F8 then: CMP EAX, <VALUE>             -||-
-                            # DONE?    #             -||-      to 3B then: CMP DWORD [EBX], <VALUE>     -||-
-                            # DONE?    #             -||-      to EC then: SUB ESP, <VALUE>             -||-
-                            # DONE?    #             -||-      to EA then: SUB EDX, <VALUE>             -||-
-                            # DONE?    #             -||-      to 08 then: OR DWORD [EAX], <VALUE>      -||-
-                            # DONE?    # if next 2 bytes: 45 FC <value> then: ADD DWORD [var_4h], <value>
-                            # DONE?    # if next 2 bytes: 7D 08 <value> then: CMP DWORD [arg_8h], <value>
+    "83" : "ADD",           # DONE?    # if nexy byte is equal to C2 then: ADD edx, <value>  where VALUE is equal to byte after C2
+                            # DONE?    #             -||-      to C7 then: ADD edi, <VALUE>             -||-
+                            # DONE?    #             -||-      to C4 then: ADD esp, <VALUE>             -||-
+                            # DONE?    #             -||-      to C0 then: ADD eax, <VALUE>             -||-
+                            # DONE?    #             -||-      to E4 then: AND esp, <VALUE>             -||-
+                            # DONE?    #             -||-      to F8 then: CMP eax, <VALUE>             -||-
+                            # DONE?    #             -||-      to 3B then: CMP dword [ebx], <VALUE>     -||-
+                            # DONE?    #             -||-      to EC then: SUB esp, <VALUE>             -||-
+                            # DONE?    #             -||-      to EA then: SUB edx, <VALUE>             -||-
+                            # DONE?    #             -||-      to 08 then: OR dword [eax], <VALUE>      -||-
+                            # DONE?    # if next 2 bytes: 45 FC <value> then: ADD dword [var_4h], <value>
+                            # DONE?    # if next 2 bytes: 7D 08 <value> then: CMP dword [arg_8h], <value>
     "90" : "NOP",           # DONE
     "81" : "ADD",           # DONE?    # if next byte is equal to C3 then: ADD ebx, <value> where VALUE is (hexadecimal, and) equal to next for bytes in this format: GH EF CD AB
                             # DONE?    #             -||-      to EC then: SUB esp, <value>                                  -||-
