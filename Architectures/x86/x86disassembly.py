@@ -140,12 +140,11 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     after_instruction = ""
                     cancle_function_iteration(1)
 
-                elif i == "89": # MOV ebp, esp; MOV ebx, ecx
+                elif i == "89": # MOV 
                     after_byte = " "+bytes[counter1+1]
-                    TEMPvar = bytes[counter1+1]
-                    if TEMPvar=="E5":
+                    if bytes[counter1+1]=="E5":
                         after_instruction = " ebp, esp"
-                    if TEMPvar=="CB":
+                    elif bytes[counter1+1]=="CB":
                         after_instruction = " ebx, ecx"
                     else:
                         should_print = False
