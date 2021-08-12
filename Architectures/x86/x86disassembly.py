@@ -50,35 +50,11 @@ def disassemble_x86(bytes, ascii_dict, colors):
                 intruction_len_for_check = 51+len(instruction) # need to add to this after_instruction every time this variable (after_instruction) is usesd inside an if
                 should_print = True
 
-                if i == "74" or i == "75" or i == "7E" or i == "7F" or i == "70" or i == "71" or i == "72" or i == "73": # JE, JNE, JLE, JG, JO, JNO, JB, JAE
-                    after_byte = " "+bytes[counter1+1]
-                    if int(bytes[counter1+1],16)>=128:
-                        if int(bytes[counter1+1],16)==255:
-                            after_instruction = " "+hex(offset1+1)
-                        elif int(bytes[counter1+1],16)==254:
-                            after_instruction = " "+hex(offset1)
-                        else:
-                            after_instruction = " "+hex(offset1-(256-(int(bytes[counter1+1],16)+2)))
-                    else:
-                        after_instruction = " "+hex(offset1+(int(bytes[counter1+1],16)+2))
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
-                    if len(check1) < intruction_len_for_check:
-                        for _ in range(intruction_len_for_check-len(check1)):
-                            after_byte += " "
-                    if isClean:
-                        bcolors = colors
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    print(check1)
-                    after_byte = ""
-                    after_instruction = ""
-                    cancle_function_iteration(1)
-
                 # 1 byte instructions
-                elif  (i == "90" or i == "55" or i == "50" or i == "56" or i == "57" or i == "51" or i == "53" or i == "52" or i == "54" or i == "0E" or i == "16" or i == "1E" or i == "06"
-                    or i == "1F" or i == "07" or i == "17" or i == "58" or i == "59" or i == "5A" or i == "5B" or i == "5C" or i == "5D" or i == "5E" or i == "5F" or i == "61" or i == "4C" or i == "49"
-                    or i == "4E" or i == "4F" or i == "48" or i == "46" or i == "44" or i == "47" or i == "42" or i == "43" or i == "40" or i == "41" or i == "C9" or i == "C3" or i == "27" or i == "2F"
-                    or i == "CF" or i == "98" or i == "99" or i == "4A" or i == "4B" or i == "4D" or i == "45" or i == "EC" or i == "ED" or i == "EE" or i == "EF" or i == "F8"):
+                if    (i == "06" or i == "07" or i == "0E" or i == "16" or i == "17" or i == "1E" or i == "1F" or i == "27" or i == "2F" or i == "40" or i == "41" or i == "42" or i == "43"
+                    or i == "44" or i == "45" or i == "46" or i == "47" or i == "48" or i == "49" or i == "4A" or i == "4B" or i == "4C" or i == "4D" or i == "4E" or i == "4F" or i == "50" or i == "51"
+                    or i == "52" or i == "53" or i == "54" or i == "55" or i == "56" or i == "57" or i == "58" or i == "59" or i == "5A" or i == "5B" or i == "5C" or i == "5D" or i == "5E" or i == "5F"
+                    or i == "61" or i == "90" or i == "98" or i == "99" or i == "C3" or i == "C9" or i == "CF" or i == "EC" or i == "ED" or i == "EE" or i == "EF" or i == "F8"):
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
                     if len(check1) < intruction_len_for_check:
                         for _ in range(intruction_len_for_check-len(check1)):
@@ -115,276 +91,6 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     after_instruction = ""
                     if should_print:
                         cancle_function_iteration(1)
-
-                elif i == "BA": # MOV edx, <value>
-                    after_byte = " "+bytes[counter1+1]
-                    TEMPvar = bytes[counter1+1]
-                    if bytes[counter1+1][0]=="0":
-                        TEMPvar = bytes[counter1+1][1]
-                    after_instruction = ", "+"0x"+str(TEMPvar.lower())
-                    lenWholeOpcode = len(instruction)+len(after_instruction)
-                    if isClean:
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(TEMPvar,16))
-                    else:
-                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(TEMPvar,16))
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
-                    if len(check1) < intruction_len_for_check:
-                        for _ in range(intruction_len_for_check-len(check1)):
-                            after_byte += " "
-                    if isClean:
-                        bcolors = colors
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    print(check1)
-                    after_byte = ""
-                    after_instruction = ""
-                    cancle_function_iteration(1)
-
-                elif i == "89": # MOV 
-                    after_byte = " "+bytes[counter1+1]
-                    if bytes[counter1+1]=="E5":
-                        after_instruction = " ebp, esp"
-                    elif bytes[counter1+1]=="CB":
-                        after_instruction = " ebx, ecx"
-                    else:
-                        should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
-                    if len(check1) < intruction_len_for_check:
-                        for _ in range(intruction_len_for_check-len(check1)):
-                            after_byte += " "
-                    if isClean:
-                        bcolors = colors
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    if should_print:
-                        print(check1)
-                    after_byte = ""
-                    after_instruction = ""
-                    if should_print:
-                        cancle_function_iteration(1)
-
-                elif i == "8B": # MOV
-                    after_byte = " "+bytes[counter1+1]
-                    TEMPvar = 1
-                    if bytes[counter1+1]=="1C":
-                        if bytes[counter1+2]=="24":
-                            after_instruction = " ebx, dword [esp]"
-                            after_byte += " "+bytes[counter1+2]
-                            TEMPvar += 1
-                    elif bytes[counter1+1]=="10":
-                        after_instruction = " edx, dword [eax]"
-                    elif bytes[counter1+1]=="55":
-                        after_instruction = " edx, dword [var_4h]"
-                    elif bytes[counter1+1]=="45":
-                        after_instruction = " eax, dword [arg_8h]"
-                    elif bytes[counter1+1]=="4D":
-                        after_instruction = " ecx, dword [var_4h]"
-                    elif bytes[counter1+1]=="00":
-                        after_instruction = " eax, dword [eax]"
-                    elif bytes[counter1+1]=="6C":
-                        after_instruction = " ebp, dword [arg_4h]"
-                    elif bytes[counter1+1]=="43":
-                        TEMPvar2 = str(bytes[counter1+2])
-                        if str(bytes[counter1+2][0])=="0":
-                            TEMPvar2 = str(bytes[counter1+2][1])
-                        after_instruction = " eax, dword [ebx + "+str(TEMPvar2)+"]"
-                        TEMPvar = 2
-                    else:
-                        should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
-                    if len(check1) < intruction_len_for_check:
-                        for _ in range(intruction_len_for_check-len(check1)):
-                            after_byte += " "
-                    if isClean:
-                        bcolors = colors
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    if should_print:
-                        print(check1)
-                    after_byte = ""
-                    after_instruction = ""
-                    if should_print:
-                        cancle_function_iteration(TEMPvar)
-
-                elif i == "83": # ADD, CMP, SUB, OR
-                    after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]
-                    TEMPvar = bytes[counter1+2]
-                    TEMPvar2 = 2
-                    TEMPvar3 = bytes[counter1+3]
-                    TEMPvar4 = str(int(TEMPvar,16))
-                    if bytes[counter1+2][0]=="0":
-                        TEMPvar = bytes[counter1+2][1]
-                    if bytes[counter1+3][0]=="0":
-                        TEMPvar3 = bytes[counter1+3][1]
-                    if bytes[counter1+1]=="C2":
-                        after_instruction = " edx, "+"0x"+str(TEMPvar.lower())
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
-                    elif bytes[counter1+1]=="C4":
-                        after_instruction = " esp, "+"0x"+str(TEMPvar.lower())
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
-                    elif bytes[counter1+1]=="C7":
-                        after_instruction = " edi, "+"0x"+str(TEMPvar.lower())
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
-                    elif bytes[counter1+1]=="C0":
-                        after_instruction = " eax, "+"0x"+str(TEMPvar.lower())
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
-                    elif bytes[counter1+1]=="F8":
-                        instruction = "CMP"
-                        after_instruction = " eax, "+"0x"+str(TEMPvar.lower())
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
-                    elif bytes[counter1+1]=="3B":
-                        instruction = "CMP"
-                        after_instruction = " dword [ebx], "+"0x"+str(TEMPvar.lower())
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
-                    elif bytes[counter1+1]=="EC":
-                        instruction = "SUB"
-                        after_instruction = " esp, "+"0x"+str(TEMPvar.lower())
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
-                    elif bytes[counter1+1]=="EA":
-                        instruction = "SUB"
-                        after_instruction = " edx, "+"0x"+str(TEMPvar.lower())
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
-                    elif bytes[counter1+1]=="08":
-                        instruction = "OR"
-                        if TEMPvar=="FF":
-                            TEMPvar4 = "-1"
-                        after_instruction = " dword [eax], "+"0x"+str(TEMPvar.lower())
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
-                    elif bytes[counter1+1]=="E4":
-                        instruction = "AND"
-                        if TEMPvar=="FF":
-                            TEMPvar4 = "-1"
-                        elif TEMPvar[0]=="F":
-                            TEMPvar = "FFFFFF"+TEMPvar
-                        after_instruction = " esp, "+"0x"+str(TEMPvar.lower())
-                    elif bytes[counter1+1]=="45" and bytes[counter1+2]=="FC":
-                        TEMPvar4 = str(int(bytes[counter1+3],16))
-                        after_instruction = " dword [var_4h], "+"0x"+str(TEMPvar3.lower())
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
-                        after_byte += " "+bytes[counter1+3]
-                        TEMPvar2 = 4
-                    elif bytes[counter1+1]=="7D" and bytes[counter1+2]=="08":
-                        TEMPvar4 = str(int(bytes[counter1+3],16))
-                        instruction = "CMP"
-                        after_instruction = " dword [arg_8h], "+"0x"+str(TEMPvar3.lower())
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
-                        after_byte += " "+bytes[counter1+3]
-                        TEMPvar2 = 4
-                    else:
-                        should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
-                    if len(check1) < intruction_len_for_check:
-                        for _ in range(intruction_len_for_check-len(check1)):
-                            after_byte += " "
-                    if isClean:
-                        bcolors = colors
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    if should_print:
-                        print(check1)
-                    after_byte = ""
-                    after_instruction = ""
-                    if should_print:
-                        cancle_function_iteration(TEMPvar2)
-
-                elif (i == "64" or i == "65" or i == "66" or i == "67"): # NOP
-                    after_byte = " "+bytes[counter1+1]
-                    if bytes[counter1+1]=="90":
-                        after_instruction = ""
-                    else:
-                        should_print = False
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
-                    if len(check1) < intruction_len_for_check:
-                        for _ in range(intruction_len_for_check-len(check1)):
-                            after_byte += " "
-                    if isClean:
-                        bcolors = colors
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    if should_print:
-                        print(check1)
-                    after_byte = ""
-                    after_instruction = ""
-                    if should_print:
-                        cancle_function_iteration(1)
-
-                elif i == "68": # PUSH string
-                    after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]+" "+bytes[counter1+3]+" "+bytes[counter1+4]
-                    TEMPoffset = " 0x"+bytes[counter1+4]+bytes[counter1+3]+bytes[counter1+2]+bytes[counter1+1]
-                    TEMPoffset_to_dict2 = hex(int(TEMPoffset,16)+1)
-                    TEMPoffset_to_dict = hex(int(TEMPoffset,16))
-                    if TEMPoffset_to_dict in ascii_dict:
-                        after_instruction = TEMPoffset
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; str: "+str(ascii_dict[TEMPoffset_to_dict])
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[TEMPoffset_to_dict])
-                    elif TEMPoffset_to_dict2 in ascii_dict:
-                        after_instruction = TEMPoffset
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; str: "+str(ascii_dict[TEMPoffset_to_dict2])
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[TEMPoffset_to_dict2])
-                    else:
-                        after_instruction = TEMPoffset
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
-                    if len(check1) < intruction_len_for_check:
-                        for _ in range(intruction_len_for_check-len(check1)):
-                            after_byte += " "
-                    if isClean:
-                        bcolors = colors
-                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
-                    print(check1)
-                    after_byte = ""
-                    after_instruction = ""
-                    cancle_function_iteration(4)
 
                 elif i == "04": # ADD al, <value>
                     after_byte = " "+bytes[counter1+1]
@@ -715,136 +421,10 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     after_instruction = ""
                     cancle_function_iteration(1)
 
-                elif i == "85": # TEST
+                elif (i == "64" or i == "65" or i == "66" or i == "67"): # NOP
                     after_byte = " "+bytes[counter1+1]
-                    if bytes[counter1+1]=="C0":
-                        after_instruction = " eax, eax"
-                    elif bytes[counter1+1]=="C1":
-                        after_instruction = " ecx, eax"
-                    elif bytes[counter1+1]=="C2":
-                        after_instruction = " edx, eax"
-                    elif bytes[counter1+1]=="C3":
-                        after_instruction = " ebx, eax"
-                    elif bytes[counter1+1]=="C4":
-                        after_instruction = " esp, eax"
-                    elif bytes[counter1+1]=="C5":
-                        after_instruction = " ebp, eax"
-                    elif bytes[counter1+1]=="C6":
-                        after_instruction = " esi, eax"
-                    elif bytes[counter1+1]=="C7":
-                        after_instruction = " edi, eax"
-                    elif bytes[counter1+1]=="C8":
-                        after_instruction = " eax, ecx"
-                    elif bytes[counter1+1]=="C9":
-                        after_instruction = " ecx, ecx"
-                    elif bytes[counter1+1]=="CA":
-                        after_instruction = " edx, ecx"
-                    elif bytes[counter1+1]=="CB":
-                        after_instruction = " ebx, ecx"
-                    elif bytes[counter1+1]=="CC":
-                        after_instruction = " esp, ecx"
-                    elif bytes[counter1+1]=="CD":
-                        after_instruction = " ebp, ecx"
-                    elif bytes[counter1+1]=="CE":
-                        after_instruction = " esi, ecx"
-                    elif bytes[counter1+1]=="CF":
-                        after_instruction = " edi, ecx"
-                    elif bytes[counter1+1]=="D0":
-                        after_instruction = " eax, edx"
-                    elif bytes[counter1+1]=="D1":
-                        after_instruction = " ecx, edx"
-                    elif bytes[counter1+1]=="D2":
-                        after_instruction = " edx, edx"
-                    elif bytes[counter1+1]=="D3":
-                        after_instruction = " ebx, edx"
-                    elif bytes[counter1+1]=="D4":
-                        after_instruction = " esp, edx"
-                    elif bytes[counter1+1]=="D5":
-                        after_instruction = " ebp, edx"
-                    elif bytes[counter1+1]=="D6":
-                        after_instruction = " esi, edx"
-                    elif bytes[counter1+1]=="D7":
-                        after_instruction = " edi, edx"
-                    elif bytes[counter1+1]=="D8":
-                        after_instruction = " eax, ebx"
-                    elif bytes[counter1+1]=="D9":
-                        after_instruction = " ecx, ebx"
-                    elif bytes[counter1+1]=="DA":
-                        after_instruction = " edx, ebx"
-                    elif bytes[counter1+1]=="DB":
-                        after_instruction = " ebx, ebx"
-                    elif bytes[counter1+1]=="DC":
-                        after_instruction = " esp, ebx"
-                    elif bytes[counter1+1]=="DD":
-                        after_instruction = " ebp, ebx"
-                    elif bytes[counter1+1]=="DE":
-                        after_instruction = " esi, ebx"
-                    elif bytes[counter1+1]=="DF":
-                        after_instruction = " edi, ebx"
-                    elif bytes[counter1+1]=="E0":
-                        after_instruction = " eax, esp"
-                    elif bytes[counter1+1]=="E1":
-                        after_instruction = " ecx, esp"
-                    elif bytes[counter1+1]=="E2":
-                        after_instruction = " edx, esp"
-                    elif bytes[counter1+1]=="E3":
-                        after_instruction = " ebx, esp"
-                    elif bytes[counter1+1]=="E4":
-                        after_instruction = " esp, esp"
-                    elif bytes[counter1+1]=="E5":
-                        after_instruction = " ebp, esp"
-                    elif bytes[counter1+1]=="E6":
-                        after_instruction = " esi, esp"
-                    elif bytes[counter1+1]=="E7":
-                        after_instruction = " edi, esp"
-                    elif bytes[counter1+1]=="E8":
-                        after_instruction = " eax, ebp"
-                    elif bytes[counter1+1]=="E9":
-                        after_instruction = " ecx, ebp"
-                    elif bytes[counter1+1]=="EA":
-                        after_instruction = " edx, ebp"
-                    elif bytes[counter1+1]=="EB":
-                        after_instruction = " ebx, ebp"
-                    elif bytes[counter1+1]=="EC":
-                        after_instruction = " esp, ebp"
-                    elif bytes[counter1+1]=="ED":
-                        after_instruction = " ebp, ebp"
-                    elif bytes[counter1+1]=="EE":
-                        after_instruction = " esi, ebp"
-                    elif bytes[counter1+1]=="EF":
-                        after_instruction = " edi, ebp"
-                    elif bytes[counter1+1]=="F0":
-                        after_instruction = " eax, esi"
-                    elif bytes[counter1+1]=="F1":
-                        after_instruction = " ecx, esi"
-                    elif bytes[counter1+1]=="F2":
-                        after_instruction = " edx, esi"
-                    elif bytes[counter1+1]=="F3":
-                        after_instruction = " ebx, esi"
-                    elif bytes[counter1+1]=="F4":
-                        after_instruction = " esp, esi"
-                    elif bytes[counter1+1]=="F5":
-                        after_instruction = " ebp, esi"
-                    elif bytes[counter1+1]=="F6":
-                        after_instruction = " esi, esi"
-                    elif bytes[counter1+1]=="F7":
-                        after_instruction = " edi, esi"
-                    elif bytes[counter1+1]=="F8":
-                        after_instruction = " eax, edi"
-                    elif bytes[counter1+1]=="F9":
-                        after_instruction = " ecx, edi"
-                    elif bytes[counter1+1]=="FA":
-                        after_instruction = " edx, edi"
-                    elif bytes[counter1+1]=="FB":
-                        after_instruction = " ebx, edi"
-                    elif bytes[counter1+1]=="FC":
-                        after_instruction = " esp, edi"
-                    elif bytes[counter1+1]=="FD":
-                        after_instruction = " ebp, edi"
-                    elif bytes[counter1+1]=="FE":
-                        after_instruction = " esi, edi"
-                    elif bytes[counter1+1]=="FF":
-                        after_instruction = " edi, edi"
+                    if bytes[counter1+1]=="90":
+                        after_instruction = ""
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
@@ -861,6 +441,240 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     after_instruction = ""
                     if should_print:
                         cancle_function_iteration(1)
+
+                elif i == "68": # PUSH string
+                    after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]+" "+bytes[counter1+3]+" "+bytes[counter1+4]
+                    TEMPoffset = " 0x"+bytes[counter1+4]+bytes[counter1+3]+bytes[counter1+2]+bytes[counter1+1]
+                    TEMPoffset_to_dict2 = hex(int(TEMPoffset,16)+1)
+                    TEMPoffset_to_dict = hex(int(TEMPoffset,16))
+                    if TEMPoffset_to_dict in ascii_dict:
+                        after_instruction = TEMPoffset
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; str: "+str(ascii_dict[TEMPoffset_to_dict])
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[TEMPoffset_to_dict])
+                    elif TEMPoffset_to_dict2 in ascii_dict:
+                        after_instruction = TEMPoffset
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; str: "+str(ascii_dict[TEMPoffset_to_dict2])
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; str: {bcolors.WARNING}"+str(ascii_dict[TEMPoffset_to_dict2])
+                    else:
+                        after_instruction = TEMPoffset
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    if isClean:
+                        bcolors = colors
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    cancle_function_iteration(4)
+
+                elif i == "70" or i == "71" or i == "72" or i == "73" or i == "74" or i == "75" or i == "7E" or i == "7F": # JE, JNE, JLE, JG, JO, JNO, JB, JAE
+                    after_byte = " "+bytes[counter1+1]
+                    if int(bytes[counter1+1],16)>=128:
+                        if int(bytes[counter1+1],16)==255:
+                            after_instruction = " "+hex(offset1+1)
+                        elif int(bytes[counter1+1],16)==254:
+                            after_instruction = " "+hex(offset1)
+                        else:
+                            after_instruction = " "+hex(offset1-(256-(int(bytes[counter1+1],16)+2)))
+                    else:
+                        after_instruction = " "+hex(offset1+(int(bytes[counter1+1],16)+2))
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    if isClean:
+                        bcolors = colors
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    cancle_function_iteration(1)
+
+                elif i == "81": # ADD, ...
+                    after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]+" "+bytes[counter1+3]+" "+bytes[counter1+4]+" "+bytes[counter1+5]
+                    _81var = ""
+                    if bytes[counter1+1]=="C3":
+                        if bytes[counter1+5]!="00":
+                            _81var += str(bytes[counter1+5])
+                        if bytes[counter1+4]!="00":
+                            _81var += str(bytes[counter1+4])
+                        if bytes[counter1+3]!="00":
+                            _81var += str(bytes[counter1+3])
+                        if bytes[counter1+2]!="00":
+                            _81var += str(bytes[counter1+2])
+                        after_instruction = " ebx, 0x"+_81var
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(_81var,16))
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(_81var,16))
+                    elif bytes[counter1+1]=="EC":
+                        instruction = "SUB"
+                        if bytes[counter1+5]!="00":
+                            _81var += str(bytes[counter1+5])
+                        if bytes[counter1+4]!="00":
+                            _81var += str(bytes[counter1+4])
+                        if bytes[counter1+3]!="00":
+                            _81var += str(bytes[counter1+3])
+                        if bytes[counter1+2]!="00":
+                            _81var += str(bytes[counter1+2])
+                        after_instruction = " esp, 0x"+_81var
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(_81var,16))
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(_81var,16))
+                    else:
+                        should_print = False
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    if isClean:
+                        bcolors = colors
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    if should_print:
+                        print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    if should_print:
+                        cancle_function_iteration(5)
+
+                elif i == "83": # ADD, CMP, SUB, OR
+                    after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]
+                    TEMPvar = bytes[counter1+2]
+                    TEMPvar2 = 2
+                    TEMPvar3 = bytes[counter1+3]
+                    TEMPvar4 = str(int(TEMPvar,16))
+                    if bytes[counter1+2][0]=="0":
+                        TEMPvar = bytes[counter1+2][1]
+                    if bytes[counter1+3][0]=="0":
+                        TEMPvar3 = bytes[counter1+3][1]
+                    if bytes[counter1+1]=="C2":
+                        after_instruction = " edx, "+"0x"+str(TEMPvar.lower())
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
+                    elif bytes[counter1+1]=="C4":
+                        after_instruction = " esp, "+"0x"+str(TEMPvar.lower())
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
+                    elif bytes[counter1+1]=="C7":
+                        after_instruction = " edi, "+"0x"+str(TEMPvar.lower())
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
+                    elif bytes[counter1+1]=="C0":
+                        after_instruction = " eax, "+"0x"+str(TEMPvar.lower())
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
+                    elif bytes[counter1+1]=="F8":
+                        instruction = "CMP"
+                        after_instruction = " eax, "+"0x"+str(TEMPvar.lower())
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
+                    elif bytes[counter1+1]=="3B":
+                        instruction = "CMP"
+                        after_instruction = " dword [ebx], "+"0x"+str(TEMPvar.lower())
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
+                    elif bytes[counter1+1]=="EC":
+                        instruction = "SUB"
+                        after_instruction = " esp, "+"0x"+str(TEMPvar.lower())
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
+                    elif bytes[counter1+1]=="EA":
+                        instruction = "SUB"
+                        after_instruction = " edx, "+"0x"+str(TEMPvar.lower())
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
+                    elif bytes[counter1+1]=="08":
+                        instruction = "OR"
+                        if TEMPvar=="FF":
+                            TEMPvar4 = "-1"
+                        after_instruction = " dword [eax], "+"0x"+str(TEMPvar.lower())
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
+                    elif bytes[counter1+1]=="E4":
+                        instruction = "AND"
+                        if TEMPvar=="FF":
+                            TEMPvar4 = "-1"
+                        elif TEMPvar[0]=="F":
+                            TEMPvar = "FFFFFF"+TEMPvar
+                        after_instruction = " esp, "+"0x"+str(TEMPvar.lower())
+                    elif bytes[counter1+1]=="45" and bytes[counter1+2]=="FC":
+                        TEMPvar4 = str(int(bytes[counter1+3],16))
+                        after_instruction = " dword [var_4h], "+"0x"+str(TEMPvar3.lower())
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
+                        after_byte += " "+bytes[counter1+3]
+                        TEMPvar2 = 4
+                    elif bytes[counter1+1]=="7D" and bytes[counter1+2]=="08":
+                        TEMPvar4 = str(int(bytes[counter1+3],16))
+                        instruction = "CMP"
+                        after_instruction = " dword [arg_8h], "+"0x"+str(TEMPvar3.lower())
+                        lenWholeOpcode = len(instruction)+len(after_instruction)
+                        if isClean:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+TEMPvar4
+                        else:
+                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+TEMPvar4
+                        after_byte += " "+bytes[counter1+3]
+                        TEMPvar2 = 4
+                    else:
+                        should_print = False
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    if isClean:
+                        bcolors = colors
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    if should_print:
+                        print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    if should_print:
+                        cancle_function_iteration(TEMPvar2)
 
                 elif i == "84": # TEST
                     after_byte = " "+bytes[counter1+1]
@@ -1009,40 +823,136 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     if should_print:
                         cancle_function_iteration(1)
 
-                elif i == "81": # ADD, ...
-                    after_byte = " "+bytes[counter1+1]+" "+bytes[counter1+2]+" "+bytes[counter1+3]+" "+bytes[counter1+4]+" "+bytes[counter1+5]
-                    _81var = ""
-                    if bytes[counter1+1]=="C3":
-                        if bytes[counter1+5]!="00":
-                            _81var += str(bytes[counter1+5])
-                        if bytes[counter1+4]!="00":
-                            _81var += str(bytes[counter1+4])
-                        if bytes[counter1+3]!="00":
-                            _81var += str(bytes[counter1+3])
-                        if bytes[counter1+2]!="00":
-                            _81var += str(bytes[counter1+2])
-                        after_instruction = " ebx, 0x"+_81var
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(_81var,16))
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(_81var,16))
+                elif i == "85": # TEST
+                    after_byte = " "+bytes[counter1+1]
+                    if bytes[counter1+1]=="C0":
+                        after_instruction = " eax, eax"
+                    elif bytes[counter1+1]=="C1":
+                        after_instruction = " ecx, eax"
+                    elif bytes[counter1+1]=="C2":
+                        after_instruction = " edx, eax"
+                    elif bytes[counter1+1]=="C3":
+                        after_instruction = " ebx, eax"
+                    elif bytes[counter1+1]=="C4":
+                        after_instruction = " esp, eax"
+                    elif bytes[counter1+1]=="C5":
+                        after_instruction = " ebp, eax"
+                    elif bytes[counter1+1]=="C6":
+                        after_instruction = " esi, eax"
+                    elif bytes[counter1+1]=="C7":
+                        after_instruction = " edi, eax"
+                    elif bytes[counter1+1]=="C8":
+                        after_instruction = " eax, ecx"
+                    elif bytes[counter1+1]=="C9":
+                        after_instruction = " ecx, ecx"
+                    elif bytes[counter1+1]=="CA":
+                        after_instruction = " edx, ecx"
+                    elif bytes[counter1+1]=="CB":
+                        after_instruction = " ebx, ecx"
+                    elif bytes[counter1+1]=="CC":
+                        after_instruction = " esp, ecx"
+                    elif bytes[counter1+1]=="CD":
+                        after_instruction = " ebp, ecx"
+                    elif bytes[counter1+1]=="CE":
+                        after_instruction = " esi, ecx"
+                    elif bytes[counter1+1]=="CF":
+                        after_instruction = " edi, ecx"
+                    elif bytes[counter1+1]=="D0":
+                        after_instruction = " eax, edx"
+                    elif bytes[counter1+1]=="D1":
+                        after_instruction = " ecx, edx"
+                    elif bytes[counter1+1]=="D2":
+                        after_instruction = " edx, edx"
+                    elif bytes[counter1+1]=="D3":
+                        after_instruction = " ebx, edx"
+                    elif bytes[counter1+1]=="D4":
+                        after_instruction = " esp, edx"
+                    elif bytes[counter1+1]=="D5":
+                        after_instruction = " ebp, edx"
+                    elif bytes[counter1+1]=="D6":
+                        after_instruction = " esi, edx"
+                    elif bytes[counter1+1]=="D7":
+                        after_instruction = " edi, edx"
+                    elif bytes[counter1+1]=="D8":
+                        after_instruction = " eax, ebx"
+                    elif bytes[counter1+1]=="D9":
+                        after_instruction = " ecx, ebx"
+                    elif bytes[counter1+1]=="DA":
+                        after_instruction = " edx, ebx"
+                    elif bytes[counter1+1]=="DB":
+                        after_instruction = " ebx, ebx"
+                    elif bytes[counter1+1]=="DC":
+                        after_instruction = " esp, ebx"
+                    elif bytes[counter1+1]=="DD":
+                        after_instruction = " ebp, ebx"
+                    elif bytes[counter1+1]=="DE":
+                        after_instruction = " esi, ebx"
+                    elif bytes[counter1+1]=="DF":
+                        after_instruction = " edi, ebx"
+                    elif bytes[counter1+1]=="E0":
+                        after_instruction = " eax, esp"
+                    elif bytes[counter1+1]=="E1":
+                        after_instruction = " ecx, esp"
+                    elif bytes[counter1+1]=="E2":
+                        after_instruction = " edx, esp"
+                    elif bytes[counter1+1]=="E3":
+                        after_instruction = " ebx, esp"
+                    elif bytes[counter1+1]=="E4":
+                        after_instruction = " esp, esp"
+                    elif bytes[counter1+1]=="E5":
+                        after_instruction = " ebp, esp"
+                    elif bytes[counter1+1]=="E6":
+                        after_instruction = " esi, esp"
+                    elif bytes[counter1+1]=="E7":
+                        after_instruction = " edi, esp"
+                    elif bytes[counter1+1]=="E8":
+                        after_instruction = " eax, ebp"
+                    elif bytes[counter1+1]=="E9":
+                        after_instruction = " ecx, ebp"
+                    elif bytes[counter1+1]=="EA":
+                        after_instruction = " edx, ebp"
+                    elif bytes[counter1+1]=="EB":
+                        after_instruction = " ebx, ebp"
                     elif bytes[counter1+1]=="EC":
-                        instruction = "SUB"
-                        if bytes[counter1+5]!="00":
-                            _81var += str(bytes[counter1+5])
-                        if bytes[counter1+4]!="00":
-                            _81var += str(bytes[counter1+4])
-                        if bytes[counter1+3]!="00":
-                            _81var += str(bytes[counter1+3])
-                        if bytes[counter1+2]!="00":
-                            _81var += str(bytes[counter1+2])
-                        after_instruction = " esp, 0x"+_81var
-                        lenWholeOpcode = len(instruction)+len(after_instruction)
-                        if isClean:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(_81var,16))
-                        else:
-                            after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(_81var,16))
+                        after_instruction = " esp, ebp"
+                    elif bytes[counter1+1]=="ED":
+                        after_instruction = " ebp, ebp"
+                    elif bytes[counter1+1]=="EE":
+                        after_instruction = " esi, ebp"
+                    elif bytes[counter1+1]=="EF":
+                        after_instruction = " edi, ebp"
+                    elif bytes[counter1+1]=="F0":
+                        after_instruction = " eax, esi"
+                    elif bytes[counter1+1]=="F1":
+                        after_instruction = " ecx, esi"
+                    elif bytes[counter1+1]=="F2":
+                        after_instruction = " edx, esi"
+                    elif bytes[counter1+1]=="F3":
+                        after_instruction = " ebx, esi"
+                    elif bytes[counter1+1]=="F4":
+                        after_instruction = " esp, esi"
+                    elif bytes[counter1+1]=="F5":
+                        after_instruction = " ebp, esi"
+                    elif bytes[counter1+1]=="F6":
+                        after_instruction = " esi, esi"
+                    elif bytes[counter1+1]=="F7":
+                        after_instruction = " edi, esi"
+                    elif bytes[counter1+1]=="F8":
+                        after_instruction = " eax, edi"
+                    elif bytes[counter1+1]=="F9":
+                        after_instruction = " ecx, edi"
+                    elif bytes[counter1+1]=="FA":
+                        after_instruction = " edx, edi"
+                    elif bytes[counter1+1]=="FB":
+                        after_instruction = " ebx, edi"
+                    elif bytes[counter1+1]=="FC":
+                        after_instruction = " esp, edi"
+                    elif bytes[counter1+1]=="FD":
+                        after_instruction = " ebp, edi"
+                    elif bytes[counter1+1]=="FE":
+                        after_instruction = " esi, edi"
+                    elif bytes[counter1+1]=="FF":
+                        after_instruction = " edi, edi"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
@@ -1058,7 +968,97 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     after_byte = ""
                     after_instruction = ""
                     if should_print:
-                        cancle_function_iteration(5)
+                        cancle_function_iteration(1)
+
+                elif i == "89": # MOV 
+                    after_byte = " "+bytes[counter1+1]
+                    if bytes[counter1+1]=="E5":
+                        after_instruction = " ebp, esp"
+                    elif bytes[counter1+1]=="CB":
+                        after_instruction = " ebx, ecx"
+                    else:
+                        should_print = False
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    if isClean:
+                        bcolors = colors
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    if should_print:
+                        print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    if should_print:
+                        cancle_function_iteration(1)
+
+                elif i == "8B": # MOV
+                    after_byte = " "+bytes[counter1+1]
+                    TEMPvar = 1
+                    if bytes[counter1+1]=="1C":
+                        if bytes[counter1+2]=="24":
+                            after_instruction = " ebx, dword [esp]"
+                            after_byte += " "+bytes[counter1+2]
+                            TEMPvar += 1
+                    elif bytes[counter1+1]=="10":
+                        after_instruction = " edx, dword [eax]"
+                    elif bytes[counter1+1]=="55":
+                        after_instruction = " edx, dword [var_4h]"
+                    elif bytes[counter1+1]=="45":
+                        after_instruction = " eax, dword [arg_8h]"
+                    elif bytes[counter1+1]=="4D":
+                        after_instruction = " ecx, dword [var_4h]"
+                    elif bytes[counter1+1]=="00":
+                        after_instruction = " eax, dword [eax]"
+                    elif bytes[counter1+1]=="6C":
+                        after_instruction = " ebp, dword [arg_4h]"
+                    elif bytes[counter1+1]=="43":
+                        TEMPvar2 = str(bytes[counter1+2])
+                        if str(bytes[counter1+2][0])=="0":
+                            TEMPvar2 = str(bytes[counter1+2][1])
+                        after_instruction = " eax, dword [ebx + "+str(TEMPvar2)+"]"
+                        TEMPvar = 2
+                    else:
+                        should_print = False
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    if isClean:
+                        bcolors = colors
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    if should_print:
+                        print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    if should_print:
+                        cancle_function_iteration(TEMPvar)
+
+                elif i == "BA": # MOV edx, <value>
+                    after_byte = " "+bytes[counter1+1]
+                    TEMPvar = bytes[counter1+1]
+                    if bytes[counter1+1][0]=="0":
+                        TEMPvar = bytes[counter1+1][1]
+                    after_instruction = ", "+"0x"+str(TEMPvar.lower())
+                    lenWholeOpcode = len(instruction)+len(after_instruction)
+                    if isClean:
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+"; "+str(int(TEMPvar,16))
+                    else:
+                        after_instruction = after_instruction+" "*(32-lenWholeOpcode)+f"{bcolors.OKGREEN}; "+str(int(TEMPvar,16))
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    intruction_len_for_check = 51+len(instruction)+len(after_instruction)
+                    if len(check1) < intruction_len_for_check:
+                        for _ in range(intruction_len_for_check-len(check1)):
+                            after_byte += " "
+                    if isClean:
+                        bcolors = colors
+                    check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"  "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
+                    print(check1)
+                    after_byte = ""
+                    after_instruction = ""
+                    cancle_function_iteration(1)
 
                 elif i == "E4": # IN al, <value>
                     after_byte = " "+bytes[counter1+1]
@@ -1472,12 +1472,12 @@ def disassemble_x86(bytes, ascii_dict, colors):
                     if bytes[counter1+1]=="A0":
                         instruction = "PUSH"
                         after_instruction = " fs"
-                    elif bytes[counter1+1]=="A8":
-                        instruction = "PUSH"
-                        after_instruction = " gs"
                     elif bytes[counter1+1]=="A1":
                         instruction = "POP"
                         after_instruction = " fs"
+                    elif bytes[counter1+1]=="A8":
+                        instruction = "PUSH"
+                        after_instruction = " gs"
                     elif bytes[counter1+1]=="A9":
                         instruction = "POP"
                         after_instruction = " gs"
