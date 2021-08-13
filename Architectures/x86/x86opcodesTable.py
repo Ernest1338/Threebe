@@ -236,7 +236,7 @@ x86opcodes = {
                             # DONE?    #           -||-        to C2 then: TEST edx, eax
                             # DONE?    #           -||-        to C1 then: TEST ecx, eax
                             # DONE?    #           -||-        to C0 then: TEST eax, eax
-    "89" : "MOV",           # PENDING  # if next byte is equal to C0 then: MOV eax, eax
+    "89" : "MOV",           # DONE?    # if next byte is equal to C0 then: MOV eax, eax
                             # PENDING  #             -||-      to C1 then: MOV ecx, eax
                             # PENDING  #             -||-      to C2 then: MOV edx, eax
                             # PENDING  #             -||-      to C3 then: MOV ebx, eax

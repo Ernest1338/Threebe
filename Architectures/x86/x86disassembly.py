@@ -972,7 +972,9 @@ def disassemble_x86(bytes, ascii_dict, colors):
 
                 elif i == "89": # MOV 
                     after_byte = " "+bytes[counter1+1]
-                    if bytes[counter1+1]=="E5":
+                    if bytes[counter1+1]=="C0":
+                        after_instruction = " eax, eax"
+                    elif bytes[counter1+1]=="E5":
                         after_instruction = " ebp, esp"
                     elif bytes[counter1+1]=="CB":
                         after_instruction = " ebx, ecx"
