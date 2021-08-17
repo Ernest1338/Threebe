@@ -239,7 +239,7 @@ x86opcodes = {
     "89" : "MOV",           # DONE?    # if next byte is equal to C0 then: MOV eax, eax
                             # DONE?    #             -||-      to C1 then: MOV ecx, eax
                             # DONE?    #             -||-      to C2 then: MOV edx, eax
-                            # PENDING  #             -||-      to C3 then: MOV ebx, eax
+                            # DONE?    #             -||-      to C3 then: MOV ebx, eax
                             # PENDING  #             -||-      to C4 then: MOV esp, eax
                             # PENDING  #             -||-      to C5 then: MOV ebp, eax
                             # PENDING  #             -||-      to C6 then: MOV esi, eax
