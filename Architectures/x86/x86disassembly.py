@@ -982,6 +982,8 @@ def disassemble_x86(bytes, ascii_dict, colors):
                         after_instruction = " ebx, eax"
                     elif bytes[counter1+1]=="C4":
                         after_instruction = " esp, eax"
+                    elif bytes[counter1+1]=="C5":
+                        after_instruction = " ebp, eax"
                     elif bytes[counter1+1]=="CB":
                         after_instruction = " ebx, ecx"
                     elif bytes[counter1+1]=="E5":
