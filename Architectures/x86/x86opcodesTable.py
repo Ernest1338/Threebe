@@ -246,7 +246,7 @@ x86opcodes = {
                             # DONE?    #             -||-      to C7 then: MOV edi, eax
                             # DONE?    #             -||-      to C8 then: MOV eax, ecx
                             # DONE?    #             -||-      to C9 then: MOV ecx, ecx
-                            # PENDING  #             -||-      to CA then: MOV edx, ecx
+                            # DONE?    #             -||-      to CA then: MOV edx, ecx
                             # DONE?    #             -||-      to CB then: MOV ebx, ecx
                             # PENDING  #             -||-      to CC then: MOV esp, ecx
                             # PENDING  #             -||-      to CD then: MOV ebp, ecx
