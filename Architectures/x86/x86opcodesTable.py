@@ -280,7 +280,7 @@ x86opcodes = {
                             # DONE?    #             -||-      to E9 then: MOV ecx, ebp
                             # DONE?    #             -||-      to EA then: MOV edx, ebp
                             # DONE?    #             -||-      to EB then: MOV ebx, ebp
-                            # PENDING  #             -||-      to EC then: MOV esp, ebp
+                            # DONE?    #             -||-      to EC then: MOV esp, ebp
                             # PENDING  #             -||-      to ED then: MOV ebp, ebp
                             # PENDING  #             -||-      to EE then: MOV esi, ebp
                             # PENDING  #             -||-      to EF then: MOV edi, ebp
