@@ -283,7 +283,7 @@ x86opcodes = {
                             # DONE?    #             -||-      to EC then: MOV esp, ebp
                             # DONE?    #             -||-      to ED then: MOV ebp, ebp
                             # DONE?    #             -||-      to EE then: MOV esi, ebp
-                            # PENDING  #             -||-      to EF then: MOV edi, ebp
+                            # DONE?    #             -||-      to EF then: MOV edi, ebp
                             # PENDING  #             -||-      to F0 then: MOV eax, esi
                             # PENDING  #             -||-      to F1 then: MOV ecx, esi
                             # PENDING  #             -||-      to F2 then: MOV edx, esi
