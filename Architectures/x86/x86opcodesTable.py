@@ -289,7 +289,7 @@ x86opcodes = {
                             # DONE?    #             -||-      to F2 then: MOV edx, esi
                             # DONE?    #             -||-      to F3 then: MOV ebx, esi
                             # DONE?    #             -||-      to F4 then: MOV esp, esi
-                            # PENDING  #             -||-      to F5 then: MOV ebp, esi
+                            # DONE?    #             -||-      to F5 then: MOV ebp, esi
                             # PENDING  #             -||-      to F6 then: MOV esi, esi
                             # PENDING  #             -||-      to F7 then: MOV edi, esi
                             # PENDING  #             -||-      to F8 then: MOV eax, edi
