@@ -1084,6 +1084,8 @@ def disassemble_x86(bytes, ascii_dict, colors):
                         after_instruction = " esi, esi"
                     elif bytes[counter1+1]=="F7":
                         after_instruction = " edi, esi"
+                    elif bytes[counter1+1]=="F8":
+                        after_instruction = " eax, edi"
                     else:
                         should_print = False
                     check1 = f"{bcolors.OKBLUE}"+str(hex(offset1))+"   "+f"{bcolors.FAIL}"+to_display+after_byte+f"{bcolors.WARNING}"+instruction+after_instruction+f"{bcolors.RESET}"
