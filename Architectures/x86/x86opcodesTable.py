@@ -294,7 +294,7 @@ x86opcodes = {
                             # DONE?    #             -||-      to F7 then: MOV edi, esi
                             # DONE?    #             -||-      to F8 then: MOV eax, edi
                             # DONE?    #             -||-      to F9 then: MOV ecx, edi
-                            # PENDING  #             -||-      to FA then: MOV edx, edi
+                            # DONE?    #             -||-      to FA then: MOV edx, edi
                             # PENDING  #             -||-      to FB then: MOV ebx, edi
                             # PENDING  #             -||-      to FC then: MOV esp, edi
                             # PENDING  #             -||-      to FD then: MOV ebp, edi
