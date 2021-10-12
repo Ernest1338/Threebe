@@ -297,7 +297,7 @@ x86opcodes = {
                             # DONE?    #             -||-      to FA then: MOV edx, edi
                             # DONE?    #             -||-      to FB then: MOV ebx, edi
                             # DONE?    #             -||-      to FC then: MOV esp, edi
-                            # PENDING  #             -||-      to FD then: MOV ebp, edi
+                            # DONE?    #             -||-      to FD then: MOV ebp, edi
                             # PENDING  #             -||-      to FE then: MOV esi, edi
                             # PENDING  #             -||-      to FF then: MOV edi, edi
     "8B" : "MOV",           # DONE?    # if next byte is equal to 1C and next byte equal to 24 then: MOV ebx, dword [esp]
