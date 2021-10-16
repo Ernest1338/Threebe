@@ -39,11 +39,15 @@
 
 # **Screenshots**
 
-### Hexdump:
+### Hexdump (-h option):
 
 ![Hexdump](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/h.png)
 
-### Disassembly:
+### Hexdump - wide (-h32 option):
+
+![Hexdump - wide](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/h32.png)
+
+### Disassembly (-dx86 option):
 
 ![Disassembly](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/disas.png)
 
