@@ -49,7 +49,7 @@
 
 ### Disassembly (-dx86 option):
 
-![Disassembly](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/disas.png)
+![Disassembly](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/dx86_1.png)
 
 ### Color Schemes:
 
