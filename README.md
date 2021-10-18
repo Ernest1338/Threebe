@@ -55,7 +55,7 @@
 
 #### Color scheme nr. 2:
 
-![SchemeNR2](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/color1.png)
+![SchemeNR2](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/dx86_2.png)
 
 #### Color scheme nr. 3 (Windows CMD mode):
 
