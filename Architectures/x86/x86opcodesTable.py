@@ -36,10 +36,10 @@ x86opcodes = {
                             # DONE?    #           -||-        to 01 then: AND byte [ecx], al
                             # DONE?    #           -||-        to 02 then: AND byte [edx], al
                             # DONE?    #           -||-        to 03 then: AND byte [ebx], al
-    "24" : "AND al",        # DONE?    # next byte represents and value (in hex), eg. 24 22 > AND al, 0x22  ; 34
+    "24" : "AND",           # DONE?    # AND al, <VALUE> -> next byte represents and value (in hex), eg. 24 22 > AND al, 0x22  ; 34
     "27" : "DAA",           # DONE
     "29" : "SUB",           # DONE?    # if nexy byte is equal to C6 then: SUB esi, eax
-    "2C" : "SUB al",        # DONE?    # next byte represents sub value (in hex), eg. 2C 87 > SUB al, 0x87  ; 135
+    "2C" : "SUB",           # DONE?    # SUB al, <VALUE> -> next byte represents sub value (in hex), eg. 2C 87 > SUB al, 0x87  ; 135
     "2F" : "DAS",           # DONE
     "30" : "XOR",           # DONE?    # if next byte is equal to 00 then: XOR byte [eax], al
                             # DONE?    #           -||-        to 4D then: XOR byte [ebp + <value>], cl     where VALUE is the byte after 4D
@@ -80,7 +80,7 @@ x86opcodes = {
     "5D" : "POP ebp",       # DONE
     "5E" : "POP esi",       # DONE
     "5F" : "POP edi",       # DONE
-    "61" : "POPAL",         # DONE     
+    "61" : "POPAL",         # DONE
     "64" : "NOP",           # DONE?    # if next byte is equal to 90 then: NOP
     "65" : "NOP",           # DONE?    # if next byte is equal to 90 then: NOP
     "66" : "NOP",           # DONE?    # if next byte is equal to 90 then: NOP
@@ -313,7 +313,7 @@ x86opcodes = {
     "98" : "CWDE",          # DONE
     "99" : "CDQ",           # DONE
     "B8" : "MOV eax",       # PENDING  # next byte represents MOV value / if 4 next bytes are not instructions, then those bytes represent an adress in format: B8 AB CD EF GH > MOV eax, 0xGHEFCDAB
-    "BA" : "MOV edx",       # DONE?    # next byte represents MOV value
+    "BA" : "MOV",           # DONE?    # MOV edx, <VALUE> -> next byte represents MOV value
     "C3" : "RET",           # DONE
     "C9" : "LEAVE",         # DONE
     "CF" : "IRETD",         # DONE
