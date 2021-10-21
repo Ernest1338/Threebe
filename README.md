@@ -59,7 +59,7 @@
 
 #### Color scheme nr. 3 (Windows CMD mode):
 
-![SchemeNR3](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/color2.png)
+![SchemeNR3](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/new_dx86_3.png)
 
 # **Installation**
 
