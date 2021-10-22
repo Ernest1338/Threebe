@@ -61,6 +61,10 @@
 
 ![SchemeNR3](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/new_dx86_3.png)
 
+### Information extracting / Patching a binary:
+
+![Info/Patching](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/ipb.png)
+
 # **Installation**
 
 Threebe is written from the ground up in pure Python3 (without any dependencies), so to run it, you only need to have Python3 installed on your system.
