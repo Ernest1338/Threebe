@@ -65,7 +65,7 @@
 
 ![Info/Patching](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/ipb.png)
 
-### Strings extracting (-sb option)
+### Strings extracting (-sb option):
 
 ![Strings](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/sb.png)
 
