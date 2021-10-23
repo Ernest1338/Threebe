@@ -61,9 +61,13 @@
 
 ![SchemeNR3](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/new_dx86_3.png)
 
-### Information extracting / Patching a binary:
+### Information extracting / Patching a binary (-i, -pb options):
 
 ![Info/Patching](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/ipb.png)
+
+### Strings extracting (-sb option)
+
+![Strings](https://raw.githubusercontent.com/Ernest1338/test_threebe1/master/sb.png)
 
 # **Installation**
 
