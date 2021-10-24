@@ -16,14 +16,6 @@
     <a href="https://gitlab.com/Ernest1337/threebe">
         <img src="https://badges.pufler.dev/created/Ernest1338/Threebe" alt="Created Badge" />
     </a>
-    <a href="https://gitlab.com/Ernest1337/threebe">
-        <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="Maintenance" />
-    </a>
-</p>
-<p align="center">
-    <a href="https://gitlab.com/Ernest1337/threebe">
-        <img src="https://ForTheBadge.com/images/badges/made-with-python.svg" alt="forthebadge made-with-python" />
-    </a>
 </p>
 <p align="center">
     <a href="https://gitlab.com/Ernest1337/threebe">
