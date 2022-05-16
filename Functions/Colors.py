@@ -4,6 +4,7 @@
 # Choose a number between 1 and 3
 colorScheme = 1
 
+
 def returnColors(colorS):
     global colorScheme
     if colorS == 1:  # NORMAL

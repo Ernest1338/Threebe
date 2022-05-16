@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Development running command: python3 -B Threebe.py -<OPTION> test_binaies/<FILE_NAME>
+# Development running command: python3 -B Threebe.py -<OPTION>
+# test_binaies/<FILE_NAME>
 
 # ========== IMPORTS ==========
 
@@ -17,22 +18,32 @@ from Functions.Colors import returnColors
 
 # ========== FUNCTIONS / CLASSES ==========
 
+
 def print_help():
     bcolors = returnColors(1)
-    sys.stderr.write(f"{bcolors.FAIL}Usage: {sys.argv[0]} <parameter(s)> <file(s)>\n")
-    sys.stderr.write(f"For help use the --help parameter: {sys.argv[0]} --help{bcolors.RESET}\n")
+    sys.stderr.write(
+        f"{bcolors.FAIL}Usage: {sys.argv[0]} <parameter(s)> <file(s)>\n")
+    sys.stderr.write(
+        f"For help use the --help parameter: {sys.argv[0]} --help{bcolors.RESET}\n")
+
 
 def print_wrong_file_help():
     bcolors = returnColors(1)
     sys.stderr.write(f"{bcolors.FAIL}ERROR: No such file / Wrong file type.\n")
-    sys.stderr.write(f"For help use the --help parameter: {sys.argv[0]} --help{bcolors.RESET}\n")
+    sys.stderr.write(
+        f"For help use the --help parameter: {sys.argv[0]} --help{bcolors.RESET}\n")
+
 
 def print_usage(clean):
     if clean:
-        helpColors = ['','','','']
+        helpColors = ['', '', '', '']
     else:
         bcolors = returnColors(1)
-        helpColors = [bcolors.WARNING, bcolors.OKGREEN, bcolors.OKBLUE, bcolors.RESET]
+        helpColors = [
+            bcolors.WARNING,
+            bcolors.OKGREEN,
+            bcolors.OKBLUE,
+            bcolors.RESET]
     print(f"{helpColors[0]}Threebe {helpColors[2]}- Tool for displaying a Hexdump / Disassembly / Strings / Information from/of a (binary) file.")
     print("")
     print("Usage:")
@@ -84,12 +95,17 @@ def print_usage(clean):
     print(f"{helpColors[2]}")
     print(f"Original author: Dawid J. (Ernest Gupik) 2020-2021{helpColors[3]}")
 
+
 def print_usage_simple(clean):
     if clean:
-        helpColors = ['','','','']
+        helpColors = ['', '', '', '']
     else:
         bcolors = returnColors(1)
-        helpColors = [bcolors.WARNING, bcolors.OKGREEN, bcolors.OKBLUE, bcolors.RESET]
+        helpColors = [
+            bcolors.WARNING,
+            bcolors.OKGREEN,
+            bcolors.OKBLUE,
+            bcolors.RESET]
     print(f"{helpColors[2]}Usage:")
     print(f"{helpColors[1]}./{sys.argv[0]} <parameter(s)> <file>")
     print(f"{helpColors[2]}")
@@ -121,17 +137,19 @@ def print_usage_simple(clean):
 
 # ========== MAIN FUNCTION ==========
 
+
 def main():
 
-    if len(sys.argv)==1:
+    if len(sys.argv) == 1:
         print_help()
-    elif len(sys.argv)==3:
+    elif len(sys.argv) == 3:
 
-        if sys.argv[1]=="-h" or sys.argv[1]=="-H":   # HEXDUMP
+        if sys.argv[1] == "-h" or sys.argv[1] == "-H":   # HEXDUMP
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
-                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
+                file_o = open(file_name, 'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(
+                    file_o)
 
                 bcolors = returnColors(1)
                 hexdump.hexdump_parser(file_o, bytes_for_hexdump, "@", bcolors)
@@ -142,11 +160,12 @@ def main():
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-hc" or sys.argv[1]=="-HC":   # HEXDUMP - CLEAN
+        elif sys.argv[1] == "-hc" or sys.argv[1] == "-HC":   # HEXDUMP - CLEAN
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
-                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
+                file_o = open(file_name, 'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(
+                    file_o)
 
                 bcolors = returnColors(2)
                 hexdump.hexdump_parser(file_o, bytes_for_hexdump, "@", bcolors)
@@ -157,14 +176,16 @@ def main():
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-hs" or sys.argv[1]=="-HS":   # HEXDUMP - SQUASHED
+        elif sys.argv[1] == "-hs" or sys.argv[1] == "-HS":   # HEXDUMP - SQUASHED
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
-                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
+                file_o = open(file_name, 'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(
+                    file_o)
 
                 bcolors = returnColors(1)
-                hexdump.hexdump_parser_compressed(file_o, bytes_for_hexdump, "@", bcolors)
+                hexdump.hexdump_parser_compressed(
+                    file_o, bytes_for_hexdump, "@", bcolors)
 
             except IOError as e:
                 if e.errno == errno.EPIPE:
@@ -172,23 +193,25 @@ def main():
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-h32" or sys.argv[1]=="-H32":   # HEXDUMP - WIDE
+        elif sys.argv[1] == "-h32" or sys.argv[1] == "-H32":   # HEXDUMP - WIDE
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
-                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
+                file_o = open(file_name, 'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(
+                    file_o)
                 bcolors = returnColors(1)
-                hexdump.hexdump_parser_32(file_o, bytes_for_hexdump, "@", bcolors)
+                hexdump.hexdump_parser_32(
+                    file_o, bytes_for_hexdump, "@", bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-hl" or sys.argv[1]=="-HL":   # HEXDUMP - LIST
+        elif sys.argv[1] == "-hl" or sys.argv[1] == "-HL":   # HEXDUMP - LIST
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
+                file_o = open(file_name, 'rb').read()
 
                 print(hexdump.hexdump_clean_for_disassembly(file_o))
             except IOError as e:
@@ -197,10 +220,10 @@ def main():
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-hw" or sys.argv[1]=="-HW":   # HEXDUMP - WITHOUT PARSING
+        elif sys.argv[1] == "-hw" or sys.argv[1] == "-HW":   # HEXDUMP - WITHOUT PARSING
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
+                file_o = open(file_name, 'rb').read()
 
                 hexdump.hexdump_clean(file_o)
             except IOError as e:
@@ -209,62 +232,71 @@ def main():
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-i" or sys.argv[1]=="-I":   # INFORMATIONS
+        elif sys.argv[1] == "-i" or sys.argv[1] == "-I":   # INFORMATIONS
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
+                file_o = open(file_name, 'rb').read()
 
                 bcolors = returnColors(1)
-                binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o), bcolors)
+                binfo.bin_get_info(
+                    hexdump.hexdump_clean_for_disassembly(file_o), bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-ic" or sys.argv[1]=="-IC":   # INFORMATIONS - CLEAN
+        elif sys.argv[1] == "-ic" or sys.argv[1] == "-IC":   # INFORMATIONS - CLEAN
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
+                file_o = open(file_name, 'rb').read()
 
                 bcolors = returnColors(2)
-                binfo.bin_get_info(hexdump.hexdump_clean_for_disassembly(file_o), bcolors)
+                binfo.bin_get_info(
+                    hexdump.hexdump_clean_for_disassembly(file_o), bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-sb" or sys.argv[1]=="-SB":   # STRINGS - BINARY
+        elif sys.argv[1] == "-sb" or sys.argv[1] == "-SB":   # STRINGS - BINARY
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
+                file_o = open(file_name, 'rb').read()
 
                 bcolors = returnColors(1)
-                strings.extract_binary(hexdump.hexdump_ascii(file_o, bcolors), hexdump.hexdump_clean_for_disassembly(file_o), bcolors)
+                strings.extract_binary(
+                    hexdump.hexdump_ascii(
+                        file_o,
+                        bcolors),
+                    hexdump.hexdump_clean_for_disassembly(file_o),
+                    bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-sc" or sys.argv[1]=="-SC":   # STRINGS - CLEAN
+        elif sys.argv[1] == "-sc" or sys.argv[1] == "-SC":   # STRINGS - CLEAN
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
+                file_o = open(file_name, 'rb').read()
 
                 bcolors = returnColors(1)
-                strings.extract_clean(hexdump.hexdump_ascii(file_o, bcolors), bcolors, True)
+                strings.extract_clean(
+                    hexdump.hexdump_ascii(
+                        file_o, bcolors), bcolors, True)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-sl" or sys.argv[1]=="-SL":   # STRINGS - LIST
+        elif sys.argv[1] == "-sl" or sys.argv[1] == "-SL":   # STRINGS - LIST
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
+                file_o = open(file_name, 'rb').read()
 
                 bcolors = returnColors(1)
                 strings.extract_list(hexdump.hexdump_ascii(file_o, bcolors))
@@ -274,40 +306,45 @@ def main():
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-sw" or sys.argv[1]=="-SW":   # STRINGS - WITHOUT PARSING
+        elif sys.argv[1] == "-sw" or sys.argv[1] == "-SW":   # STRINGS - WITHOUT PARSING
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
+                file_o = open(file_name, 'rb').read()
 
                 bcolors = returnColors(2)
-                strings.extract_clean(hexdump.hexdump_ascii(file_o, bcolors), bcolors, False)
+                strings.extract_clean(
+                    hexdump.hexdump_ascii(
+                        file_o, bcolors), bcolors, False)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-s" or sys.argv[1]=="-S":   # STRINGS
+        elif sys.argv[1] == "-s" or sys.argv[1] == "-S":   # STRINGS
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
+                file_o = open(file_name, 'rb').read()
 
                 bcolors = returnColors(1)
-                strings.extract(hexdump.hexdump_ascii(file_o, bcolors), bcolors)
+                strings.extract(
+                    hexdump.hexdump_ascii(
+                        file_o, bcolors), bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-dx86" or sys.argv[1]=="-Dx86" or sys.argv[1]=="-dX86" or sys.argv[1]=="-DX86":   # DISASSEMBLY - x86
+        elif sys.argv[1] == "-dx86" or sys.argv[1] == "-Dx86" or sys.argv[1] == "-dX86" or sys.argv[1] == "-DX86":   # DISASSEMBLY - x86
             try:
                 file_name = sys.argv[2]
-                file_o = open(file_name,'rb').read()
+                file_o = open(file_name, 'rb').read()
 
                 bcolors = returnColors(1)
                 hexdfd = hexdump.hexdump_clean_for_disassembly(file_o)
-                ascii_dict = strings.extract_disassembly(hexdump.hexdump_ascii(file_o, bcolors), hexdump.hexdump_clean_for_disassembly(file_o))
+                ascii_dict = strings.extract_disassembly(hexdump.hexdump_ascii(
+                    file_o, bcolors), hexdump.hexdump_clean_for_disassembly(file_o))
                 x86disassembly.disassemble_x86(hexdfd, ascii_dict, bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
@@ -318,94 +355,130 @@ def main():
         else:
             print_help()
 
-    elif len(sys.argv)==5:
+    elif len(sys.argv) == 5:
 
-        if sys.argv[1]=="-pb" or sys.argv[1]=="-PB": # PATCHING BINARY
+        if sys.argv[1] == "-pb" or sys.argv[1] == "-PB":  # PATCHING BINARY
             try:
                 file_name = sys.argv[4]
-                file_o = open(file_name,'rb').read()
-                architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
+                file_o = open(file_name, 'rb').read()
+                architecture = bin_architecture(
+                    hexdump.hexdump_clean_for_disassembly(file_o))
                 bcolors = returnColors(1)
                 if architecture != 1:
-                    patching.patch_bin(file_o, sys.argv[2], sys.argv[3], architecture, file_name, bcolors)
+                    patching.patch_bin(
+                        file_o,
+                        sys.argv[2],
+                        sys.argv[3],
+                        architecture,
+                        file_name,
+                        bcolors)
                 else:
-                    sys.stderr.write(f"{bcolors.FAIL}ERROR: File header not recognized.\n")
-                    sys.stderr.write("This may be because this binary type is not yet supported or your binary's header got corrupted.\n")
-                    sys.stderr.write(f"Try using -p function. (Remember to change addresses in that case.){bcolors.RESET}\n")
+                    sys.stderr.write(
+                        f"{bcolors.FAIL}ERROR: File header not recognized.\n")
+                    sys.stderr.write(
+                        "This may be because this binary type is not yet supported or your binary's header got corrupted.\n")
+                    sys.stderr.write(
+                        f"Try using -p function. (Remember to change addresses in that case.){bcolors.RESET}\n")
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
                 else:
                     print_wrong_file_help()
-        
-        elif sys.argv[1]=="-pbc" or sys.argv[1]=="-PBC": # PATCHING BINARY -  CLEAN
+
+        elif sys.argv[1] == "-pbc" or sys.argv[1] == "-PBC":  # PATCHING BINARY -  CLEAN
             try:
                 file_name = sys.argv[4]
-                file_o = open(file_name,'rb').read()
-                architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
+                file_o = open(file_name, 'rb').read()
+                architecture = bin_architecture(
+                    hexdump.hexdump_clean_for_disassembly(file_o))
                 bcolors = returnColors(2)
                 if architecture != 1:
-                    patching.patch_bin(file_o, sys.argv[2], sys.argv[3], architecture, file_name, bcolors)
+                    patching.patch_bin(
+                        file_o,
+                        sys.argv[2],
+                        sys.argv[3],
+                        architecture,
+                        file_name,
+                        bcolors)
                 else:
-                    sys.stderr.write(f"{bcolors.FAIL}ERROR: File header not recognized.\n")
-                    sys.stderr.write("This may be because this binary type is not yet supported or your binary's header got corrupted.\n")
-                    sys.stderr.write(f"Try using -p function. (Remember to change addresses in that case.){bcolors.RESET}\n")
+                    sys.stderr.write(
+                        f"{bcolors.FAIL}ERROR: File header not recognized.\n")
+                    sys.stderr.write(
+                        "This may be because this binary type is not yet supported or your binary's header got corrupted.\n")
+                    sys.stderr.write(
+                        f"Try using -p function. (Remember to change addresses in that case.){bcolors.RESET}\n")
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-p" or sys.argv[1]=="-P": # PATCHING
+        elif sys.argv[1] == "-p" or sys.argv[1] == "-P":  # PATCHING
             try:
                 file_name = sys.argv[4]
-                file_o = open(file_name,'rb').read()
-                architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
+                file_o = open(file_name, 'rb').read()
+                architecture = bin_architecture(
+                    hexdump.hexdump_clean_for_disassembly(file_o))
 
                 bcolors = returnColors(1)
-                patching.patch(file_o, sys.argv[2], sys.argv[3], architecture, file_name, bcolors)
+                patching.patch(
+                    file_o,
+                    sys.argv[2],
+                    sys.argv[3],
+                    architecture,
+                    file_name,
+                    bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-pc" or sys.argv[1]=="-PC": # PATCHING - CLEAN
+        elif sys.argv[1] == "-pc" or sys.argv[1] == "-PC":  # PATCHING - CLEAN
             try:
                 file_name = sys.argv[4]
-                file_o = open(file_name,'rb').read()
-                architecture = bin_architecture(hexdump.hexdump_clean_for_disassembly(file_o))
+                file_o = open(file_name, 'rb').read()
+                architecture = bin_architecture(
+                    hexdump.hexdump_clean_for_disassembly(file_o))
 
                 bcolors = returnColors(2)
-                patching.patch(file_o, sys.argv[2], sys.argv[3], architecture, file_name, bcolors)
+                patching.patch(
+                    file_o,
+                    sys.argv[2],
+                    sys.argv[3],
+                    architecture,
+                    file_name,
+                    bcolors)
             except IOError as e:
                 if e.errno == errno.EPIPE:
                     pass
                 else:
                     print_wrong_file_help()
 
-        elif sys.argv[1]=="-ha" or sys.argv[1]=="-HA": # HEXDUMP at a given address
+        elif sys.argv[1] == "-ha" or sys.argv[1] == "-HA":  # HEXDUMP at a given address
             try:
                 file_name = sys.argv[4]
-                file_o = open(file_name,'rb').read()
-                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
-                address_to_hexdump = int(sys.argv[2],16)
+                file_o = open(file_name, 'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(
+                    file_o)
+                address_to_hexdump = int(sys.argv[2], 16)
                 bin_arch = bin_architecture(bytes_for_hexdump)
 
-                if bin_arch=="x86":
-                    if address_to_hexdump>=134512640:
-                        offset1 = address_to_hexdump-134512640
+                if bin_arch == "x86":
+                    if address_to_hexdump >= 134512640:
+                        offset1 = address_to_hexdump - 134512640
                     else:
                         offset1 = address_to_hexdump
                 else:
                     offset1 = address_to_hexdump
                 file_o2 = []
                 for a in range(int(sys.argv[3])):
-                    file_o2.append(file_o[a+offset1])
+                    file_o2.append(file_o[a + offset1])
 
                 file_o = bytes(file_o2)
                 bcolors = returnColors(1)
-                hexdump.hexdump_parser(file_o, bytes_for_hexdump, address_to_hexdump, bcolors)
+                hexdump.hexdump_parser(
+                    file_o, bytes_for_hexdump, address_to_hexdump, bcolors)
 
             except IOError as e:
                 if e.errno == errno.EPIPE:
@@ -415,28 +488,30 @@ def main():
             except IndexError as e:
                 print_help()
 
-        elif sys.argv[1]=="-h32a" or sys.argv[1]=="-H32A": # HEXDUMP at a given address
+        elif sys.argv[1] == "-h32a" or sys.argv[1] == "-H32A":  # HEXDUMP at a given address
             try:
                 file_name = sys.argv[4]
-                file_o = open(file_name,'rb').read()
-                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(file_o)
-                address_to_hexdump = int(sys.argv[2],16)
+                file_o = open(file_name, 'rb').read()
+                bytes_for_hexdump = hexdump.hexdump_clean_for_disassembly(
+                    file_o)
+                address_to_hexdump = int(sys.argv[2], 16)
                 bin_arch = bin_architecture(bytes_for_hexdump)
 
-                if bin_arch=="x86":
-                    if address_to_hexdump>=134512640:
-                        offset1 = address_to_hexdump-134512640
+                if bin_arch == "x86":
+                    if address_to_hexdump >= 134512640:
+                        offset1 = address_to_hexdump - 134512640
                     else:
                         offset1 = address_to_hexdump
                 else:
                     offset1 = address_to_hexdump
                 file_o2 = []
                 for a in range(int(sys.argv[3])):
-                    file_o2.append(file_o[a+offset1])
+                    file_o2.append(file_o[a + offset1])
 
                 file_o = bytes(file_o2)
                 bcolors = returnColors(1)
-                hexdump.hexdump_parser_32(file_o, bytes_for_hexdump, address_to_hexdump, bcolors)
+                hexdump.hexdump_parser_32(
+                    file_o, bytes_for_hexdump, address_to_hexdump, bcolors)
 
             except IOError as e:
                 if e.errno == errno.EPIPE:
@@ -448,18 +523,19 @@ def main():
         else:
             print_help()
 
-    elif sys.argv[1]=="--help":
+    elif sys.argv[1] == "--help":
         print_usage(False)
-    elif sys.argv[1]=="--help-clean":
+    elif sys.argv[1] == "--help-clean":
         print_usage(True)
-    elif sys.argv[1]=="--help-simple":
+    elif sys.argv[1] == "--help-simple":
         print_usage_simple(False)
-    elif sys.argv[1]=="--help-simple-clean":
+    elif sys.argv[1] == "--help-simple-clean":
         print_usage_simple(True)
     else:
         print_help()
 
 # ========== MAIN FUNCTION EXECUTION ==========
+
 
 if __name__ == "__main__":
     main()

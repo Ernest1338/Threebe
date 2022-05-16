@@ -2,16 +2,17 @@
 
 import sys
 
+
 def bin_architecture(bytes):
-    if ''.join(bytes[1:4])=="454C46":
+    if ''.join(bytes[1:4]) == "454C46":
         filetype = "ELF"
-    elif ''.join(bytes[0:2])=="4D5A":
+    elif ''.join(bytes[0:2]) == "4D5A":
         filetype = "PE"
     else:
         return 1
 
-    if filetype=="ELF":  # ELF - Linux
-        if bytes[4]=="01":
+    if filetype == "ELF":  # ELF - Linux
+        if bytes[4] == "01":
             return "x86"
-        elif bytes[4]=="02":
+        elif bytes[4] == "02":
             return "x86_64"
