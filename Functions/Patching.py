@@ -2,8 +2,6 @@
 # parameter and are patching given binary.
 
 import sys
-from Functions.BinArchitecture import bin_architecture
-
 
 def print_help_address(bcolors):
     sys.stderr.write(f"{bcolors.FAIL}ERROR: Wrong address/offset.\n")

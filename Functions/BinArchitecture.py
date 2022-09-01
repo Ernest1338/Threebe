@@ -1,8 +1,5 @@
 # This file contain function that returns architecture of given binary file.
 
-import sys
-
-
 def bin_architecture(bytes):
     if ''.join(bytes[1:4]) == "454C46":
         filetype = "ELF"
